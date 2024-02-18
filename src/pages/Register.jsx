@@ -31,6 +31,7 @@ const Register = () => {
     });
 
     const [isSubmitted, setSubmitted] = useState(false);
+    const [isSubmitting, setSubmitting] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -41,6 +42,7 @@ const Register = () => {
     };
 
     const handleSubmit = async (e) => {
+        setSubmitting(true);
         e.preventDefault();
         if (!formData.contest) {
             alert("Please Select a contest")
@@ -49,8 +51,13 @@ const Register = () => {
             alert("Please Select a gateway");
             return;
         }
-        let response = await axios.post(urls.registerUrl, formData)
-        console.log(response);
+        try {
+            let response = await axios.post(urls.registerUrl, formData)
+        } catch (error) {
+            alert(error);
+            setSubmitting(false);
+            return;
+        }
         setSubmitted(true);
     };
 
@@ -61,7 +68,7 @@ const Register = () => {
                 <div className='formSumissionConfirm'>
                     <i class='bx bx-check-double'></i>
                     <div className="info">
-                        Congratulations, User! Your registration for the [Event/Contest Name] has been successfully received.
+                        Congratulations, {formData.name}! Your registration has been successfully received.
                         Our team is currently processing your registration details. Once your registration is verified, you will receive a confirmation email at the address provided during registration.
                         Thank you for your interest in participating. We look forward to your involvement in the event!
                     </div>
