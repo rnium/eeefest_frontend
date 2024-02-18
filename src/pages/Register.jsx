@@ -5,6 +5,8 @@ import {
     ListItem, List, ListItemText
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
+import axios from 'axios';
+import * as urls from '../backendUrls'
 // import { makeStyles } from '@mui/styles';
 
 
@@ -23,23 +25,22 @@ const Register = () => {
         team_name: '',
         email: '',
         phoneNumber: '',
-        techInterest: '',
         contest: '',
-        gateway: 'rocket'
+        gateway: 'rocket',
+        transaction_id: ''
     });
 
     const [isSubmitted, setSubmitted] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value);
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.contest) {
             alert("Please Select a contest")
@@ -48,10 +49,8 @@ const Register = () => {
             alert("Please Select a gateway");
             return;
         }
-        // Handle form submission here, e.g., send data to server
-        console.log(formData);
-        // Reset form fields
-        // console.log(formData);
+        let response = await axios.post(urls.registerUrl, formData)
+        console.log(response);
         setSubmitted(true);
     };
 
@@ -161,8 +160,8 @@ const Register = () => {
                         <TextField
                             variant="outlined"
                             label="Transaction Number"
-                            name="techInterest"
-                            value={formData.techInterest}
+                            name="transaction_id"
+                            value={formData.transaction_id}
                             onChange={handleChange}
                             sx={{ mt: 2 }}
                             fullWidth
