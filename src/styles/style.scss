@@ -1,0 +1,32 @@
+@mixin flexer($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.mt-sm {
+    margin-top: 1rem;
+}
+
+.events {
+    @include flexer(column);
+    background-color: rgb(216, 216, 255);
+    padding: 5rem 2rem;
+    i {
+        font-size: 3rem;
+    }
+    .title {
+        font-size: 3rem;
+    }
+}

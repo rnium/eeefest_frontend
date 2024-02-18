@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-sm {
+  margin-top: 1rem;
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(216, 216, 255);
+  padding: 5rem 2rem;
+}
+.events i {
+  font-size: 3rem;
+}
+.events .title {
+  font-size: 3rem;
+}/*# sourceMappingURL=style.css.map */

@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Events from '../components/Events'
 
 const homepage = () => {
   return (
     <div>
-        <Navbar />
         <img src='images/banner.jpg' width='100%' />
+        {/* <Events /> */}
     </div>
   )
 }
