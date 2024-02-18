@@ -19,6 +19,39 @@ a {
     margin-top: 1rem;
 }
 
+.bg-red {
+    background-color: red;
+}
+
+.reg-form {
+    margin-top: 3rem;
+}
+
+.formSumissionConfirm {
+    @include flexer(column);
+    margin-top: 5rem;
+    i {
+        font-size: 5rem;
+        color: rgb(16, 211, 146);
+    }
+    .info {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .info.bottom {
+        color: rgb(78, 102, 102);
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .formSumissionConfirm {
+        .info {
+            font-size: 1rem;
+        }
+    }
+}
+
 .events {
     @include flexer(column);
     background-color: rgb(216, 216, 255);

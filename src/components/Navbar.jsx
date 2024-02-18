@@ -52,16 +52,19 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem>
-                <NavLink to="/home">Home</NavLink>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <NavLink to="/">Home</NavLink>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <NavLink to="/register">Register</NavLink>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <NavLink to="/gallery">Gallery</NavLink>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <NavLink to="/contact">Contact</NavLink>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <NavLink to="/sponsors">Sponsors</NavLink>
               </MenuItem>
             </Menu>
@@ -70,18 +73,22 @@ const Navbar = () => {
             <img src='images/logo.png' width="200px" />
           </Box>
           <Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'} }}>
-            <Button className='menubtn' sx={{ marginRight: 2 }}>
-              <NavLink to="/home">Home</NavLink>
-            </Button>
-            <Button className='menubtn' sx={{ marginRight: 2 }}>
-              <NavLink to="/gallery">Gallery</NavLink>
-            </Button>
-            <Button className='menubtn' sx={{ marginRight: 2 }}>
-              <NavLink to='/contact'>Contact</NavLink>
-            </Button>
-            <Button className='menubtn' sx={{ marginRight: 2 }}>
-              <NavLink to="/sponsors">Sponsors</NavLink>
-            </Button>
+            
+            <NavLink to="/">
+              <Button className='menubtn' sx={{ marginRight: 2 }}>Home</Button>
+            </NavLink>
+            <NavLink to="/register">
+              <Button className='menubtn' sx={{ marginRight: 2 }}>Register</Button>
+            </NavLink>
+            <NavLink to="/gallery">
+              <Button className='menubtn' sx={{ marginRight: 2 }}>Gallery</Button>
+            </NavLink>
+            <NavLink to="/contact">
+              <Button className='menubtn' sx={{ marginRight: 2 }}>Contact</Button>
+            </NavLink>
+            <NavLink to="/sponsors">
+              <Button className='menubtn' sx={{ marginRight: 2 }}>Sponsors</Button>
+            </NavLink>
           </Box>
           <Box sx={{display: {xs: 'none', md: 'block'}}}>
             <Button  color="primary" variant='contained' startIcon={<FavoriteIcon />}>Be A Sponsor</Button>

@@ -11,6 +11,39 @@ a {
   margin-top: 1rem;
 }
 
+.bg-red {
+  background-color: red;
+}
+
+.reg-form {
+  margin-top: 3rem;
+}
+
+.formSumissionConfirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+.formSumissionConfirm i {
+  font-size: 5rem;
+  color: rgb(16, 211, 146);
+}
+.formSumissionConfirm .info {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.formSumissionConfirm .info.bottom {
+  color: rgb(78, 102, 102);
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 700px) {
+  .formSumissionConfirm .info {
+    font-size: 1rem;
+  }
+}
 .events {
   display: flex;
   flex-direction: column;

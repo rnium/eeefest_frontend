@@ -5,6 +5,7 @@ import {Routes, Route, Navigate} from 'react-router-dom'
 import Gallery from './pages/Gallery'
 import Contact from './pages/Contact'
 import Sponsors from './pages/Sponsors'
+import Register from './pages/Register'
 
 
 const MainComponent = () => {
@@ -12,8 +13,8 @@ const MainComponent = () => {
     <div>
         <Navbar />
         <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Homepage />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/sponsors" element={<Sponsors />} />
