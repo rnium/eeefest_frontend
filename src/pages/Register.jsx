@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
     TextField, Button, Typography, Container, FormControl,
     Select, Grid, MenuItem, Card, CardMedia, CardContent,
-    ListItem, List, ListItemText
+    ListItem, List, ListItemText, Box
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
@@ -23,12 +23,41 @@ const Register = () => {
     const [formData, setFormData] = useState({
         name: '',
         team_name: '',
+        group_members_count: '',
         email: '',
         phoneNumber: '',
         contest: '',
         gateway: 'rocket',
         transaction_id: ''
     });
+
+    const [groupFormData, setGroupFormData] = useState({
+        team_leader: {
+            name: '',
+            inst: '',
+            dept: '',
+            tshirt: '',
+            phone: '',
+            email: '',
+        },
+        second_member: {
+            name: '',
+            inst: '',
+            dept: '',
+            tshirt: '',
+            phone: '',
+            email: '',
+        },
+        third_member: {
+            name: '',
+            inst: '',
+            dept: '',
+            tshirt: '',
+            phone: '',
+            email: '',
+        },
+        others: ''
+    })
 
     const [isSubmitted, setSubmitted] = useState(false);
     const [isSubmitting, setSubmitting] = useState(false);
@@ -60,6 +89,233 @@ const Register = () => {
         }
         setSubmitted(true);
     };
+    const handleGroupFormChange = (e) => {
+        const { name, value } = e.target;
+        const [member, field] = name.split('-')
+        console.log(member, field, value);
+        setGroupFormData((prevData) => ({
+            ...prevData,
+            [member]: {
+                ...prevData[member],
+                [field]: value,
+            }
+        }));
+    }
+    let memberFields = () => {
+        return (
+            <Box>
+                <Box>
+                    <TextField
+                        variant="outlined"
+                        label="Team Leader Name"
+                        sx={{ mt: 2 }}
+                        name='team_leader-name'
+                        value={groupFormData.team_leader.name}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="Team Leader Instituition"
+                        sx={{ mt: 2 }}
+                        name="team_leader-inst"
+                        value={groupFormData.team_leader.inst}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="Team Leader Department"
+                        sx={{ mt: 2 }}
+                        name="team_leader-dept"
+                        value={groupFormData.team_leader.dept}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                        required
+                    />
+                    <FormControl fullWidth sx={{ mt: 2 }}>
+                        <InputLabel id="m1-tshirt-select-label">Team Leader Tshirt Size</InputLabel>
+                        <Select
+                            labelId="m1-tshirt-select-label"
+                            value={groupFormData.team_leader.tshirt}
+                            label="Team Leader Tshirt Size"
+                            name="team_leader-tshirt"
+                            onChange={handleGroupFormChange}
+                        >
+                            <MenuItem value="S">S</MenuItem>
+                            <MenuItem value="M">M</MenuItem>
+                            <MenuItem value="L">L</MenuItem>
+                            <MenuItem value="XL">XL</MenuItem>
+                            <MenuItem value="XXL">XXL</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <TextField
+                        variant="outlined"
+                        label="Team Leader Phone"
+                        sx={{ mt: 2 }}
+                        name="team_leader-phone"
+                        value={groupFormData.team_leader.phone}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="Team Leader Email"
+                        sx={{ mt: 2, mb: 2 }}
+                        type="email"
+                        name="team_leader-email"
+                        value={groupFormData.team_leader.email}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                        required
+                    />
+                </Box>
+                <Box>
+                    <TextField
+                        variant="outlined"
+                        label="2nd Member Name"
+                        sx={{ mt: 2 }}
+                        name='second_member-name'
+                        value={groupFormData.second_member.name}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="2nd Member Instituition"
+                        sx={{ mt: 2 }}
+                        name="second_member-inst"
+                        value={groupFormData.second_member.inst}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="2nd Member Department"
+                        sx={{ mt: 2 }}
+                        name="second_member-dept"
+                        value={groupFormData.second_member.dept}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <FormControl fullWidth sx={{ mt: 2 }}>
+                        <InputLabel id="m2-tshirt-select-label">2nd Member Tshirt Size</InputLabel>
+                        <Select
+                            labelId="m2-tshirt-select-label"
+                            value={groupFormData.second_member.tshirt}
+                            label="2nd Member Tshirt Size"
+                            name="second_member-tshirt"
+                            onChange={handleGroupFormChange}
+                        >
+                            <MenuItem value="S">S</MenuItem>
+                            <MenuItem value="M">M</MenuItem>
+                            <MenuItem value="L">L</MenuItem>
+                            <MenuItem value="XL">XL</MenuItem>
+                            <MenuItem value="XXL">XXL</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <TextField
+                        variant="outlined"
+                        label="2nd Member Phone"
+                        sx={{ mt: 2 }}
+                        name="second_member-phone"
+                        value={groupFormData.second_member.phone}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="2nd Member Email"
+                        sx={{ mt: 2, mb: 2 }}
+                        type="email"
+                        name="second_member-email"
+                        value={groupFormData.second_member.email}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                </Box>
+                <Box>
+                    <TextField
+                        variant="outlined"
+                        label="3rd Member Name"
+                        sx={{ mt: 2 }}
+                        name='third_member-name'
+                        value={groupFormData.third_member.name}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="3rd Member Instituition"
+                        sx={{ mt: 2 }}
+                        name="third_member-inst"
+                        value={groupFormData.third_member.inst}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="3rd Member Department"
+                        sx={{ mt: 2 }}
+                        name="third_member-dept"
+                        value={groupFormData.third_member.dept}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <FormControl fullWidth sx={{ mt: 2 }}>
+                        <InputLabel id="m3-tshirt-select-label">3rd Member Tshirt Size</InputLabel>
+                        <Select
+                            labelId="m3-tshirt-select-label"
+                            value={groupFormData.third_member.tshirt}
+                            label="3rd Member Tshirt Size"
+                            name="third_member-tshirt"
+                            onChange={handleGroupFormChange}
+                        >
+                            <MenuItem value="S">S</MenuItem>
+                            <MenuItem value="M">M</MenuItem>
+                            <MenuItem value="L">L</MenuItem>
+                            <MenuItem value="XL">XL</MenuItem>
+                            <MenuItem value="XXL">XXL</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <TextField
+                        variant="outlined"
+                        label="3rd Member Phone"
+                        sx={{ mt: 2 }}
+                        name="third_member-phone"
+                        value={groupFormData.third_member.phone}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="3rd Member Email"
+                        sx={{ mt: 2, mb: 2 }}
+                        type="email"
+                        name="third_member-email"
+                        value={groupFormData.third_member.email}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                    />
+                </Box>
+                <Box>
+                    <Typography variant='body'>Briefly state Additional Members' Name, Institute, T-shirt size in case of more than three members in a team.)</Typography>
+                    <TextField
+                        label="Additional Group Members Information"
+                        multiline
+                        rows={5} // Specify the number of rows to display
+                        value={groupFormData.others}
+                        onChange={handleGroupFormChange}
+                        fullWidth
+                        sx={{mb: 4, mt:2}}
+                        />
+                </Box>
+            </Box>
+        )
+    }
 
     let selectedContestFee = formData.contest ? contest_fee[formData.contest] : 0;
     if (isSubmitted) {
@@ -116,16 +372,28 @@ const Register = () => {
                         />
                         {
                             formData.contest == 'lfr' | formData.contest == 'poster' ?
-                                <TextField
-                                    variant="outlined"
-                                    label="Team Name"
-                                    sx={{ mt: 2 }}
-                                    name="team_name"
-                                    value={formData.team_name}
-                                    onChange={handleChange}
-                                    fullWidth
-                                    required
-                                />
+                                <Box>
+                                    <TextField
+                                        variant="outlined"
+                                        label="Team Name"
+                                        sx={{ mt: 2 }}
+                                        name="team_name"
+                                        value={formData.team_name}
+                                        onChange={handleChange}
+                                        fullWidth
+                                        required
+                                    />
+                                    <TextField
+                                        variant="outlined"
+                                        label="Number of Group Members"
+                                        sx={{ mt: 2 }}
+                                        name="group_members_count"
+                                        value={formData.group_members_count}
+                                        onChange={handleChange}
+                                        fullWidth
+                                        required
+                                    />
+                                </Box>
                                 : null
                         }
                         <TextField
@@ -180,6 +448,7 @@ const Register = () => {
                     </form>
                 </Grid>
                 <Grid item xs={12} md={5}>
+                    {formData.contest == 'lfr' || formData.contest == 'poster' ? memberFields() : null}
                     <Card >
                         <CardMedia
                             component="img"
@@ -194,7 +463,7 @@ const Register = () => {
                             <List component="ul">
                                 <ListItem>
                                     <Typography>
-                                        The entry fee for your selected contest is:
+                                        The registration fee for your selected contest is:
                                         <Typography variant='h6' component='span' color="secondary" display="inline" sx={{ marginLeft: 1 }}> {selectedContestFee} Tk</Typography>
                                     </Typography>
                                 </ListItem>
