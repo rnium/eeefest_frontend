@@ -27,12 +27,16 @@ const additional_member_fee = {
 const Register = () => {
     const [formData, setFormData] = useState({
         name: '',
+        inst: '',
+        dept: '',
+        reg: '',
         team_name: '',
         group_members_count: '',
         email: '',
         phoneNumber: '',
         contest: '',
         gateway: 'rocket',
+        paying_number: '',
         transaction_id: ''
     });
 
@@ -111,7 +115,7 @@ const Register = () => {
             return;
         }
         try {
-            let data = {formData: formData, groupFormData: groupFormData}
+            let data = { formData: formData, groupFormData: groupFormData }
             console.log(data);
             let response = await axios.post(urls.registerUrl, data)
         } catch (error) {
@@ -424,6 +428,33 @@ const Register = () => {
                                     />
                                     <TextField
                                         variant="outlined"
+                                        label="Institution"
+                                        sx={{ mt: 2 }}
+                                        name="inst"
+                                        value={formData.inst}
+                                        onChange={handleChange}
+                                        fullWidth
+                                    />
+                                    <TextField
+                                        variant="outlined"
+                                        label="Department"
+                                        sx={{ mt: 2 }}
+                                        name="dept"
+                                        value={formData.dept}
+                                        onChange={handleChange}
+                                        fullWidth
+                                    />
+                                    <TextField
+                                        variant="outlined"
+                                        label="Registration Number"
+                                        sx={{ mt: 2 }}
+                                        name="reg"
+                                        value={formData.reg}
+                                        onChange={handleChange}
+                                        fullWidth
+                                    />
+                                    <TextField
+                                        variant="outlined"
                                         label="Email"
                                         type="email"
                                         name="email"
@@ -463,6 +494,16 @@ const Register = () => {
                         </FormControl>
                         <TextField
                             variant="outlined"
+                            label="bKash/Rocket account number from which payment is done"
+                            name="paying_number"
+                            value={formData.paying_number}
+                            onChange={handleChange}
+                            sx={{ mt: 2 }}
+                            fullWidth
+                            required
+                        />
+                        <TextField
+                            variant="outlined"
                             label="Transaction Number"
                             name="transaction_id"
                             value={formData.transaction_id}
@@ -492,7 +533,12 @@ const Register = () => {
                                 <ListItem>
                                     <Typography>
                                         The registration fee for your selected contest is:
-                                        <Typography variant='h6' component='span' color="secondary" display="inline" sx={{ marginLeft: 1 }}> {selectedContestFee} Tk</Typography>
+                                        <Typography variant='h6' component='h6' color="secondary" sx={{ marginLeft: 1 }}> {selectedContestFee} Tk</Typography>
+                                    </Typography>
+                                </ListItem>
+                                <ListItem>
+                                    <Typography>
+                                        Cash In/Send Money to any of the following mobile banking account (Must include 1.8%(Rocket) or 1.25%(Nagad) Cash Out charge regarding your registration fee)
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
@@ -506,9 +552,6 @@ const Register = () => {
                                         Nagad Account Number:
                                         <Typography component='span' color="secondary" display="inline" sx={{ marginLeft: 1 }}>01521787727</Typography>
                                     </Typography>
-                                </ListItem>
-                                <ListItem>
-                                    <Typography variant='body'>We accept payments via Rocket and Nagad only.</Typography>
                                 </ListItem>
                                 <ListItem>
                                     <Typography variant='body'>
