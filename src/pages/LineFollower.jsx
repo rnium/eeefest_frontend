@@ -17,7 +17,6 @@ const LineFollower = () => {
         <img src='images/Line_Follower_Robot.png' />
       </div>
       <Container sx={{ mb: 10 }}>
-        <Typography sx={{ mt: 5 }} className='text-center' variant='h3'>Line Follower Robot</Typography>
         <Typography sx={{ mt: 5 }} variant="h5">
           Line Follower Robot competition in Technoventure 3.0 the robot must be able to follow a black line on white surface or vice versa. It is an autonomous robot which is able to make decision for complete the track on a surface.
         </Typography>

@@ -84,7 +84,7 @@ const Navbar = () => {
               <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Poster Presentation</Button>
             </NavLink>
             <NavLink to="/circuit-solving">
-              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Circuit Solving</Button>
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Circuit Master</Button>
             </NavLink>
             <NavLink to="/integreation-bee">
               <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Integration BEE</Button>

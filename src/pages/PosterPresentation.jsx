@@ -52,7 +52,7 @@ const PosterPresentation = () => {
                   aria-controls="panel3-content"
                   id="panel3-header"
                 >
-                  <Typography variant='h6'>Eligibility</Typography>
+                  <Typography variant='h6'>Event Rules</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <ol>
