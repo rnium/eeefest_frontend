@@ -54,7 +54,7 @@ const LineFollower = () => {
             Registration fee: <span className='text-bold'>1200 Tk</span>
           </Typography>
           <Typography variant='h5' sx={{ mt: 2 }} >
-            Gift : T-shirt, launch, certificate
+            Gift : T-shirt, Certificate, Lunch Coupon
           </Typography>
           <Typography variant='h5' sx={{ mt: 7 }}>
             For any queries related to LFR
@@ -66,14 +66,6 @@ const LineFollower = () => {
               </ListItemIcon>
               <Typography variant='h6'>
                 Call: <span className='text-bold'>+8801781-482257</span> or <span className='text-bold'>+8801829-263221</span>
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <ContactSupportIcon sx={{ fontSize: '2rem' }} />
-              </ListItemIcon>
-              <Typography variant='h6' color="textSecondary">
-                Email: <span className='text-bold'>ronysdsd@sec.ac.bd</span>
               </Typography>
             </ListItem>
           </List>

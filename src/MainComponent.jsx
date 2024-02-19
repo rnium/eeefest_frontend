@@ -20,7 +20,7 @@ const MainComponent = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/line-follower" element={<LineFollower />} />
         <Route path="/poster-presentation" element={<PosterPresentation />} />
-        <Route path="/circuit-solving" element={<CircuitSolving />} />
+        <Route path="/circuit-master" element={<CircuitSolving />} />
         <Route path="/integreation-bee" element={<IntegrationBee />} />
         <Route path="/gaming" element={<GamingContest />} />
         {/* <Route path="/sponsors/apply" element={<Homepage />} /> */}

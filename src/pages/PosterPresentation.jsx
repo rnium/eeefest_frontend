@@ -19,7 +19,7 @@ const PosterPresentation = () => {
       <Container sx={{ mb: 10 }}>
         <Typography sx={{ mt:7 }} variant="h5" textAlign='justify'>Posters are often used to share information and are an important part of many conferences, seminars and exhibitions. They may be used to present quite complex material, and so it is important that the information on them is well laid out, legible and attractively presented.</Typography>
         <Typography sx={{ mt: 7 }} variant="h5">
-          The main idea of Poster Presentation 2020 should include any of the following sections
+          The main idea of Poster Presentation 2024 should include any of the following sections
           <Typography variant='h5' fontWeight="bold">
             - Universal topics
           </Typography>

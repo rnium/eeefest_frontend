@@ -59,13 +59,19 @@ const Navbar = () => {
                 <NavLink to="/register">Register</NavLink>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/gallery">Gallery</NavLink>
+                <NavLink to="/line-follower">Line Follower ROBOT</NavLink>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/contact">Contact</NavLink>
+                <NavLink to="/poster-presentation">Poster Presentation</NavLink>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/sponsors">Sponsors</NavLink>
+                <NavLink to="/circuit-master">Circuit Master</NavLink>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <NavLink to="/integreation-bee">Integration BEE</NavLink>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <NavLink to="/gaming">Gaming</NavLink>
               </MenuItem>
             </Menu>
           </Box>
@@ -83,7 +89,7 @@ const Navbar = () => {
             <NavLink to="/poster-presentation">
               <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Poster Presentation</Button>
             </NavLink>
-            <NavLink to="/circuit-solving">
+            <NavLink to="/circuit-master">
               <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Circuit Master</Button>
             </NavLink>
             <NavLink to="/integreation-bee">
