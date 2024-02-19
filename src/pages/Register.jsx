@@ -70,6 +70,25 @@ const Register = () => {
         }));
     };
 
+    const handleGroupFormChange = (e) => {
+        const { name, value } = e.target;
+        if (name === 'others') {
+            setGroupFormData((prevData) => ({
+                ...prevData,
+                others: value
+            }))
+            return;
+        }
+        const [member, field] = name.split('-')
+        setGroupFormData((prevData) => ({
+            ...prevData,
+            [member]: {
+                ...prevData[member],
+                [field]: value,
+            }
+        }));
+    }
+
     const handleSubmit = async (e) => {
         setSubmitting(true);
         e.preventDefault();
@@ -89,18 +108,7 @@ const Register = () => {
         }
         setSubmitted(true);
     };
-    const handleGroupFormChange = (e) => {
-        const { name, value } = e.target;
-        const [member, field] = name.split('-')
-        console.log(member, field, value);
-        setGroupFormData((prevData) => ({
-            ...prevData,
-            [member]: {
-                ...prevData[member],
-                [field]: value,
-            }
-        }));
-    }
+
     let memberFields = () => {
         return (
             <Box>
@@ -308,10 +316,11 @@ const Register = () => {
                         multiline
                         rows={5} // Specify the number of rows to display
                         value={groupFormData.others}
+                        name='others'
                         onChange={handleGroupFormChange}
                         fullWidth
-                        sx={{mb: 4, mt:2}}
-                        />
+                        sx={{ mb: 4, mt: 2 }}
+                    />
                 </Box>
             </Box>
         )
@@ -360,16 +369,6 @@ const Register = () => {
                                 <MenuItem value="gaming-chess">Gaming Contest [Chess]</MenuItem>
                             </Select>
                         </FormControl>
-                        <TextField
-                            variant="outlined"
-                            label="Contestant Name"
-                            sx={{ mt: 2 }}
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            fullWidth
-                            required
-                        />
                         {
                             formData.contest == 'lfr' | formData.contest == 'poster' ?
                                 <Box>
@@ -394,7 +393,19 @@ const Register = () => {
                                         required
                                     />
                                 </Box>
-                                : null
+                                :
+                                <Box>
+                                    <TextField
+                                        variant="outlined"
+                                        label="Contestant Name"
+                                        sx={{ mt: 2 }}
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        fullWidth
+                                        required
+                                    />
+                                </Box>
                         }
                         <TextField
                             variant="outlined"
