@@ -110,8 +110,13 @@ const Register = () => {
             return;
         }
         try {
+            const config = {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              };
             let data = { formData: formData, groupFormData: groupFormData }
-            let response = await axios.post(urls.registerUrl, data)
+            let response = await axios.post(urls.registerUrl, data, config)
         } catch (error) {
             alert(error);
             setSubmitting(false);
@@ -347,7 +352,7 @@ const Register = () => {
                 <div className='formSumissionConfirm'>
                     <i class='bx bx-check-double'></i>
                     <div className="info">
-                        Congratulations, {formData.name}! Your registration has been successfully received.
+                        Congratulations, {groupFormData.team_leader.name}! Your registration has been successfully received.
                         Our team is currently processing your registration details. Once your registration is verified, you will receive a confirmation email at the address provided during registration.
                         Thank you for your interest in participating. We look forward to your involvement in the event!
                     </div>
