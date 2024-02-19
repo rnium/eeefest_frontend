@@ -72,30 +72,27 @@ const Navbar = () => {
           <Box sx={{flexGrow: 1}}>
             <img src='images/logo.png' width="200px" />
           </Box>
-          <Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'} }}>
+          <Box sx={{ display: {xs: 'none', md: 'flex'} }}>
             
             <NavLink to="/">
-              <Button className='menubtn' sx={{ marginRight: 2 }}>Home</Button>
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Home</Button>
             </NavLink>
-            <NavLink to="/register">
-              <Button className='menubtn' sx={{ marginRight: 2 }}>Register</Button>
+            <NavLink to="/line-follower">
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Line Follower ROBOT</Button>
             </NavLink>
-            <NavLink to="/gallery">
-              <Button className='menubtn' sx={{ marginRight: 2 }}>Gallery</Button>
+            <NavLink to="/poster-presentation">
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Poster Presentation</Button>
             </NavLink>
-            <NavLink to="/contact">
-              <Button className='menubtn' sx={{ marginRight: 2 }}>Contact</Button>
+            <NavLink to="/circuit-solving">
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Circuit Solving</Button>
             </NavLink>
-            <NavLink to="/sponsors">
-              <Button className='menubtn' sx={{ marginRight: 2 }}>Sponsors</Button>
+            <NavLink to="/integreation-bee">
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Integration BEE</Button>
+            </NavLink>
+            <NavLink to="/gaming">
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Gaming</Button>
             </NavLink>
           </Box>
-          <Box sx={{display: {xs: 'none', md: 'block'}}}>
-            <Button  color="primary" variant='contained' startIcon={<FavoriteIcon />}>Be A Sponsor</Button>
-          </Box>
-          {/* <Box sx={{display: {xs: 'block', md: 'none'}}}>
-            <Button  color="primary" variant='contained'>Sponsor</Button>
-          </Box> */}
         </Toolbar>
       </AppBar>
     </Box>

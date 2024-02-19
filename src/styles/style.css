@@ -11,6 +11,10 @@ a {
   margin-top: 1rem;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 .bg-red {
   background-color: red;
 }
@@ -37,6 +41,20 @@ a {
 .formSumissionConfirm .info.bottom {
   color: rgb(78, 102, 102);
   font-size: 1.2rem;
+}
+
+.floatingBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.contest-page .banner {
+  width: 100%;
+  overflow: hidden;
+}
+.contest-page .banner img {
+  width: 100%;
 }
 
 @media screen and (max-width: 700px) {
