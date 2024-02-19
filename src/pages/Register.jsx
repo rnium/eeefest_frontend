@@ -117,8 +117,7 @@ const Register = () => {
             setSubmitting(false);
             return;
         }
-        setSubmitting(false);
-        // setSubmitted(true);
+        setSubmitted(true);
     };
 
     let memberFields = () => {
