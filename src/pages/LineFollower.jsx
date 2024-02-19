@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fab from '@mui/material/Fab';
@@ -53,7 +54,10 @@ const LineFollower = () => {
           <Typography variant='h5' sx={{ mt: 5 }}>
             Registration fee: <span className='text-bold'>1200 Tk</span>
           </Typography>
-          <Typography variant='h5' sx={{ mt: 5 }}>
+          <Typography variant='h5' sx={{ mt: 2 }} >
+            Gift : T-shirt, launch, certificate
+          </Typography>
+          <Typography variant='h5' sx={{ mt: 7 }}>
             For any queries related to LFR
           </Typography>
           <List component="ul" >
@@ -62,7 +66,7 @@ const LineFollower = () => {
                 <ContactSupportIcon sx={{ fontSize: '2rem' }} />
               </ListItemIcon>
               <Typography variant='h6'>
-                Call: <span className='text-bold'>01500000000</span> or <span className='text-bold'>01500000000</span>
+                Call: <span className='text-bold'>+8801781-482257</span> or <span className='text-bold'>+8801829-263221</span>
               </Typography>
             </ListItem>
             <ListItem>
@@ -100,7 +104,7 @@ const LineFollower = () => {
                   </ol>
                 </AccordionDetails>
               </Accordion>
-              <Accordion>
+              <Accordion defaultExpanded>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel3-content"
@@ -199,11 +203,13 @@ const LineFollower = () => {
       </Container>
 
 
-      <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
-        <Fab color='primary' variant="extended" aria-label="like">
-          <TouchAppIcon sx={{ marginRight: 1 }} />
-          Register Now
-        </Fab>
+      <Box className="floatingBtn" >
+        <Link to="/register">
+          <Fab color='primary' className='inner' variant="extended" aria-label="like">
+            <TouchAppIcon sx={{ marginRight: 1 }} />
+            Register Now
+          </Fab>
+        </Link>
       </Box>
     </div>
   )

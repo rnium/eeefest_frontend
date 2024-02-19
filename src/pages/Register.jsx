@@ -532,11 +532,11 @@ const Register = () => {
                                 <ListItem>
                                     <Typography>
                                         The registration fee for your selected contest is:
-                                        <Typography variant='h6' component='h6' color="secondary" sx={{ marginLeft: 1 }}> {selectedContestFee} Tk</Typography>
+                                        <Typography variant='h6' component='h6' color="secondary" textAlign="center"> {selectedContestFee} Tk</Typography>
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
-                                    <Typography>
+                                    <Typography textAlign="justify">
                                         Cash In/Send Money to any of the following mobile banking account (Must include 1.8%(Rocket) or 1.25%(Nagad) Cash Out charge regarding your registration fee)
                                     </Typography>
                                 </ListItem>

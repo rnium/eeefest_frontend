@@ -23,6 +23,10 @@ a {
     font-weight: bold;
 }
 
+.text-muted {
+    color: gray;
+}
+
 .bg-red {
     background-color: red;
 }
@@ -49,18 +53,31 @@ a {
 }
 
 .floatingBtn {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    position: sticky;
+    bottom: 2rem;
+    right: 0px;
+    .inner {
+        position: absolute;
+        right: 1.5rem;
+        bottom: 10px;
+    }
 }
 
 .contest-page {
+    position: relative;
     .banner {
         width: 100%;
         overflow: hidden;
         img {
             width: 100%;
         }
+    }
+}
+
+.footer {
+    background-color: rgb(231, 231, 231) !important;
+    img.logo {
+        width: 150px;
     }
 }
 

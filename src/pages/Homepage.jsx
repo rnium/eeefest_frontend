@@ -10,7 +10,7 @@ const homepage = () => {
       <img src='images/banner.jpg' width='100%' />
       {/* <Events /> */}
       <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
-        <Fab color='primary' variant="extended" aria-label="like">
+        <Fab className="inner" color='primary' variant="extended" aria-label="like">
           <FavoriteIcon sx={{ marginRight: 1 }} />
           Sponsor Us
         </Fab>

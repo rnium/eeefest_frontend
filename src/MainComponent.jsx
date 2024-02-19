@@ -8,6 +8,7 @@ import PosterPresentation from './pages/PosterPresentation'
 import CircuitSolving from './pages/CircuitSolving'
 import IntegrationBee from './pages/IntegrationBee'
 import GamingContest from './pages/GamingContest'
+import Footer from './components/Footer'
 
 
 const MainComponent = () => {
@@ -24,6 +25,7 @@ const MainComponent = () => {
         <Route path="/gaming" element={<GamingContest />} />
         {/* <Route path="/sponsors/apply" element={<Homepage />} /> */}
       </Routes>
+      <Footer />
     </div>
   )
 }

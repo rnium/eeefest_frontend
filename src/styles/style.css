@@ -15,6 +15,10 @@ a {
   font-weight: bold;
 }
 
+.text-muted {
+  color: gray;
+}
+
 .bg-red {
   background-color: red;
 }
@@ -44,17 +48,32 @@ a {
 }
 
 .floatingBtn {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  position: sticky;
+  bottom: 2rem;
+  right: 0px;
+}
+.floatingBtn .inner {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 10px;
 }
 
+.contest-page {
+  position: relative;
+}
 .contest-page .banner {
   width: 100%;
   overflow: hidden;
 }
 .contest-page .banner img {
   width: 100%;
+}
+
+.footer {
+  background-color: rgb(231, 231, 231) !important;
+}
+.footer img.logo {
+  width: 150px;
 }
 
 @media screen and (max-width: 700px) {
