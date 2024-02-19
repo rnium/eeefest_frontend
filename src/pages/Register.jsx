@@ -384,7 +384,7 @@ const Register = () => {
                             </Select>
                         </FormControl>
                         {
-                            formData.contest == 'lfr' | formData.contest == 'poster' ?
+                            formData.contest === 'lfr' | formData.contest === 'poster' ?
                                 <Box>
                                     <TextField
                                         variant="outlined"
