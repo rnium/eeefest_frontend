@@ -19,6 +19,11 @@ const contest_fee = {
     'gaming-chess': 100,
 }
 
+const additional_member_fee = {
+    lfr: 500,
+    poster: 50
+}
+
 const Register = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -63,7 +68,13 @@ const Register = () => {
     const [isSubmitting, setSubmitting] = useState(false);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
+        if (name === 'group_members_count') {
+            value = parseInt(value);
+            if (isNaN(value)) {
+                value = ''
+            }
+        }
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
@@ -100,7 +111,9 @@ const Register = () => {
             return;
         }
         try {
-            let response = await axios.post(urls.registerUrl, formData)
+            let data = {formData: formData, groupFormData: groupFormData}
+            console.log(data);
+            let response = await axios.post(urls.registerUrl, data)
         } catch (error) {
             alert(error);
             setSubmitting(false);
@@ -327,6 +340,9 @@ const Register = () => {
     }
 
     let selectedContestFee = formData.contest ? contest_fee[formData.contest] : 0;
+    if (!isNaN(formData.group_members_count) && formData.group_members_count > 3) {
+        selectedContestFee += (formData.group_members_count - 3) * additional_member_fee[formData.contest];
+    }
     if (isSubmitted) {
         return (
             <Container>
@@ -392,6 +408,7 @@ const Register = () => {
                                         fullWidth
                                         required
                                     />
+                                    {memberFields()}
                                 </Box>
                                 :
                                 <Box>
@@ -405,30 +422,31 @@ const Register = () => {
                                         fullWidth
                                         required
                                     />
+                                    <TextField
+                                        variant="outlined"
+                                        label="Email"
+                                        type="email"
+                                        name="email"
+                                        sx={{ mt: 2 }}
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        fullWidth
+                                        required
+                                    />
+                                    <TextField
+                                        variant="outlined"
+                                        label="Phone Number"
+                                        type="tel"
+                                        name="phoneNumber"
+                                        value={formData.phoneNumber}
+                                        onChange={handleChange}
+                                        sx={{ mt: 2 }}
+                                        fullWidth
+                                        required
+                                    />
                                 </Box>
                         }
-                        <TextField
-                            variant="outlined"
-                            label="Email"
-                            type="email"
-                            name="email"
-                            sx={{ mt: 2 }}
-                            value={formData.email}
-                            onChange={handleChange}
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            variant="outlined"
-                            label="Phone Number"
-                            type="tel"
-                            name="phoneNumber"
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                            sx={{ mt: 2 }}
-                            fullWidth
-                            required
-                        />
+
                         <FormControl fullWidth sx={{ mt: 2 }}>
                             <InputLabel id="demo-simple-select-label">Payment Gateway</InputLabel>
                             <Select
@@ -453,13 +471,12 @@ const Register = () => {
                             fullWidth
                             required
                         />
-                        <Button sx={{ mt: 2 }} variant="contained" color="primary" type="submit" fullWidth>
+                        <Button sx={{ mt: 2 }} disabled={isSubmitting} variant="contained" color="primary" type="submit" fullWidth>
                             Register
                         </Button>
                     </form>
                 </Grid>
                 <Grid item xs={12} md={5}>
-                    {formData.contest == 'lfr' || formData.contest == 'poster' ? memberFields() : null}
                     <Card >
                         <CardMedia
                             component="img"
@@ -501,6 +518,7 @@ const Register = () => {
                             </List>
                         </CardContent>
                     </Card>
+
                 </Grid>
             </Grid>
         </Container>
