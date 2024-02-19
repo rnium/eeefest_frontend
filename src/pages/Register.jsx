@@ -26,14 +26,8 @@ const additional_member_fee = {
 
 const Register = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        inst: '',
-        dept: '',
-        reg: '',
         team_name: '',
         group_members_count: '',
-        email: '',
-        phoneNumber: '',
         contest: '',
         gateway: 'rocket',
         paying_number: '',
@@ -45,6 +39,7 @@ const Register = () => {
             name: '',
             inst: '',
             dept: '',
+            reg: '',
             tshirt: '',
             phone: '',
             email: '',
@@ -116,14 +111,14 @@ const Register = () => {
         }
         try {
             let data = { formData: formData, groupFormData: groupFormData }
-            console.log(data);
             let response = await axios.post(urls.registerUrl, data)
         } catch (error) {
             alert(error);
             setSubmitting(false);
             return;
         }
-        setSubmitted(true);
+        setSubmitting(false);
+        // setSubmitted(true);
     };
 
     let memberFields = () => {
@@ -420,9 +415,9 @@ const Register = () => {
                                         variant="outlined"
                                         label="Contestant Name"
                                         sx={{ mt: 2 }}
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
+                                        name="team_leader-name"
+                                        value={groupFormData.team_leader.name}
+                                        onChange={handleGroupFormChange}
                                         fullWidth
                                         required
                                     />
@@ -430,37 +425,37 @@ const Register = () => {
                                         variant="outlined"
                                         label="Institution"
                                         sx={{ mt: 2 }}
-                                        name="inst"
-                                        value={formData.inst}
-                                        onChange={handleChange}
+                                        name="team_leader-inst"
+                                        value={groupFormData.team_leader.inst}
+                                        onChange={handleGroupFormChange}
                                         fullWidth
                                     />
                                     <TextField
                                         variant="outlined"
                                         label="Department"
                                         sx={{ mt: 2 }}
-                                        name="dept"
-                                        value={formData.dept}
-                                        onChange={handleChange}
+                                        name="team_leader-dept"
+                                        value={groupFormData.team_leader.dept}
+                                        onChange={handleGroupFormChange}
                                         fullWidth
                                     />
                                     <TextField
                                         variant="outlined"
                                         label="Registration Number"
                                         sx={{ mt: 2 }}
-                                        name="reg"
-                                        value={formData.reg}
-                                        onChange={handleChange}
+                                        name="team_leader-reg"
+                                        value={groupFormData.team_leader.reg}
+                                        onChange={handleGroupFormChange}
                                         fullWidth
                                     />
                                     <TextField
                                         variant="outlined"
                                         label="Email"
                                         type="email"
-                                        name="email"
+                                        name="team_leader-email"
                                         sx={{ mt: 2 }}
-                                        value={formData.email}
-                                        onChange={handleChange}
+                                        value={groupFormData.team_leader.email}
+                                        onChange={handleGroupFormChange}
                                         fullWidth
                                         required
                                     />
@@ -468,9 +463,9 @@ const Register = () => {
                                         variant="outlined"
                                         label="Phone Number"
                                         type="tel"
-                                        name="phoneNumber"
-                                        value={formData.phoneNumber}
-                                        onChange={handleChange}
+                                        name="team_leader-phone"
+                                        value={groupFormData.team_leader.phone}
+                                        onChange={handleGroupFormChange}
                                         sx={{ mt: 2 }}
                                         fullWidth
                                         required
@@ -494,7 +489,7 @@ const Register = () => {
                         </FormControl>
                         <TextField
                             variant="outlined"
-                            label="bKash/Rocket account number from which payment is done"
+                            label="Rocket/Nagad account number from which payment is done"
                             name="paying_number"
                             value={formData.paying_number}
                             onChange={handleChange}
