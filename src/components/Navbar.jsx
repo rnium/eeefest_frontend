@@ -84,7 +84,7 @@ const Navbar = () => {
               <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Home</Button>
             </NavLink>
             <NavLink to="/line-follower">
-              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Line Follower ROBOT</Button>
+              <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Line Follower Robot</Button>
             </NavLink>
             <NavLink to="/poster-presentation">
               <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Poster Presentation</Button>
