@@ -1,3 +1,148 @@
+@import url("https://fonts.cdnfonts.com/css/doctor-glitch");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
+.navbar a button {
+  color: #939393;
+}
+.navbar a.active button {
+  color: #1b86ff;
+}
+
+.hero-section {
+  overflow: hidden;
+}
+.hero-section .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.05;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.hero-section .heroinfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.hero-section .heroinfo i, .hero-section .heroinfo .info {
+  color: #6a737d;
+}
+.hero-section .heroinfo i {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+.hero-section .heroinfo .info {
+  font-size: 1.2rem;
+}
+
+.description {
+  position: relative;
+  overflow: hidden;
+}
+.description .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.countdown-container {
+  position: relative;
+}
+.countdown-container .countdown-desktop {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border-radius: 50px 0 0 50px;
+  background-color: white;
+  padding: 1.2rem 3rem;
+  box-shadow: -2px -2px 25px rgba(182, 182, 182, 0.61);
+}
+.countdown-container .countdown-desktop .title-container {
+  align-items: flex-start;
+  margin-right: 4rem;
+}
+.countdown-container .countdown-desktop .title-container .top {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.countdown-container .countdown-desktop .title-container .bottom {
+  font-size: 1.5rem;
+}
+.countdown-container .countdown-desktop .times-con .time-unit {
+  margin-right: 2rem;
+}
+.countdown-container .countdown-desktop .times-con .time-unit .num {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(67, 205, 193);
+}
+.countdown-container .countdown-mobile {
+  width: 100%;
+  background-color: #1b86ff;
+  padding: 1.2rem 3rem;
+  flex-direction: column;
+}
+.countdown-container .countdown-mobile .title-container {
+  align-items: center;
+  margin-bottom: 10px;
+}
+.countdown-container .countdown-mobile .title-container .top {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.countdown-container .countdown-mobile .title-container .bottom {
+  font-size: 1.2rem;
+  color: #ececec;
+}
+.countdown-container .countdown-mobile .times-con .time-unit {
+  margin-right: 2rem;
+}
+.countdown-container .countdown-mobile .times-con .time-unit .num {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(126, 255, 244);
+}
+.countdown-container .countdown-mobile .times-con .time-unit .label {
+  font-size: 0.9rem;
+  color: #ececec;
+}
+.countdown-container .countdown-mobile .times-con .time-unit:last-of-type {
+  margin-right: 0;
+}
+
+.contest-page {
+  position: relative;
+}
+.contest-page .banner {
+  width: 100%;
+  overflow: hidden;
+}
+.contest-page .banner img {
+  width: 100%;
+}
+
+.footer {
+  background-color: rgb(231, 231, 231) !important;
+}
+.footer img.logo {
+  width: 150px;
+}
+
+.glitch-font {
+  font-family: "Doctor Glitch", sans-serif;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -11,6 +156,10 @@ a {
   margin-top: 1rem;
 }
 
+.me-sm {
+  margin-right: 1rem;
+}
+
 .text-bold {
   font-weight: bold;
 }
@@ -21,6 +170,20 @@ a {
 
 .bg-red {
   background-color: red;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .reg-form {
@@ -58,35 +221,24 @@ a {
   bottom: 10px;
 }
 
-.navbar a button {
-  color: #939393;
-}
-.navbar a.active button {
-  color: #1b86ff;
-  font-weight: bold;
-}
-
-.contest-page {
-  position: relative;
-}
-.contest-page .banner {
-  width: 100%;
-  overflow: hidden;
-}
-.contest-page .banner img {
-  width: 100%;
-}
-
-.footer {
-  background-color: rgb(231, 231, 231) !important;
-}
-.footer img.logo {
-  width: 150px;
-}
-
 @media screen and (max-width: 700px) {
   .formSumissionConfirm .info {
     font-size: 1rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .hero-section .heroinfo {
+    margin: 0;
+    margin-top: 1rem;
+    flex-direction: column;
+  }
+  .hero-section .heroinfo i {
+    font-size: 1.3rem;
+    margin-right: 0;
+  }
+  .hero-section .heroinfo .info {
+    font-size: 1rem;
+    text-align: center;
   }
 }
 .events {
