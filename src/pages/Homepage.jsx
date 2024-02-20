@@ -13,7 +13,7 @@ const homepage = () => {
       <Hero />
       <Countdown />
       <Events />
-      {/* <Description /> */}
+      <Description />
       {/* <Events /> */}
       <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
         <Fab className="inner" color='primary' variant="extended" aria-label="like">
