@@ -7,7 +7,7 @@ import TouchAppIcon from '@mui/icons-material/TouchApp';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import {
   Box, Container, Typography, List, ListItem, ListItemIcon, Accordion, AccordionSummary,
-  AccordionDetails, Button, AccordionActions, Paper
+  AccordionDetails, Button, Alert, Paper
 } from '@mui/material'
 
 const IntegrationBee = () => {
@@ -20,6 +20,11 @@ const IntegrationBee = () => {
         <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
         This competition is designed to ignite the mathematical curiosity of engineering students as they explore the intricacies of integrals. Participants will face a series of thought-provoking problems, ranging from elementary integrals to more complex challenges that will test their analytical abilities. It's a chance to showcase your prowess in calculus, compete with fellow students, and, most importantly, have a great time embracing the beauty of mathematical integration.
         </Typography>
+        <Box sx={{mt: 3}}>
+          <Alert severity="warning" >
+            <Typography variant='body1' fontSize={{xs: '0.8rem', md: '1rem'}} fontWeight="bold">Registration Deadline: 28th Feb, 2024</Typography>
+          </Alert>
+        </Box>
         <Box sx={{ mt: 7 }}>
         <Typography variant='h5' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Total Prize money: <span className='text-bold'>2500 Tk</span>

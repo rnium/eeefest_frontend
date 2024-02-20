@@ -8,7 +8,7 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import {
   Box, Container, Typography, List, ListItem, ListItemIcon, Grid,
   Card, CardMedia, CardContent, Accordion, AccordionSummary,
-  AccordionDetails, Button, AccordionActions, Paper
+  AccordionDetails, Button, Alert, Paper
 } from '@mui/material'
 
 const GamingContest = () => {
@@ -21,6 +21,11 @@ const GamingContest = () => {
         <Typography sx={{ mt: 5 }} variant="h5" fontSize={{md: '1.5rem', xs: '1.2rem'}} textAlign='justify'>
           Immerse yourself in the world of virtual excitement and strategic brilliance with our FIFA Gaming Contest and Chess Tournament. Whether you're a joystick maven or a chess aficionado, this is your chance to compete, have fun, and showcase your gaming prowess. Join us for a day of friendly competition, camaraderie, and the thrill of victory. Ready to make your move? Register now and let the games begin!
         </Typography>
+        <Box sx={{mt: 3}}>
+          <Alert severity="warning" >
+            <Typography variant='body1' fontSize={{xs: '0.8rem', md: '1rem'}} fontWeight="bold">Registration Deadline: 28th Feb, 2024</Typography>
+          </Alert>
+        </Box>
         <Box sx={{ mt: 7 }}>
           <Grid container spacing={5}>
             <Grid item xs={12} md={6}>

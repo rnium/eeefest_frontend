@@ -7,7 +7,7 @@ import TouchAppIcon from '@mui/icons-material/TouchApp';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import {
   Box, Container, Typography, List, ListItem, ListItemIcon, Accordion, AccordionSummary,
-  AccordionDetails, Button, AccordionActions, Paper
+  AccordionDetails, Button, Alert, Paper
 } from '@mui/material'
 
 const CircuitSolving = () => {
@@ -18,7 +18,13 @@ const CircuitSolving = () => {
       </div>
       <Container sx={{ mb: 10 }}>
         <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
-          In this contest, participants will be presented with a variety of electrical circuits. The challenge is to analyze these circuits and solve for unknowns such as voltages, currents, and power. This will test and enhance your understanding of circuit theory, network analysis, and electronics.        </Typography>
+          In this contest, participants will be presented with a variety of electrical circuits. The challenge is to analyze these circuits and solve for unknowns such as voltages, currents, and power. This will test and enhance your understanding of circuit theory, network analysis, and electronics.
+        </Typography>
+        <Box sx={{mt: 3}}>
+          <Alert severity="warning" >
+            <Typography variant='body1' fontSize={{xs: '0.8rem', md: '1rem'}} fontWeight="bold">Registration Deadline: 28th Feb, 2024</Typography>
+          </Alert>
+        </Box>
         <Box sx={{ mt: 7 }}>
           <Typography variant='h5' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Champion Prize Money: <span className='text-bold'>1,500 Tk</span>

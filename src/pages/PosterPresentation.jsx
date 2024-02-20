@@ -7,7 +7,7 @@ import TouchAppIcon from '@mui/icons-material/TouchApp';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import {
   Box, Container, Typography, List, ListItem, ListItemIcon, Accordion, AccordionSummary,
-  AccordionDetails, Button, AccordionActions, Paper
+  AccordionDetails, Button, Alert, Paper
 } from '@mui/material'
 
 const PosterPresentation = () => {
@@ -24,6 +24,11 @@ const PosterPresentation = () => {
             - Universal topics
           </Typography>
         </Typography>
+        <Box sx={{mt: 3}}>
+          <Alert severity="warning" >
+            <Typography variant='body1' fontSize={{xs: '0.8rem', md: '1rem'}} fontWeight="bold">Registration Deadline: 28th Feb, 2024</Typography>
+          </Alert>
+        </Box>
         <Box sx={{ mt: 7 }}>
           <Typography variant='h5' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Champion Prize Money: <span className='text-bold'>2,500 Tk</span>
