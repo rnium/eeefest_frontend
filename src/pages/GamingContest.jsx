@@ -18,12 +18,12 @@ const GamingContest = () => {
         <img src='images/Gaming_Contest.png' />
       </div>
       <Container sx={{ mb: 10 }}>
-        <Typography sx={{ mt: 5 }} variant="h5" fontSize={{md: '1.5rem', xs: '1.2rem'}} textAlign='justify'>
+        <Typography sx={{ mt: 5 }} variant="h5" fontSize={{ md: '1.5rem', xs: '1.2rem' }} textAlign='justify'>
           Immerse yourself in the world of virtual excitement and strategic brilliance with our FIFA Gaming Contest and Chess Tournament. Whether you're a joystick maven or a chess aficionado, this is your chance to compete, have fun, and showcase your gaming prowess. Join us for a day of friendly competition, camaraderie, and the thrill of victory. Ready to make your move? Register now and let the games begin!
         </Typography>
-        <Box sx={{mt: 3}}>
+        <Box sx={{ mt: 3 }}>
           <Alert severity="warning" >
-            <Typography variant='body1' fontSize={{xs: '0.8rem', md: '1rem'}} fontWeight="bold">Registration Deadline: 28th Feb, 2024</Typography>
+            <Typography variant='body1' fontSize={{ xs: '0.8rem', md: '1rem' }} fontWeight="bold">Registration Deadline: 28th Feb, 2024</Typography>
           </Alert>
         </Box>
         <Box sx={{ mt: 7 }}>
@@ -46,23 +46,26 @@ const GamingContest = () => {
                   <List component="ul" >
                     <ListItem>
                       <ListItemIcon>
-                        <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
+                        <EmojiEventsIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
                       </ListItemIcon>
-                      <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
+                      <Typography variant='h6' color="textSecondary" fontSize={{ md: '1.3rem', xs: '1rem' }}>
                         Champion: <span className='text-bold'>1000 Tk</span>
                       </Typography>
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
+                        <EmojiEventsIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
                       </ListItemIcon>
-                      <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
+                      <Typography variant='h6' color="textSecondary" fontSize={{ md: '1.3rem', xs: '1rem' }}>
                         Runner-up: <span className='text-bold'>Joystick</span>
                       </Typography>
                     </ListItem>
                   </List>
-                  <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}} textAlign="center">
+                  <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }} textAlign="center">
                     FIFA Registration fee: <span className='text-bold'>100 Tk</span>
+                  </Typography>
+                  <Typography textAlign="center" variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
+                    Gift : T-shirt
                   </Typography>
                 </CardContent>
               </Card>
@@ -85,15 +88,18 @@ const GamingContest = () => {
                   <List component="ul" >
                     <ListItem>
                       <ListItemIcon>
-                        <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
+                        <EmojiEventsIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
                       </ListItemIcon>
-                      <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
+                      <Typography variant='h6' color="textSecondary" fontSize={{ md: '1.3rem', xs: '1rem' }}>
                         Champion: <span className='text-bold'>1000 Tk</span>
                       </Typography>
                     </ListItem>
                   </List>
-                  <Typography variant='h5' sx={{ mt: 1 }} textAlign="center" fontSize={{md: '1.5rem', xs: '1.2rem'}}>
+                  <Typography variant='h5' sx={{ mt: 1 }} textAlign="center" fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
                     Chess Registration fee: <span className='text-bold'>100 Tk</span>
+                  </Typography>
+                  <Typography textAlign="center" variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
+                    Gift : T-shirt
                   </Typography>
                 </CardContent>
               </Card>
@@ -178,7 +184,7 @@ const GamingContest = () => {
             </Paper>
           </Box>
 
-          <Typography variant='h5' sx={{ mt: 5 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
+          <Typography variant='h5' sx={{ mt: 5 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
             For any queries related to Gaming
           </Typography>
           <List component="ul" >
@@ -186,7 +192,7 @@ const GamingContest = () => {
               <ListItemIcon>
                 <ContactSupportIcon sx={{ fontSize: '2rem' }} />
               </ListItemIcon>
-              <Typography variant='h6' fontSize={{md: '1.3rem', xs: '1rem'}}>
+              <Typography variant='h6' fontSize={{ md: '1.3rem', xs: '1rem' }}>
                 Call: <span className='text-bold'>01711-960676</span> or <span className='text-bold'>01745-216246</span>
               </Typography>
             </ListItem>

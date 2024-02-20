@@ -50,6 +50,9 @@ const IntegrationBee = () => {
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Registration fee: <span className='text-bold'>100 Tk</span>
           </Typography>
+          <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
+            Gift : T-shirt
+          </Typography>
           <Typography variant='h5' sx={{ mt: 5 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             For any queries related to Integration Bee
           </Typography>

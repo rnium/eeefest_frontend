@@ -59,7 +59,7 @@ const LineFollower = () => {
             Registration fee: <span className='text-bold'>1200 Tk</span>
           </Typography>
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
-            Gift : T-shirt, Certificate, Lunch Coupon
+            Gift : T-shirt, Lunch Coupon
           </Typography>
           <Box display="flex" justifyContent="center" sx={{ py: 4 }}>
             <Button variant='contained' target="_blank" href='assets/LineFollower_RuleBook.pdf'>Download Rule Book</Button>

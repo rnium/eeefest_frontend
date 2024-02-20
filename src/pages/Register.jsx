@@ -12,7 +12,7 @@ import * as urls from '../backendUrls'
 
 const contest_fee = {
     'lfr': 1200,
-    'poster': 100,
+    'poster': 300,
     'integration': 100,
     'circuit-solve': 100,
     'gaming-fifa': 100,
@@ -72,6 +72,9 @@ const Register = () => {
             value = parseInt(value);
             if (isNaN(value)) {
                 value = ''
+            } else if ( !isNaN(value) && value > 3) {
+                alert("Maximum of 3 members can participate in a group for poster presentation!")
+                return
             }
         }
         setFormData((prevData) => ({
@@ -343,6 +346,7 @@ const Register = () => {
     }
 
     let selectedContestFee = formData.contest ? contest_fee[formData.contest] : 0;
+    
     if (!isNaN(formData.group_members_count) && formData.group_members_count > 3) {
         selectedContestFee += (formData.group_members_count - 3) * additional_member_fee[formData.contest];
     }
