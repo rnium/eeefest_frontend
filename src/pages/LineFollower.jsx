@@ -56,6 +56,9 @@ const LineFollower = () => {
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Gift : T-shirt, Certificate, Lunch Coupon
           </Typography>
+          <Box display="flex" justifyContent="center" sx={{py:4}}>
+            <Button variant='contained' target="_blank" href='assets/LineFollower_RuleBook.pdf'>Download Rule Book</Button>
+          </Box>
           <Typography variant='h5' sx={{ mt: 7 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             For any queries related to LFR
           </Typography>

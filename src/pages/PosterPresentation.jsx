@@ -31,6 +31,9 @@ const PosterPresentation = () => {
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Registration fee: <span className='text-bold'>100 Tk</span>
           </Typography>
+          <Box display="flex" justifyContent="center" sx={{py:4}}>
+            <Button variant='contained' target="_blank" href='assets/Poster_Presentation-RuleBook.pdf'>Download Rule Book</Button>
+          </Box>
           <Typography variant='h5' sx={{ mt: 5 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             For any queries related to Poster Presentation
           </Typography>
