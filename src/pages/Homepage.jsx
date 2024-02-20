@@ -12,14 +12,15 @@ const homepage = () => {
     <div>
       <Hero />
       <Countdown />
+      <Events />
       {/* <Description /> */}
       {/* <Events /> */}
-      {/* <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
+      <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
         <Fab className="inner" color='primary' variant="extended" aria-label="like">
           <FavoriteIcon sx={{ marginRight: 1 }} />
           Sponsor Us
         </Fab>
-      </Box> */}
+      </Box>
     </div>
   )
 }

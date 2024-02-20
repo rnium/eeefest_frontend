@@ -1,12 +1,13 @@
-import { Typography } from '@mui/material'
-import React from 'react'
+import React from 'react';
+import {
+  Box, Typography
+} from '@mui/material'
 
 const Events = () => {
   return (
-    <div className='events' id='events'>
-        <i class='bx bx-list-ul'></i>
-        <div className='mt-sm title' >Events</div>
-    </div>
+    <Box sx={{py: 10}}>
+      <Typography textAlign="center"></Typography>
+    </Box>
   )
 }
 
