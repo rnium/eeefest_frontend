@@ -9,8 +9,8 @@ const Footer = () => {
             <Box >
                 <img className='logo' src='images/sec_eee.png' />
             </Box>
-            <Typography variant='h6' fontSize={{xs: '1rem', md: '1.3rem'}} textAlign='center'>TechnoVenture 3.0 presented by EEE Association</Typography>
-            <Typography variant='body1' fontSize={{xs: '0.8rem', md: '1.1rem'}} className='text-muted' component="div">&copy; Department of EEE, Sylhet Engineering College.</Typography>
+            <Typography variant='h6' fontSize={{xs: '0.9rem', md: '1.3rem'}} textAlign='center'>TechnoVenture 3.0 presented by EEE Association</Typography>
+            <Typography variant='body1' fontSize={{xs: '0.7rem', md: '1.1rem'}} className='text-muted' component="div">&copy; Department of EEE, Sylhet Engineering College.</Typography>
         </Box>
     )
 }

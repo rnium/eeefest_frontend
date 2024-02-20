@@ -63,6 +63,20 @@ a {
     }
 }
 
+.navbar {
+    a {
+        button {
+            color: #939393;
+        }
+    }
+    a.active {
+        button {
+            color: #1b86ff;
+            font-weight: bold;
+        }
+    }
+}
+
 .contest-page {
     position: relative;
     .banner {

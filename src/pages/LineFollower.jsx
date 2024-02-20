@@ -17,54 +17,54 @@ const LineFollower = () => {
         <img src='images/Line_Follower_Robot.png' />
       </div>
       <Container sx={{ mb: 10 }}>
-        <Typography sx={{ mt: 5 }} variant="h5">
+        <Typography sx={{ mt: 5 }} variant="h5" fontSize={{md: '1.5rem', xs: '1.2rem'}} textAlign="justify">
           Line Follower Robot competition in Technoventure 3.0 the robot must be able to follow a black line on white surface or vice versa. It is an autonomous robot which is able to make decision for complete the track on a surface.
         </Typography>
         <Box sx={{ mt: 5 }}>
-          <Typography variant='h5' >
+          <Typography variant='h5' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Total Prize money: <span className='text-bold'>30,000 Tk</span>
           </Typography>
           <List component="ul" >
             <ListItem>
               <ListItemIcon>
-                <EmojiEventsIcon sx={{ fontSize: '2rem' }} />
+                <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
               </ListItemIcon>
-              <Typography variant='h6' color="textSecondary">
+              <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
                 Champion: <span className='text-bold'>15,000 Tk</span>
               </Typography>
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <EmojiEventsIcon sx={{ fontSize: '2rem' }} />
+                <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
               </ListItemIcon>
-              <Typography variant='h6' color="textSecondary">
+              <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
                 1st Runner-up: <span className='text-bold'>10,000 Tk</span>
               </Typography>
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <EmojiEventsIcon sx={{ fontSize: '2rem' }} />
+                <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
               </ListItemIcon>
-              <Typography variant='h6' color="textSecondary">
+              <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
                 2nd Runner-up: <span className='text-bold'>5,000 Tk</span>
               </Typography>
             </ListItem>
           </List>
-          <Typography variant='h5' sx={{ mt: 5 }}>
+          <Typography variant='h5' sx={{ mt: 5 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Registration fee: <span className='text-bold'>1200 Tk</span>
           </Typography>
-          <Typography variant='h5' sx={{ mt: 2 }} >
+          <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Gift : T-shirt, Certificate, Lunch Coupon
           </Typography>
-          <Typography variant='h5' sx={{ mt: 7 }}>
+          <Typography variant='h5' sx={{ mt: 7 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             For any queries related to LFR
           </Typography>
           <List component="ul" >
             <ListItem>
               <ListItemIcon>
-                <ContactSupportIcon sx={{ fontSize: '2rem' }} />
+                <ContactSupportIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
               </ListItemIcon>
-              <Typography variant='h6'>
+              <Typography variant='h6' fontSize={{md: '1.3rem', xs: '1rem'}}>
                 Call: <span className='text-bold'>+8801781-482257</span> or <span className='text-bold'>+8801829-263221</span>
               </Typography>
             </ListItem>

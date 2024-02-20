@@ -20,7 +20,7 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className="navbar">
       <AppBar position="static" color='transparent'>
         <Toolbar sx={{ py: 2 }}>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -17,35 +17,35 @@ const IntegrationBee = () => {
         <img src='images/Integration_Bee.png' />
       </div>
       <Container sx={{ mb: 10 }}>
-        <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify'>
+        <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
         This competition is designed to ignite the mathematical curiosity of engineering students as they explore the intricacies of integrals. Participants will face a series of thought-provoking problems, ranging from elementary integrals to more complex challenges that will test their analytical abilities. It's a chance to showcase your prowess in calculus, compete with fellow students, and, most importantly, have a great time embracing the beauty of mathematical integration.
         </Typography>
         <Box sx={{ mt: 7 }}>
-        <Typography variant='h5' >
+        <Typography variant='h5' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Total Prize money: <span className='text-bold'>2500 Tk</span>
           </Typography>
           <List component="ul" >
             <ListItem>
               <ListItemIcon>
-                <EmojiEventsIcon sx={{ fontSize: '2rem' }} />
+                <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
               </ListItemIcon>
-              <Typography variant='h6' color="textSecondary">
+              <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
                 Champion: <span className='text-bold'>1500 Tk</span>
               </Typography>
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <EmojiEventsIcon sx={{ fontSize: '2rem' }} />
+                <EmojiEventsIcon sx={{ fontSize: {xs: '1.5rem', md: '2rem'} }} />
               </ListItemIcon>
-              <Typography variant='h6' color="textSecondary">
+              <Typography variant='h6' color="textSecondary" fontSize={{md: '1.3rem', xs: '1rem'}}>
                 Runner-up: <span className='text-bold'>1000 Tk</span>
               </Typography>
             </ListItem>
           </List>
-          <Typography variant='h5' sx={{ mt: 2 }}>
+          <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Registration fee: <span className='text-bold'>100 Tk</span>
           </Typography>
-          <Typography variant='h5' sx={{ mt: 5 }}>
+          <Typography variant='h5' sx={{ mt: 5 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             For any queries related to Integration Bee
           </Typography>
           <List component="ul" >
@@ -53,7 +53,7 @@ const IntegrationBee = () => {
               <ListItemIcon>
                 <ContactSupportIcon sx={{ fontSize: '2rem' }} />
               </ListItemIcon>
-              <Typography variant='h6'>
+              <Typography variant='h6' fontSize={{md: '1.3rem', xs: '1rem'}}>
                 Call: <span className='text-bold'>01783-201798</span> or <span className='text-bold'>01770-274707</span>
               </Typography>
             </ListItem>

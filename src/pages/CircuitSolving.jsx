@@ -17,16 +17,16 @@ const CircuitSolving = () => {
         <img src='images/Circuit_master.png' />
       </div>
       <Container sx={{ mb: 10 }}>
-        <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify'>
+        <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
           In this contest, participants will be presented with a variety of electrical circuits. The challenge is to analyze these circuits and solve for unknowns such as voltages, currents, and power. This will test and enhance your understanding of circuit theory, network analysis, and electronics.        </Typography>
         <Box sx={{ mt: 7 }}>
-          <Typography variant='h5' >
+          <Typography variant='h5' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Champion Prize Money: <span className='text-bold'>1,500 Tk</span>
           </Typography>
-          <Typography variant='h5' sx={{ mt: 2 }}>
+          <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Registration fee: <span className='text-bold'>100 Tk</span>
           </Typography>
-          <Typography variant='h5' sx={{ mt: 5 }}>
+          <Typography variant='h5' sx={{ mt: 5 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             For any queries related to Circuit Master
           </Typography>
           <List component="ul" >
@@ -34,7 +34,7 @@ const CircuitSolving = () => {
               <ListItemIcon>
                 <ContactSupportIcon sx={{ fontSize: '2rem' }} />
               </ListItemIcon>
-              <Typography variant='h6'>
+              <Typography variant='h6' fontSize={{md: '1.3rem', xs: '1rem'}}>
                 Call: <span className='text-bold'>01916-381989</span> or <span className='text-bold'>01711-960676</span>
               </Typography>
             </ListItem>

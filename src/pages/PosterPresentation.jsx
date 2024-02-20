@@ -17,21 +17,21 @@ const PosterPresentation = () => {
         <img src='images/Poster_Presentation.png' />
       </div>
       <Container sx={{ mb: 10 }}>
-        <Typography sx={{ mt:7 }} variant="h5" textAlign='justify'>Posters are often used to share information and are an important part of many conferences, seminars and exhibitions. They may be used to present quite complex material, and so it is important that the information on them is well laid out, legible and attractively presented.</Typography>
-        <Typography sx={{ mt: 7 }} variant="h5">
+        <Typography sx={{ mt:7 }} variant="h5" textAlign='justify' fontSize={{md: '1.5rem', xs: '1.2rem'}}>Posters are often used to share information and are an important part of many conferences, seminars and exhibitions. They may be used to present quite complex material, and so it is important that the information on them is well laid out, legible and attractively presented.</Typography>
+        <Typography sx={{ mt: 7 }} variant="h5" fontSize={{md: '1.5rem', xs: '1.2rem'}}>
           The main idea of Poster Presentation 2024 should include any of the following sections
-          <Typography variant='h5' fontWeight="bold">
+          <Typography variant='h5' fontWeight="bold" fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             - Universal topics
           </Typography>
         </Typography>
         <Box sx={{ mt: 7 }}>
-          <Typography variant='h5' >
+          <Typography variant='h5' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Champion Prize Money: <span className='text-bold'>2,500 Tk</span>
           </Typography>
-          <Typography variant='h5' sx={{ mt: 2 }}>
+          <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             Registration fee: <span className='text-bold'>100 Tk</span>
           </Typography>
-          <Typography variant='h5' sx={{ mt: 5 }}>
+          <Typography variant='h5' sx={{ mt: 5 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
             For any queries related to Poster Presentation
           </Typography>
           <List component="ul" >
@@ -39,7 +39,7 @@ const PosterPresentation = () => {
               <ListItemIcon>
                 <ContactSupportIcon sx={{ fontSize: '2rem' }} />
               </ListItemIcon>
-              <Typography variant='h6'>
+              <Typography variant='h6' fontSize={{md: '1.3rem', xs: '1rem'}}>
                 Call: <span className='text-bold'>01734-704526</span> or <span className='text-bold'>01625-045135</span>
               </Typography>
             </ListItem>

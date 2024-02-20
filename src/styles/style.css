@@ -58,6 +58,14 @@ a {
   bottom: 10px;
 }
 
+.navbar a button {
+  color: #939393;
+}
+.navbar a.active button {
+  color: #1b86ff;
+  font-weight: bold;
+}
+
 .contest-page {
   position: relative;
 }
