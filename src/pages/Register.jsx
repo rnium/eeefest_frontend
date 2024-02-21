@@ -524,9 +524,9 @@ const Register = () => {
                     <Card >
                         <CardMedia
                             component="img"
-                            alt="green iguana"
+                            alt="Banner"
                             height="240"
-                            image="images/banner.jpg"
+                            image="static/images/banner.jpg"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">

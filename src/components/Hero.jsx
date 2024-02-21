@@ -6,7 +6,7 @@ import {
 const Hero = () => {
   return (
     <Box className="hero-section" position="relative">
-        <div className='bg' style={{backgroundImage: `url(${process.env.PUBLIC_URL}/images/herobg.svg)`}}></div>
+        <div className='bg' style={{backgroundImage: `url(${process.env.PUBLIC_URL}/static/images/herobg.svg)`}}></div>
         <Grid container justifyContent="center" alignItems="center">
             <Grid item xs={12} md={12} sx={{pt:10, pb: 16, px:5}}>
                 <Box display="flex" flexDirection="column" alignItems="center">

@@ -14,7 +14,7 @@ const LineFollower = () => {
   return (
     <div className='contest-page'>
       <div className='banner'>
-        <img src='images/Line_Follower_Robot.png' />
+        <img src='static/images/Line_Follower_Robot.png' />
       </div>
       <Container sx={{ mb: 10 }}>
         <Typography sx={{ mt: 5 }} variant="h5" fontSize={{ md: '1.5rem', xs: '1.2rem' }} textAlign="justify">
@@ -204,7 +204,7 @@ const LineFollower = () => {
                   <Typography variant='h6'>Demo Track</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <img src='images/lfr_track.png' width="100%" alt='LFR Track' />
+                  <img src='static/images/lfr_track.png' width="100%" alt='LFR Track' />
                 </AccordionDetails>
               </Accordion>
 

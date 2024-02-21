@@ -15,7 +15,7 @@ const GamingContest = () => {
   return (
     <div className='contest-page'>
       <div className='banner'>
-        <img src='images/Gaming_Contest.png' />
+        <img src='static/images/Gaming_Contest.png' />
       </div>
       <Container sx={{ mb: 10 }}>
         <Typography sx={{ mt: 5 }} variant="h5" fontSize={{ md: '1.5rem', xs: '1.2rem' }} textAlign='justify'>
@@ -34,7 +34,7 @@ const GamingContest = () => {
                   component="img"
                   alt="green iguana"
                   height="250"
-                  image="images/fifa_banner.png"
+                  image="static/images/fifa_banner.png"
                 />
                 <CardContent>
                   <Typography textAlign="center" gutterBottom variant="h5" component="div">
@@ -76,7 +76,7 @@ const GamingContest = () => {
                   component="img"
                   alt="green iguana"
                   height="250"
-                  image="images/chess_banner.png"
+                  image="static/images/chess_banner.png"
                 />
                 <CardContent>
                   <Typography textAlign="center" gutterBottom variant="h5" component="div">
