@@ -204,7 +204,7 @@ const LineFollower = () => {
                   <Typography variant='h6'>Demo Track</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <img src='images/lfr_track.png' width="100%" />
+                  <img src='images/lfr_track.png' width="100%" alt='LFR Track' />
                 </AccordionDetails>
               </Accordion>
 
