@@ -57,7 +57,7 @@ const GamingContest = () => {
                         <EmojiEventsIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
                       </ListItemIcon>
                       <Typography variant='h6' color="textSecondary" fontSize={{ md: '1.3rem', xs: '1rem' }}>
-                        Runner-up: <span className='text-bold'>Joystick</span>
+                        Runner-up: <span className='text-bold'>500 Tk</span>
                       </Typography>
                     </ListItem>
                   </List>
@@ -175,7 +175,7 @@ const GamingContest = () => {
                     <li>Game speed: Normal</li>
                     <li>Level: Legendary</li>
                     <li>Stadium: Neutral</li>
-                    <li>Camera: Tele(all)</li>
+                    <li>Camera: Tele Broadcast(all)</li>
                     <li>Only tactical defense is allowed</li>
                     <li>You can choose your preferred controls: Manual, Semi or Assisted</li>
                   </ol>

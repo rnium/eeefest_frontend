@@ -34,7 +34,7 @@ const PosterPresentation = () => {
             Champion Prize Money: <span className='text-bold'>2,500 Tk</span>
           </Typography>
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
-            Registration fee: <span className='text-bold'>100 Tk</span>
+            Registration fee: <span className='text-bold'>300 Tk</span>
           </Typography>
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
             Gift : T-shirt

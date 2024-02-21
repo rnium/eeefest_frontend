@@ -195,6 +195,18 @@ const LineFollower = () => {
                   </ol>
                 </AccordionDetails>
               </Accordion>
+              <Accordion>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel3-content"
+                  id="panel3-header"
+                >
+                  <Typography variant='h6'>Demo Track</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <img src='images/lfr_track.png' width="100%" />
+                </AccordionDetails>
+              </Accordion>
 
             </Paper>
           </Box>

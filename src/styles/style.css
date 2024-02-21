@@ -27,7 +27,8 @@
   justify-content: center;
   align-items: center;
 }
-.hero-section .heroinfo i, .hero-section .heroinfo .info {
+.hero-section .heroinfo i,
+.hero-section .heroinfo .info {
   color: #6a737d;
 }
 .hero-section .heroinfo i {
@@ -61,28 +62,30 @@
   position: absolute;
   top: 50%;
   right: 0;
+  width: 70%;
   transform: translateY(-50%);
-  border-radius: 50px 0 0 50px;
+  border-radius: 180px 0 0 180px;
   background-color: white;
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 3rem 1.2rem 7rem;
   box-shadow: -2px -2px 25px rgba(182, 182, 182, 0.61);
+  justify-content: left;
 }
 .countdown-container .countdown-desktop .title-container {
   align-items: flex-start;
   margin-right: 4rem;
 }
 .countdown-container .countdown-desktop .title-container .top {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 .countdown-container .countdown-desktop .title-container .bottom {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 .countdown-container .countdown-desktop .times-con .time-unit {
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 .countdown-container .countdown-desktop .times-con .time-unit .num {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   color: rgb(67, 205, 193);
 }
@@ -119,6 +122,26 @@
 }
 .countdown-container .countdown-mobile .times-con .time-unit:last-of-type {
   margin-right: 0;
+}
+
+.contests .contestItem {
+  transition: all 0.3s ease;
+  padding: 2rem 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.contests .contestItem:hover {
+  transform: scale(1.1);
+  /* Scale up by 10% */
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.text-gradient {
+  background-image: linear-gradient(to right, #0060ff, #0037b5);
+  text-shadow: 0 0 10px rgba(72, 79, 179, 0.1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .contest-page {

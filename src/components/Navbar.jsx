@@ -2,14 +2,12 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import {NavLink} from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -75,11 +73,13 @@ const Navbar = () => {
               </MenuItem>
             </Menu>
           </Box>
-          <Box sx={{flexGrow: 1}}>
-            <img src='images/logo.png' width="200px" />
+          <Box sx={{ flexGrow: 1 }}>
+            <Link to="/">
+              <img src='images/logo.png' width="200px" />
+            </Link>
           </Box>
-          <Box sx={{ display: {xs: 'none', md: 'flex'} }}>
-            
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
             <NavLink to="/">
               <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Home</Button>
             </NavLink>
