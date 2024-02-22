@@ -41,7 +41,7 @@ const GamingContest = () => {
                     FIFA 19
                   </Typography>
                   <Typography variant='h6' >
-                    Prizes
+                    Prize Money
                   </Typography>
                   <List component="ul" >
                     <ListItem>
@@ -63,9 +63,6 @@ const GamingContest = () => {
                   </List>
                   <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }} textAlign="center">
                     FIFA Registration fee: <span className='text-bold'>100 Tk</span>
-                  </Typography>
-                  <Typography textAlign="center" variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
-                    Gift : T-shirt
                   </Typography>
                 </CardContent>
               </Card>
@@ -94,13 +91,19 @@ const GamingContest = () => {
                         Champion: <span className='text-bold'>1000 Tk</span>
                       </Typography>
                     </ListItem>
+                    <ListItem>
+                      <ListItemIcon>
+                        <EmojiEventsIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
+                      </ListItemIcon>
+                      <Typography variant='h6' color="textSecondary" fontSize={{ md: '1.3rem', xs: '1rem' }}>
+                        Runner Up: <span className='text-bold'>500 Tk</span>
+                      </Typography>
+                    </ListItem>
                   </List>
                   <Typography variant='h5' sx={{ mt: 1 }} textAlign="center" fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
                     Chess Registration fee: <span className='text-bold'>100 Tk</span>
                   </Typography>
-                  <Typography textAlign="center" variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
-                    Gift : T-shirt
-                  </Typography>
+
                 </CardContent>
               </Card>
             </Grid>
