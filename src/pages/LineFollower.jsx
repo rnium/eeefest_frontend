@@ -215,12 +215,12 @@ const LineFollower = () => {
 
 
       <Box className="floatingBtn" >
-        <Link to="/register">
+        <a href="/register">
           <Fab color='primary' className='inner' variant="extended" aria-label="like">
             <TouchAppIcon sx={{ marginRight: 1 }} />
             Register Now
           </Fab>
-        </Link>
+        </a>
       </Box>
     </div>
   )

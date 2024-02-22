@@ -14,7 +14,7 @@ const IntegrationBee = () => {
   return (
     <div className='contest-page'>
       <div className='banner'>
-        <img src='images/Integration_Bee.png' />
+        <img src='static/images/Integration_Bee.png' />
       </div>
       <Container sx={{ mb: 10 }}>
         <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify' fontSize={{md: '1.5rem', xs: '1.2rem'}}>
@@ -96,12 +96,12 @@ const IntegrationBee = () => {
 
 
       <Box className="floatingBtn" >
-        <Link to="/register">
+        <a href="/register">
           <Fab color='primary' className='inner' variant="extended" aria-label="like">
             <TouchAppIcon sx={{ marginRight: 1 }} />
             Register Now
           </Fab>
-        </Link>
+        </a>
       </Box>
     </div>
   )

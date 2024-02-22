@@ -12,7 +12,7 @@ import * as urls from '../backendUrls'
 
 const contest_fee = {
     'lfr': 1200,
-    'poster': 300,
+    'poster': 200,
     'integration': 100,
     'circuit-solve': 100,
     'gaming-fifa': 100,
@@ -352,16 +352,16 @@ const Register = () => {
     }
     if (isSubmitted) {
         return (
-            <Container>
+            <Container sx={{mb: 10}}>
                 <div className='formSumissionConfirm'>
                     <i class='bx bx-check-double'></i>
-                    <div className="info">
+                    <Typography variant='body1' fontSize={{xs: '1rem', md: '1.4rem'}} textAlign="justify">
                         Congratulations, {groupFormData.team_leader.name}! Your registration has been successfully received.
                         Our team is currently processing your registration details. Once your registration is verified, you will receive a confirmation email at the address provided during registration.
                         Thank you for your interest in participating. We look forward to your involvement in the event!
-                    </div>
-                    <div className="info bottom mt-sm">Best regards,</div>
-                    <div className="info bottom">EEE Association, SEC</div>
+                    </Typography>
+                    <Typography className="info bottom mt-sm" sx={{mt: 5}}>Best regards</Typography>
+                    <Typography className="" variant='h5'>EEE Association, SEC</Typography>
                 </div>
             </Container>
         )

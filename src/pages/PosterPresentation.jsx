@@ -34,7 +34,7 @@ const PosterPresentation = () => {
             Champion Prize Money: <span className='text-bold'>2,500 Tk</span>
           </Typography>
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{md: '1.5rem', xs: '1.2rem'}}>
-            Registration fee: <span className='text-bold'>300 Tk</span>
+            Registration fee: <span className='text-bold'>200 Tk</span>
           </Typography>
           <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
             Gift : T-shirt, Lunch Coupon
@@ -86,7 +86,7 @@ const PosterPresentation = () => {
                     <li>Sources and references of the data should be provided in the poster</li>
                     <li>The competition will run for 5 hours</li>
                     <li>The posters will be hanged according to the registration serial</li>
-                    <li>All the member/members of the team must be present during the judgment	members or their robots.</li>
+                    <li>All the member/members of the team must be present during the judgment</li>
                   </ol>
                 </AccordionDetails>
               </Accordion>
@@ -97,12 +97,12 @@ const PosterPresentation = () => {
 
 
       <Box className="floatingBtn" >
-        <Link to="/register">
+        <a href="/register">
           <Fab color='primary' className='inner' variant="extended" aria-label="like">
             <TouchAppIcon sx={{ marginRight: 1 }} />
             Register Now
           </Fab>
-        </Link>
+        </a>
       </Box>
     </div>
   )
