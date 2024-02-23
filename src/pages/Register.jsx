@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import {
     TextField, Button, Typography, Container, FormControl,
     Select, Grid, MenuItem, Card, CardMedia, CardContent,
-    ListItem, List, ListItemText, Box
+    ListItem, List, Alert, Box
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
 import * as urls from '../backendUrls'
+import '../styles/register.css'
 // import { makeStyles } from '@mui/styles';
 
 
@@ -17,6 +18,11 @@ const contest_fee = {
     'circuit-solve': 100,
     'gaming-fifa': 100,
     'gaming-chess': 100,
+}
+
+const cashout_fees = {
+    rocket: 1.8,
+    nagad: 1.25
 }
 
 const additional_member_fee = {
@@ -89,7 +95,7 @@ const Register = () => {
             value = parseInt(value);
             if (isNaN(value)) {
                 value = ''
-            } else if ( !isNaN(value) && value > 3) {
+            } else if (!isNaN(value) && value > 3) {
                 alert("Maximum of 3 members can participate in a group for poster presentation!")
                 return
             }
@@ -132,10 +138,10 @@ const Register = () => {
         try {
             const config = {
                 headers: {
-                  'Content-Type': 'application/json',
-                  'X-CSRFToken': csrftoken
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
                 },
-              };
+            };
             let data = { formData: formData, groupFormData: groupFormData }
             let response = await axios.post(urls.registerUrl, data, config)
         } catch (error) {
@@ -364,21 +370,21 @@ const Register = () => {
     }
 
     let selectedContestFee = formData.contest ? contest_fee[formData.contest] : 0;
-    
+
     if (!isNaN(formData.group_members_count) && formData.group_members_count > 3) {
         selectedContestFee += (formData.group_members_count - 3) * additional_member_fee[formData.contest];
     }
     if (isSubmitted) {
         return (
-            <Container sx={{mb: 10}}>
+            <Container sx={{ mb: 10 }}>
                 <div className='formSumissionConfirm'>
                     <i class='bx bx-check-double'></i>
-                    <Typography variant='body1' fontSize={{xs: '1rem', md: '1.4rem'}} textAlign="justify">
+                    <Typography variant='body1' fontSize={{ xs: '1rem', md: '1.4rem' }} textAlign="justify">
                         Congratulations, {groupFormData.team_leader.name}! Your registration has been successfully received.
                         Our team is currently processing your registration details. Once your registration is verified, you will receive a confirmation email at the address provided during registration.
                         Thank you for your interest in participating. We look forward to your involvement in the event!
                     </Typography>
-                    <Typography className="info bottom mt-sm" sx={{mt: 5}}>Best regards</Typography>
+                    <Typography className="info bottom mt-sm" sx={{ mt: 5 }}>Best regards</Typography>
                     <Typography className="" variant='h5'>EEE Association, SEC</Typography>
                 </div>
             </Container>
@@ -533,53 +539,71 @@ const Register = () => {
                             fullWidth
                             required
                         />
+                        <Alert severity='warning' sx={{ mt: 1 }}>
+                            Please ensure accurate entry of the transaction number, as it is required for verification.
+                        </Alert>
                         <Button sx={{ mt: 2 }} disabled={isSubmitting} variant="contained" color="primary" type="submit" fullWidth>
                             Register
                         </Button>
                     </form>
                 </Grid>
                 <Grid item xs={12} md={5}>
-                    <Card >
+                    <Card elevation={5}>
                         <CardMedia
                             component="img"
                             alt="Banner"
                             height="240"
                             image="static/images/banner.jpg"
                         />
+                    </Card>
+                    <Card elevation={2} sx={{ mt: 5 }}>
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Payment Instructions
+                            <Typography gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
+                                Payment Options
                             </Typography>
-                            <List component="ul">
-                                <ListItem>
-                                    <Typography>
-                                        The registration fee for your selected contest is:
-                                        <Typography variant='h6' component='h6' color="secondary" textAlign="center"> {selectedContestFee} Tk</Typography>
+                            <Box className="account-info rocket">
+                                <img src="static/images/rocket.png" width="100px" alt="logo" />
+                                <div className="info">
+                                    <div className="title">DBBL Rocket</div>
+                                    <Typography variant='body2' fontSize={{ xs: '1.2rem', md: '1.8rem' }}>
+                                        016012314079
                                     </Typography>
-                                </ListItem>
-                                <ListItem>
-                                    <Typography textAlign="justify">
-                                        Cash In/Send Money to any of the following mobile banking account (Must include 1.8%(Rocket) or 1.25%(Nagad) Cash Out charge regarding your registration fee)
+                                </div>
+                            </Box>
+                            <Box className="account-info nagad" sx={{ mt: 1 }}>
+                                <img src="static/images/nagad.png" width="100px" alt="logo" />
+                                <div className="info">
+                                    <div className="title">Nagad</div>
+                                    <Typography variant='body2' fontSize={{ xs: '1.2rem', md: '1.8rem' }}>
+                                        01521787727
                                     </Typography>
-                                </ListItem>
-                                <ListItem>
-                                    <Typography>
-                                        Rocket Account Number:
-                                        <Typography component='span' color="secondary" display="inline" sx={{ marginLeft: 1 }}>016012314079</Typography>
-                                    </Typography>
-                                </ListItem>
-                                <ListItem>
-                                    <Typography>
-                                        Nagad Account Number:
-                                        <Typography component='span' color="secondary" display="inline" sx={{ marginLeft: 1 }}>01521787727</Typography>
-                                    </Typography>
-                                </ListItem>
-                                <ListItem>
-                                    <Typography variant='body'>
-                                        Please ensure accurate entry of the transaction number, as it is required for verification.
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                                </div>
+                            </Box>
+                            <Typography sx={{ mt: 3 }} gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
+                                Payment Summery
+                            </Typography>
+                            <Alert severity='info' sx={{ mt: 1, display: 'none' }} >
+                                Cash In/Send Money to any of the specified mobile banking account must include <b>1.8%</b> (Rocket) or <b>1.25%</b> (Nagad) Cash Out charge regarding your registration fee.
+                            </Alert>
+                            <Box className="pay-stats">
+                                <div className="item">
+                                    <div className="label">Registration Fee</div>  
+                                    <div className="value">300 Tk</div>
+                                </div>
+                                <div className="item">
+                                    <div className="label">Additional Members (x2)</div>  
+                                    <div className="value">300 Tk</div>
+                                </div>
+                                <div className="item">
+                                    <div className="label">Cashout Charge</div>  
+                                    <div className="value">6.25 Tk</div>
+                                </div>
+                                <div className="item">
+                                    <div className="label">Total</div>  
+                                    <div className="value">350 Tk</div>
+                                </div>
+                            </Box>
+                            
                         </CardContent>
                     </Card>
 
