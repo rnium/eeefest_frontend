@@ -24,6 +24,23 @@ const additional_member_fee = {
     poster: 50
 }
 
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
 const Register = () => {
     const [formData, setFormData] = useState({
         team_name: '',
@@ -116,6 +133,7 @@ const Register = () => {
             const config = {
                 headers: {
                   'Content-Type': 'application/json',
+                  'X-CSRFToken': csrftoken
                 },
               };
             let data = { formData: formData, groupFormData: groupFormData }
