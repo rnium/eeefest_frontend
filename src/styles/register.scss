@@ -50,11 +50,47 @@
         .label, .value {
             font-size: 1.2rem;
         }
+        .label {
+            img.icon {
+                width: 40px;
+                border-radius: 5px;
+            }
+        }
         .value {
             font-weight: bold;
         }
         &:last-of-type {
             border-top: 2px dotted rgb(175, 175, 175);
+        }
+    }
+    .item.cashout {
+        .label {
+            @include flexer(row);
+        }
+    }
+}
+
+
+
+.selected-contest {
+    @include flexer(row);
+    justify-content: flex-start;
+    padding: 7px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, rgba(0, 140, 255, 0.3), rgba(0, 64, 255, 0.3));
+    .contest-logo {
+        margin-right: 1rem;
+        img {
+            width: 50px;
+        }
+    }
+    .info {
+        .title {
+            color: rgb(55, 67, 123);
+            font-weight: bold;
+        }
+        .sub-title {
+            font-family: "Montserrat", sans-serif;
         }
     }
 }

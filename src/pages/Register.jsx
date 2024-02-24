@@ -2,33 +2,15 @@ import React, { useState } from 'react';
 import {
     TextField, Button, Typography, Container, FormControl,
     Select, Grid, MenuItem, Card, CardMedia, CardContent,
-    ListItem, List, Alert, Box
+    Alert, Box
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
 import * as urls from '../backendUrls'
 import '../styles/register.css'
+import PaymentSummery from '../components/PaymentSummery';
 // import { makeStyles } from '@mui/styles';
 
-
-const contest_fee = {
-    'lfr': 1200,
-    'poster': 200,
-    'integration': 100,
-    'circuit-solve': 100,
-    'gaming-fifa': 100,
-    'gaming-chess': 100,
-}
-
-const cashout_fees = {
-    rocket: 1.8,
-    nagad: 1.25
-}
-
-const additional_member_fee = {
-    lfr: 500,
-    poster: 50
-}
 
 function getCookie(name) {
     let cookieValue = null;
@@ -91,7 +73,7 @@ const Register = () => {
 
     const handleChange = (e) => {
         let { name, value } = e.target;
-        if (name === 'group_members_count') {
+        if (name === 'group_members_count' && formData.contest === 'poster') {
             value = parseInt(value);
             if (isNaN(value)) {
                 value = ''
@@ -99,6 +81,12 @@ const Register = () => {
                 alert("Maximum of 3 members can participate in a group for poster presentation!")
                 return
             }
+        } else if (name === 'contest' && value === "poster" && formData.group_members_count > 3) {
+            // alert("Maximum of 3 members can participate in a group for poster presentation!");
+            setFormData({
+                ...formData,
+                group_members_count: 3
+            })
         }
         setFormData((prevData) => ({
             ...prevData,
@@ -369,11 +357,6 @@ const Register = () => {
         )
     }
 
-    let selectedContestFee = formData.contest ? contest_fee[formData.contest] : 0;
-
-    if (!isNaN(formData.group_members_count) && formData.group_members_count > 3) {
-        selectedContestFee += (formData.group_members_count - 3) * additional_member_fee[formData.contest];
-    }
     if (isSubmitted) {
         return (
             <Container sx={{ mb: 10 }}>
@@ -548,17 +531,15 @@ const Register = () => {
                     </form>
                 </Grid>
                 <Grid item xs={12} md={5}>
-                    <Card elevation={5}>
+                    <Card elevation={1}>
                         <CardMedia
                             component="img"
                             alt="Banner"
                             height="240"
                             image="static/images/banner.jpg"
                         />
-                    </Card>
-                    <Card elevation={2} sx={{ mt: 5 }}>
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
+                        <Typography gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
                                 Payment Options
                             </Typography>
                             <Box className="account-info rocket">
@@ -579,33 +560,13 @@ const Register = () => {
                                     </Typography>
                                 </div>
                             </Box>
-                            <Typography sx={{ mt: 3 }} gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
-                                Payment Summery
-                            </Typography>
-                            <Alert severity='info' sx={{ mt: 1, display: 'none' }} >
-                                Cash In/Send Money to any of the specified mobile banking account must include <b>1.8%</b> (Rocket) or <b>1.25%</b> (Nagad) Cash Out charge regarding your registration fee.
-                            </Alert>
-                            <Box className="pay-stats">
-                                <div className="item">
-                                    <div className="label">Registration Fee</div>  
-                                    <div className="value">300 Tk</div>
-                                </div>
-                                <div className="item">
-                                    <div className="label">Additional Members (x2)</div>  
-                                    <div className="value">300 Tk</div>
-                                </div>
-                                <div className="item">
-                                    <div className="label">Cashout Charge</div>  
-                                    <div className="value">6.25 Tk</div>
-                                </div>
-                                <div className="item">
-                                    <div className="label">Total</div>  
-                                    <div className="value">350 Tk</div>
-                                </div>
-                            </Box>
-                            
                         </CardContent>
                     </Card>
+                    <PaymentSummery
+                        contest={formData.contest} 
+                        members={formData.group_members_count}
+                        gateway={formData.gateway}
+                    />
 
                 </Grid>
             </Grid>

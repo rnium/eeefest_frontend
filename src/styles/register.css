@@ -49,9 +49,43 @@
 .pay-stats .item .label, .pay-stats .item .value {
   font-size: 1.2rem;
 }
+.pay-stats .item .label img.icon {
+  width: 40px;
+  border-radius: 5px;
+}
 .pay-stats .item .value {
   font-weight: bold;
 }
 .pay-stats .item:last-of-type {
   border-top: 2px dotted rgb(175, 175, 175);
+}
+.pay-stats .item.cashout .label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected-contest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 7px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, rgba(0, 140, 255, 0.3), rgba(0, 64, 255, 0.3));
+}
+.selected-contest .contest-logo {
+  margin-right: 1rem;
+}
+.selected-contest .contest-logo img {
+  width: 50px;
+}
+.selected-contest .info .title {
+  color: rgb(55, 67, 123);
+  font-weight: bold;
+}
+.selected-contest .info .sub-title {
+  font-family: "Montserrat", sans-serif;
 }/*# sourceMappingURL=register.css.map */
