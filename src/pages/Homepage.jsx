@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Hero from '../components/Hero';
 import Countdown from '../components/Countdown';
 import Description from '../components/Description';
+import Contestglimpse from '../components/Contestglimpse';
 
 const homepage = () => {
   return (
@@ -13,7 +14,8 @@ const homepage = () => {
       <Hero />
       <Countdown />
       <Events />
-      <Description />
+      {/* <Description /> */}
+      <Contestglimpse />
       {/* <Events /> */}
       <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
         <Fab className="inner" color='secondary' variant="extended" aria-label="like">
