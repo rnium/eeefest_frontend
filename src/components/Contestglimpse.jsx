@@ -16,8 +16,8 @@ const contests_overview_data = {
         featured_info: [
             "Open For All",
             "Champion Prize Money: 15,000 Tk",
-            "Runner Up: 10,000 Tk",
-            "2nd Runner Up: 5,000 Tk",
+            "Runner Up Prize Money: 10,000 Tk",
+            "2nd Runner Up Up Prize Money: 5,000 Tk",
             "Gift : T-shirt, Lunch Coupon",
             "Registration Fee: 1200 Tk",
         ]
@@ -65,13 +65,14 @@ const contests_overview_data = {
     'gaming-fifa': {
         name: 'Gaming Contest [FIFA]',
         logo_name: '006-game-controller-1.svg',
-        hero_img: 'lfr1.jpeg',
+        hero_img: 'fifa.jpeg',
         title: "Joystick justice, virtual goals, who will control the FIFA scrolls?",
         url: '/gaming',
         orientation_type: 1,
         featured_info: [
             "Inter Campus",
             "Champion Prize Money: 1000 Tk",
+            "Runner Up Prize Money: 500 Tk",
             "Registration Fee: 100 Tk",
         ]
 
@@ -79,13 +80,14 @@ const contests_overview_data = {
     'gaming-chess': {
         name: 'Gaming Contest [Chess]',
         logo_name: '006-game-controller-1.svg',
-        hero_img: 'lfr1.jpeg',
+        hero_img: 'chess.jpeg',
         title: "The clock ticks, the tension builds, who will be the chess champion whose name thrills?",
         url: '/gaming',
         orientation_type: 2,
         featured_info: [
             "Inter Campus",
             "Champion Prize Money: 1000 Tk",
+            "Runner Up Prize Money: 500 Tk",
             "Registration Fee: 100 Tk",
         ]
     },
