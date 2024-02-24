@@ -184,17 +184,21 @@
             border-radius: 20px;
         }
         .logo-card-container {
-            height: 3rem;
+            height: 4.4rem;
             position: relative;
             .logo-card {
                 position: absolute;
                 bottom: 0;
                 right: 15%;
-                padding: 5rem 2rem;
-                background-color: rgba(255, 255, 255, 0.8);
+                padding: 6rem 2rem;
+                background-color: rgba(255, 255, 255, 0.85);
                 backdrop-filter: blur(5px);
-                box-shadow: 0 5px 10px rgb(172, 169, 169);
+                box-shadow: 0 5px 10px rgba(172, 169, 169, 0.7);
                 border-radius: 20px;
+                transition: all 500ms;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.9);
+                }
                 img {
                     width: 120px;
                 }
