@@ -131,7 +131,7 @@ const Register = () => {
                 },
             };
             let data = { formData: formData, groupFormData: groupFormData }
-            let response = await axios.post(urls.registerUrl, data, config)
+            await axios.post(urls.registerUrl, data, config)
         } catch (error) {
             alert(error);
             setSubmitting(false);
