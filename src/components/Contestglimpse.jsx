@@ -10,7 +10,7 @@ const contests_overview_data = {
         name: 'Line Follower Robot',
         logo_name: '001-robot.svg',
         hero_img: 'lfr1.jpeg',
-        title: '',
+        title: "Get your bot in the groove, it's time to move and prove!",
         url: '/line-follower',
         orientation_type: 1,
         featured_info: [
@@ -26,7 +26,7 @@ const contests_overview_data = {
         name: 'Poster Presentation',
         logo_name: '002-poster.svg',
         hero_img: 'poster.jpeg',
-        title: '',
+        title: "Be the change you want to see, on a poster, it's meant to be!",
         url: '/poster-presentation',
         orientation_type: 2,
         featured_info: [
@@ -39,7 +39,7 @@ const contests_overview_data = {
         name: 'Circuit Master',
         logo_name: '003-electrical-circuit_1.svg',
         hero_img: 'circuit.jpeg',
-        title: '',
+        title: "Push the limits, defy the odds, become the circuit master the world applauds.",
         url: '/circuit-master',
         orientation_type: 1,
         featured_info: [
@@ -49,10 +49,10 @@ const contests_overview_data = {
         ]
     },
     'integration': {
-        name: 'Integration BEE',
+        name: 'Integration Bee',
         logo_name: '004-math.svg',
         hero_img: 'integration.jpeg',
-        title: '',
+        title: "Bee the best, put the rest to the test, in the Integration Bee's royal quest!",
         url: '/integreation-bee',
         orientation_type: 2,
         featured_info: [
@@ -66,7 +66,7 @@ const contests_overview_data = {
         name: 'Gaming Contest [FIFA]',
         logo_name: '006-game-controller-1.svg',
         hero_img: 'lfr1.jpeg',
-        title: '',
+        title: "Joystick justice, virtual goals, who will control the FIFA scrolls?",
         url: '/gaming',
         orientation_type: 1,
         featured_info: [
@@ -80,6 +80,7 @@ const contests_overview_data = {
         name: 'Gaming Contest [Chess]',
         logo_name: '006-game-controller-1.svg',
         hero_img: 'lfr1.jpeg',
+        title: "The clock ticks, the tension builds, who will be the chess champion whose name thrills?",
         url: '/gaming',
         orientation_type: 2,
         featured_info: [
@@ -100,7 +101,7 @@ const Contestglimpse = () => {
     const contests = contest_arr.map((c, idx) => (
         <Box key={idx} className="contest-glimpse" sx={{ p: 3 }} >
             <Grid container>
-                <Grid item xs={12} md={5} order={{ xs: 1, md: idx % 2 ? 2 : 1 }}>
+                <Grid item xs={12} md={5} order={{ xs: 1, md: (idx+1) % 2 ? 1 : 2 }} sx={{marginBottom: {xs: 4, md: 0}}}>
                     <Box className="graphic">
                         <img src={"static/images/hero/" + c.hero_img} alt="hero" className='hero' />
                         <div className="logo-card-container">
@@ -110,14 +111,18 @@ const Contestglimpse = () => {
                         </div>
                     </Box>
                 </Grid>
-                <Grid item xs={12} md={7} order={{ xs: 1, md: idx % 2 ? 1 : 2 }}>
-                    <Box sx={{ marginLeft: 10 }} className="details" height="100%" display="flex" flexDirection="column" justifyContent="center">
-                        <Typography variant='h4'>
+                <Grid item xs={12} md={7} order={{ xs: 1, md: (idx+1) % 2 ? 2 : 1 }}>
+                    <Box sx={{ marginLeft: {xs: 0, md: 10}, marginRight: {xs:0, md: 1 }}} className="details" height="100%" display="flex" flexDirection="column" justifyContent="center">
+                        <Typography variant='h4' fontSize={{ md: '2.2rem', xs: '1.5rem' }}>
                             {c.name}
                         </Typography>
-                        <Typography variant='h5'>
-                            {c.title}
-                        </Typography>
+                        {
+                            c.title ?
+                                <Typography variant='h5' color="text.secondary" fontSize={{ md: '1.5rem', xs: '1rem' }}>
+                                    {c.title}
+                                </Typography>
+                            : null
+                        }
                         <List component="ul" sx={{ mt: 3 }}>
                             {
                                 c.featured_info.map((info, i) => (
@@ -133,7 +138,7 @@ const Contestglimpse = () => {
                             }
                         </List>
                         <Stack className='actions' direction="row" spacing={2} sx={{ mt: 3 }}>
-                            <Button style={{borderRadius: '180px'}} variant='contained' color='primary' size='large' sx={{ px: 4 }} href={c.url}>
+                            <Button style={{ borderRadius: '180px' }} variant='contained' color='primary' size='large' sx={{ px: 4 }} href={c.url}>
                                 Learn More
                             </Button>
                         </Stack>

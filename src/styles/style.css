@@ -272,7 +272,7 @@ a {
     font-size: 1rem;
   }
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 600px) {
   .hero-section .heroinfo {
     margin: 0;
     margin-top: 1rem;
@@ -285,6 +285,18 @@ a {
   .hero-section .heroinfo .info {
     font-size: 1rem;
     text-align: center;
+  }
+  .contest-glimpse .graphic .logo-card-container {
+    height: 3rem;
+  }
+  .contest-glimpse .graphic .logo-card-container .logo-card {
+    right: 15%;
+    padding: 3rem 1rem;
+    box-shadow: 0 5px 10px rgba(138, 138, 138, 0.6);
+    border-radius: 20px;
+  }
+  .contest-glimpse .graphic .logo-card-container .logo-card img {
+    width: 90px;
   }
 }
 .events {

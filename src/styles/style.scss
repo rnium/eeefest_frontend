@@ -319,7 +319,7 @@ a {
 }
 
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 600px) {
     .hero-section {
         .heroinfo {
             margin: 0;
@@ -336,6 +336,22 @@ a {
                 text-align: center
             }
         }
+    }
+    .contest-glimpse {
+        .graphic {
+            .logo-card-container {
+                height: 3rem;
+                .logo-card {
+                    right: 15%;
+                    padding: 3rem 1rem;
+                    box-shadow: 0 5px 10px rgba(138, 138, 138, 0.6);
+                    border-radius: 20px;
+                    img {
+                        width: 90px;
+                    }
+                }
+            }
+        }        
     }
 }
 
