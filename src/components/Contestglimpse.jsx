@@ -43,7 +43,7 @@ const contests_overview_data = {
         url: '/circuit-master',
         orientation_type: 1,
         featured_info: [
-            "Inter Campus",
+            "Intra Campus",
             "Champion Prize Money: 1,500 Tk",
             "Registration Fee: 100 Tk",
         ]
@@ -56,7 +56,7 @@ const contests_overview_data = {
         url: '/integreation-bee',
         orientation_type: 2,
         featured_info: [
-            "Inter Campus",
+            "Intra Campus",
             "Champion Prize Money: 1,500 Tk",
             "Runner Up Prize Money: 1,000 Tk",
             "Registration Fee: 100 Tk",
@@ -70,7 +70,7 @@ const contests_overview_data = {
         url: '/gaming',
         orientation_type: 1,
         featured_info: [
-            "Inter Campus",
+            "Intra Campus",
             "Champion Prize Money: 1000 Tk",
             "Runner Up Prize Money: 500 Tk",
             "Registration Fee: 100 Tk",
@@ -79,13 +79,13 @@ const contests_overview_data = {
     },
     'gaming-chess': {
         name: 'Gaming Contest [Chess]',
-        logo_name: '006-game-controller-1.svg',
+        logo_name: 'chess.svg',
         hero_img: 'chess.jpeg',
         title: "The clock ticks, the tension builds, who will be the chess champion whose name thrills?",
         url: '/gaming',
         orientation_type: 2,
         featured_info: [
-            "Inter Campus",
+            "Intra Campus",
             "Champion Prize Money: 1000 Tk",
             "Runner Up Prize Money: 500 Tk",
             "Registration Fee: 100 Tk",
@@ -101,13 +101,13 @@ for (let contest_name in contests_overview_data) {
 
 const Contestglimpse = () => {
     const contests = contest_arr.map((c, idx) => (
-        <Box key={idx} className="contest-glimpse" sx={{ p: 3 }} >
+        <Box key={idx} className="contest-glimpse" sx={{ p: 3 }} data-aos="fade-up" data-aos-once={true} >
             <Grid container>
                 <Grid item xs={12} md={5} order={{ xs: 1, md: (idx+1) % 2 ? 1 : 2 }} sx={{marginBottom: {xs: 4, md: 0}}}>
                     <Box className="graphic">
                         <img src={"static/images/hero/" + c.hero_img} alt="hero" className='hero' />
                         <div className="logo-card-container">
-                            <div className="logo-card">
+                            <div className="logo-card"  >
                                 <img src={'static/images/' + c.logo_name} alt="" />
                             </div>
                         </div>
@@ -120,7 +120,7 @@ const Contestglimpse = () => {
                         </Typography>
                         {
                             c.title ?
-                                <Typography variant='h5' color="text.secondary" fontSize={{ md: '1.5rem', xs: '1rem' }}>
+                                <Typography variant='h5' color="text.secondary" sx={{mt: 1}} fontSize={{ md: '1.5rem', xs: '1rem' }}>
                                     {c.title}
                                 </Typography>
                             : null
@@ -150,7 +150,7 @@ const Contestglimpse = () => {
         </Box>
     ))
     return (
-        <Container sx={{ pb: 20 }}>
+        <Container sx={{ mb: 20, mt: 10 }}>
             {contests}
         </Container>
     )

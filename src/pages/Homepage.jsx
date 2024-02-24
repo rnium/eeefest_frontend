@@ -14,7 +14,7 @@ const homepage = () => {
       <Hero />
       <Countdown />
       <Events />
-      {/* <Description /> */}
+      <Description />
       <Contestglimpse />
       {/* <Events /> */}
       <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>

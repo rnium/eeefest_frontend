@@ -41,7 +41,7 @@ const Countdown = () => {
         return () => clearTimeout(timer);
     });
     return (
-        <div className='countdown-container flex-row'>
+        <div className='countdown-container flex-row' data-aos="fade-left" data-aos-delay={100} data-aos-once={true}>
             <Box display={{xs: 'none', md: 'flex'}} className="countdown-desktop flex-row">
                 <div className="title-container flex-col">
                     <div className="top">Count the Day</div>

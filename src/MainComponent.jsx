@@ -8,7 +8,11 @@ import PosterPresentation from './pages/PosterPresentation'
 import CircuitSolving from './pages/CircuitSolving'
 import IntegrationBee from './pages/IntegrationBee'
 import GamingContest from './pages/GamingContest'
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+// ..
+AOS.init();
 
 
 const MainComponent = () => {
