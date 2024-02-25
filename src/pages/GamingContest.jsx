@@ -35,11 +35,11 @@ const GamingContest = () => {
                     component="img"
                     alt="green iguana"
                     height="250"
-                    image="static/images/fifa_banner.png"
+                    image="static/images/fifa_banner2.jpg"
                   />
                   <CardContent>
                     <Typography textAlign="center" gutterBottom variant="h5" component="div">
-                      FIFA 19
+                      FIFA
                     </Typography>
                     <Typography variant='h6' >
                       Prize Money
@@ -112,7 +112,7 @@ const GamingContest = () => {
 
             <Box sx={{ mt: 7 }}>
               <Paper sx={{ px: 2, pt: 2, pb: 4 }} style={{ backgroundColor: '#edede9' }} >
-                <Typography sx={{ mb: 1 }} variant='h5' color="text.secondary" textAlign="center">FIFA 19 </Typography>
+                <Typography sx={{ mb: 1 }} variant='h5' color="text.secondary" textAlign="center">FIFA </Typography>
                 <Accordion defaultExpanded>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}

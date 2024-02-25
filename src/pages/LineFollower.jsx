@@ -76,6 +76,14 @@ const LineFollower = () => {
                   Call: <span className='text-bold'>+8801781-482257</span> or <span className='text-bold'>+8801829-263221</span>
                 </Typography>
               </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <ContactSupportIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
+                </ListItemIcon>
+                <Typography variant='h6' fontSize={{ md: '1.3rem', xs: '1rem' }}>
+                  Email: <span className='text-bold'>robo.eee@sec.ac.bd</span>
+                </Typography>
+              </ListItem>
             </List>
             <Box sx={{ mt: 7 }}>
               <Paper sx={{ px: 2, py: 5 }} style={{ backgroundColor: '#edede9' }} >
