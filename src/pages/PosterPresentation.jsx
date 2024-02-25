@@ -6,7 +6,8 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import {
   Box, Container, Typography, List, ListItem, ListItemIcon, Accordion, AccordionSummary,
   AccordionDetails, Button, Alert, Paper, Fade
-} from '@mui/material'
+} from '@mui/material';
+import {registration_deadline} from '../data/main_data';
 
 const PosterPresentation = () => {
   return (
@@ -25,7 +26,7 @@ const PosterPresentation = () => {
           </Typography>
           <Box sx={{ mt: 3 }}>
             <Alert severity="warning" >
-              <Typography variant='body1' fontSize={{ xs: '0.8rem', md: '1rem' }} fontWeight="bold">Registration Deadline: 28th Feb, 2024</Typography>
+              <Typography variant='body1' fontSize={{ xs: '0.8rem', md: '1rem' }} fontWeight="bold">Registration Deadline: {registration_deadline}</Typography>
             </Alert>
           </Box>
           <Box sx={{ mt: 7 }}>
