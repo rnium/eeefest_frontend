@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     TextField, Button, Typography, Container, FormControl,
     Select, Grid, MenuItem, Card, CardMedia, CardContent,
@@ -70,6 +70,18 @@ const Register = () => {
 
     const [isSubmitted, setSubmitted] = useState(false);
     const [isSubmitting, setSubmitting] = useState(false);
+
+    useEffect(()=>{
+        const urlParams = new URLSearchParams(window.location.search);
+        for (let [key, value] of urlParams.entries()) {
+            if (key === 'contest') {
+                setFormData({
+                    ...formData,
+                    contest: value
+                })
+            }
+        }
+    }, [formData])
 
     const handleChange = (e) => {
         let { name, value } = e.target;
@@ -386,14 +398,14 @@ const Register = () => {
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={formData.lfr}
+                                value={formData.contest}
                                 label="Select Contest"
                                 name="contest"
                                 onChange={handleChange}
                             >
                                 <MenuItem value="lfr">Line Follower Robot</MenuItem>
                                 <MenuItem value="poster">Poster Presentation</MenuItem>
-                                <MenuItem value="circuit-solve">Circuit Solving</MenuItem>
+                                <MenuItem value="circuit-solve">Circuit Master</MenuItem>
                                 <MenuItem value="integration">Integration Bee</MenuItem>
                                 <MenuItem value="gaming-fifa">Gaming Contest [FIFA]</MenuItem>
                                 <MenuItem value="gaming-chess">Gaming Contest [Chess]</MenuItem>
