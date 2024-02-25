@@ -50,32 +50,53 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/">Home</NavLink>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/register">Register</NavLink>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/line-follower">Line Follower ROBOT</NavLink>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/poster-presentation">Poster Presentation</NavLink>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/circuit-master">Circuit Master</NavLink>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/integreation-bee">Integration BEE</NavLink>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink to="/gaming">Gaming</NavLink>
-              </MenuItem>
+              <NavLink to="/">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  Home
+                </MenuItem>
+              </NavLink>
+
+              <NavLink to="/register">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  Register
+                </MenuItem>
+              </NavLink>
+
+              <NavLink to="/line-follower">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  Line Follower ROBOT
+                </MenuItem>
+              </NavLink>
+
+              <NavLink to="/poster-presentation">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  Poster Presentation
+                </MenuItem>
+              </NavLink>
+
+              <NavLink to="/circuit-master">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  Circuit Master
+                </MenuItem>
+              </NavLink>
+
+              <NavLink to="/integreation-bee">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  Integration Bee
+                </MenuItem>
+              </NavLink>
+
+              <NavLink to="/gaming">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  Gaming
+                </MenuItem>
+              </NavLink>
+
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1 }}>
             <Link to="/">
-              <img src='static/images/logo.png' width="200px" />
+              <img src='static/images/logo.png' alt="Logo" width="200px" />
             </Link>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

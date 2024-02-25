@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-    Card, CardContent, Typography, Box, Alert
+    Card, CardContent, Typography, Box,
+    // Alert
 } from '@mui/material';
 
 const contests = {
@@ -36,10 +37,10 @@ const contests = {
     },
 }
 
-const cashout_fees = {
-    rocket: 1.8,
-    nagad: 1.25
-}
+// const cashout_fees = {
+//     rocket: 1.8,
+//     nagad: 1.25
+// }
 
 const additional_member_fee = {
     lfr: 500,
@@ -60,11 +61,11 @@ const PaymentSummery = ({ contest, members, gateway }) => {
         extra_member_fee = extra_members * additional_member_fee?.[contest]
         total += extra_member_fee;
     }
-    let cashout_charge = 0;
-    if (total > 0 && cashout_fees?.[gateway]) {
-        cashout_charge = (total / 100) * (cashout_fees?.[gateway]);
-        total += cashout_charge
-    }
+    // let cashout_charge = 0;
+    // if (total > 0 && cashout_fees?.[gateway]) {
+    //     cashout_charge = (total / 100) * (cashout_fees?.[gateway]);
+    //     total += cashout_charge
+    // }
     return (
         <Card elevation={4} sx={{ mt: 3 }} className="paymentSummaryCard">
             <CardContent>
@@ -98,21 +99,21 @@ const PaymentSummery = ({ contest, members, gateway }) => {
                             </div>
                             : null
                     }
-                    <div className="item cashout">
+                    {/* <div className="item cashout">
                         <div className="label">
                             <span>Cashout Charge</span>
                             <img src={"static/images/" + gateway + ".png"} alt="icon" className='icon' />
                         </div>
                         <div className="value">{cashout_charge} Tk</div>
-                    </div>
+                    </div> */}
                     <div className="item">
                         <div className="label"><b>Total</b></div>
                         <div className="value">{total} Tk</div>
                     </div>
                 </Box>
-                <Alert severity='info' sx={{ mt: 1 }} >
+                {/* <Alert severity='info' sx={{ mt: 1 }} >
                     Cash In/Send Money to any of the specified mobile banking account must include <b>1.8%</b> (Rocket) or <b>1.25%</b> (Nagad) Cash Out charge regarding your registration fee.
-                </Alert>
+                </Alert> */}
             </CardContent>
         </Card>
     )
