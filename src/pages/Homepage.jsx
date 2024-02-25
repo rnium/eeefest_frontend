@@ -14,9 +14,8 @@ const homepage = () => {
       <Hero />
       <Countdown />
       <Events />
-      <Description />
       <Contestglimpse />
-      {/* <Events /> */}
+      <Description />
       <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
         <Fab className="inner" color='secondary' variant="extended" aria-label="like">
           <FavoriteIcon sx={{ marginRight: 1 }} />

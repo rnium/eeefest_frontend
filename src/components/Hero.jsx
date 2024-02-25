@@ -17,7 +17,7 @@ const Hero = () => {
                 <Box display="flex" sx={{mt: {xs: 2, md: 2}}} flexDirection={{xs: 'column', md: 'row'}} justifyContent="center" alignItems="center">
                     <div className='heroinfo me-sm'>
                         <i class='bx bxs-time-five' ></i>
-                        <div className="info">1<sup>st</sup> & 2<sup>nd</sup> March 2024</div>
+                        <div className="info">9<sup>th</sup> & 10<sup>th</sup> March 2024</div>
                     </div>
                     <div className='heroinfo'>
                         <i class='bx bxs-map'></i>

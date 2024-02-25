@@ -101,7 +101,7 @@ for (let contest_name in contests_overview_data) {
 
 const Contestglimpse = () => {
     const contests = contest_arr.map((c, idx) => (
-        <Box key={idx} className="contest-glimpse" sx={{ p: 3 }} data-aos="fade-up" data-aos-once={true} >
+        <Box key={idx} className="contest-glimpse" sx={{ py: 3, my:3 }} data-aos="fade-up" data-aos-once={true} >
             <Grid container>
                 <Grid item xs={12} md={5} order={{ xs: 1, md: (idx+1) % 2 ? 1 : 2 }} sx={{marginBottom: {xs: 4, md: 0}}}>
                     <Box className="graphic">
@@ -150,7 +150,7 @@ const Contestglimpse = () => {
         </Box>
     ))
     return (
-        <Container sx={{ mb: 20, mt: 10 }}>
+        <Container sx={{ mb: 15 }}>
             {contests}
         </Container>
     )

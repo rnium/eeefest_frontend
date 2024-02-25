@@ -28,7 +28,7 @@ const Events = () => {
   })
 
   return (
-    <Box sx={{ py: 20, px:{xs: 3, md: 0} }} className="contests">
+    <Box sx={{ pt: 20, pb: 10, px:{xs: 3, md: 0} }} className="contests">
       <Typography textAlign="center" variant='h6' sx={{ mb: 3 }}>Contests</Typography>
       <Grid container spacing={2} justifyContent="center">
         {contests}

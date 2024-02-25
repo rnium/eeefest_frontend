@@ -60,7 +60,7 @@
 .description {
     position: relative;
     overflow: hidden;
-
+    
     .bg {
         position: absolute;
         top: 0;
@@ -68,8 +68,9 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        opacity: 0.3;
+        opacity: 0.9;
         background-repeat: no-repeat;
+        backdrop-filter: blur(5px);
         background-size: cover;
     }
 }
