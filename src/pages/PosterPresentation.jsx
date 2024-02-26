@@ -31,10 +31,10 @@ const PosterPresentation = () => {
           </Box>
           <Box sx={{ mt: 7 }}>
             <Typography variant='h5' fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
-              Champion Prize Money: <span className='text-bold'>2,500 Tk</span>
+              Champion Prize Money: <span className='text-bold'>3,000 Tk</span>
             </Typography>
             <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
-              Registration fee: <span className='text-bold'>200 Tk</span>
+              Registration fee: <span className='text-bold'>300 Tk</span>
             </Typography>
             <Box display="flex" justifyContent="center" sx={{ py: 4 }}>
               <Button variant='contained' target="_blank" href='assets/Poster_Presentation-RuleBook.pdf'>Download Rule Book</Button>

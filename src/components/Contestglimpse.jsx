@@ -31,8 +31,8 @@ const contests_overview_data = {
         orientation_type: 2,
         featured_info: [
             "Open For All",
-            "Champion Prize Money: 2,500 Tk",
-            "Registration Fee: 200 Tk",
+            "Champion Prize Money: 3,000 Tk",
+            "Registration Fee: 300 Tk",
         ]
     },
     'circuit-solve': {
