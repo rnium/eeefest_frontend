@@ -96,7 +96,7 @@ const Register = () => {
                         contest: value
                     }
                 ))
-                if (value === 'lfr') {
+                if (value === 'lfr' || value === 'poster') {
                     setFormData(formData => (
                         {
                             ...formData,
