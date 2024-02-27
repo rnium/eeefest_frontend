@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import {
     TextField, Button, Typography, Container, FormControl,
     Select, Grid, MenuItem, Card, CardMedia, CardContent,
-    Alert, Box
+    Alert, Box, Snackbar
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
 import * as urls from '../backendUrls'
 import '../styles/register.css'
 import PaymentSummery from '../components/PaymentSummery';
+import GroupmemberFields from '../components/GroupmemberFields';
 // import { makeStyles } from '@mui/styles';
 
 
@@ -29,76 +30,115 @@ function getCookie(name) {
 }
 const csrftoken = getCookie('csrftoken');
 
+function getGroupmemberStateObject(num_members) {
+    let members = {
+        group_member_1: {
+            name: '',
+            inst: '',
+            dept: '',
+            reg_num: '',
+            tshirt: '',
+            phone: '',
+            email: '',
+        }
+    };
+    for (let i = 1; i < num_members; i++) {
+        members[`group_member_${i + 1}`] = {
+            name: '',
+            inst: '',
+            dept: '',
+            reg_num: '',
+            tshirt: '',
+            phone: '',
+            email: '',
+        };
+    }
+    return members;
+}
+
 const Register = () => {
     const [formData, setFormData] = useState({
         team_name: '',
-        group_members_count: '',
+        group_members_count: 1,
         contest: '',
         gateway: 'rocket',
         paying_number: '',
         transaction_id: ''
     });
 
-    const [groupFormData, setGroupFormData] = useState({
-        team_leader: {
-            name: '',
-            inst: '',
-            dept: '',
-            reg: '',
-            tshirt: '',
-            phone: '',
-            email: '',
-        },
-        second_member: {
-            name: '',
-            inst: '',
-            dept: '',
-            tshirt: '',
-            phone: '',
-            email: '',
-        },
-        third_member: {
-            name: '',
-            inst: '',
-            dept: '',
-            tshirt: '',
-            phone: '',
-            email: '',
-        },
-        others: ''
-    })
+    const [groupFormData, setGroupFormData] = useState(
+        getGroupmemberStateObject(1)
+    );
 
     const [isSubmitted, setSubmitted] = useState(false);
     const [isSubmitting, setSubmitting] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [notifMsg, setNotifMsg] = useState("");
 
-    useEffect(()=>{
+    const showAlert = (message) => {
+        setNotifMsg(message);
+        setOpen(true);
+    }
+    const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
+
+    useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         for (let [key, value] of urlParams.entries()) {
             if (key === 'contest') {
-                setFormData({
-                    ...formData,
-                    contest: value
-                })
+                setFormData(formdata => (
+                    {
+                        ...formdata,
+                        contest: value
+                    }
+                ))
+                if (value === 'lfr' || value === 'poster') {
+                    setFormData(formData => (
+                        {
+                            ...formData,
+                            group_members_count: 3
+                        }
+                    ))
+                    setGroupFormData(getGroupmemberStateObject(3));
+                }
             }
         }
-    }, [formData])
+    }, [])
 
     const handleChange = (e) => {
         let { name, value } = e.target;
-        if (name === 'group_members_count' && formData.contest === 'poster') {
+        if (name === 'group_members_count') {
             value = parseInt(value);
             if (isNaN(value)) {
-                value = ''
-            } else if (!isNaN(value) && value > 3) {
-                alert("Maximum of 3 members can participate in a group for poster presentation!")
-                return
+                value = "";
             }
-        } else if (name === 'contest' && value === "poster" && formData.group_members_count > 3) {
-            // alert("Maximum of 3 members can participate in a group for poster presentation!");
-            setFormData({
-                ...formData,
-                group_members_count: 3
-            })
+            if (!isNaN(value) && formData.contest === 'poster' && value > 3) {
+                showAlert("Maximum of 3 members can participate in a group for poster presentation!")
+                return;
+            }
+            if (!isNaN(value) && formData.contest === 'lfr' && value > 5) {
+                showAlert("Maximum of 5 members can participate in a group for LFR!");
+                return;
+            }
+            setGroupFormData(getGroupmemberStateObject(value));
+        } else if (name === 'contest') {
+            if (value === "poster" || value === 'lfr') {
+                setFormData({
+                    ...formData,
+                    group_members_count: 3
+                })
+                setGroupFormData(getGroupmemberStateObject(3));
+            } else {
+                setFormData({
+                    ...formData,
+                    group_members_count: 1
+                })
+                setGroupFormData(getGroupmemberStateObject(1));
+            }
         }
         setFormData((prevData) => ({
             ...prevData,
@@ -145,229 +185,16 @@ const Register = () => {
             let data = { formData: formData, groupFormData: groupFormData }
             await axios.post(urls.registerUrl, data, config)
         } catch (error) {
-            alert(error);
+            let error_info = error?.response?.data?.info;
+            if (error_info === undefined) {
+                error_info = error.message;
+            }
+            showAlert(error_info);
             setSubmitting(false);
             return;
         }
         setSubmitted(true);
     };
-
-    let memberFields = () => {
-        return (
-            <Box>
-                <Box>
-                    <TextField
-                        variant="outlined"
-                        label="Team Leader Name"
-                        sx={{ mt: 2 }}
-                        name='team_leader-name'
-                        value={groupFormData.team_leader.name}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                        required
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="Team Leader Instituition"
-                        sx={{ mt: 2 }}
-                        name="team_leader-inst"
-                        value={groupFormData.team_leader.inst}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                        required
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="Team Leader Department"
-                        sx={{ mt: 2 }}
-                        name="team_leader-dept"
-                        value={groupFormData.team_leader.dept}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                        required
-                    />
-                    <FormControl fullWidth sx={{ mt: 2 }}>
-                        <InputLabel id="m1-tshirt-select-label">Team Leader Tshirt Size</InputLabel>
-                        <Select
-                            labelId="m1-tshirt-select-label"
-                            value={groupFormData.team_leader.tshirt}
-                            label="Team Leader Tshirt Size"
-                            name="team_leader-tshirt"
-                            onChange={handleGroupFormChange}
-                        >
-                            <MenuItem value="S">S</MenuItem>
-                            <MenuItem value="M">M</MenuItem>
-                            <MenuItem value="L">L</MenuItem>
-                            <MenuItem value="XL">XL</MenuItem>
-                            <MenuItem value="XXL">XXL</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField
-                        variant="outlined"
-                        label="Team Leader Phone"
-                        sx={{ mt: 2 }}
-                        name="team_leader-phone"
-                        value={groupFormData.team_leader.phone}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                        required
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="Team Leader Email"
-                        sx={{ mt: 2, mb: 2 }}
-                        type="email"
-                        name="team_leader-email"
-                        value={groupFormData.team_leader.email}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                        required
-                    />
-                </Box>
-                <Box>
-                    <TextField
-                        variant="outlined"
-                        label="2nd Member Name"
-                        sx={{ mt: 2 }}
-                        name='second_member-name'
-                        value={groupFormData.second_member.name}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="2nd Member Instituition"
-                        sx={{ mt: 2 }}
-                        name="second_member-inst"
-                        value={groupFormData.second_member.inst}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="2nd Member Department"
-                        sx={{ mt: 2 }}
-                        name="second_member-dept"
-                        value={groupFormData.second_member.dept}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <FormControl fullWidth sx={{ mt: 2 }}>
-                        <InputLabel id="m2-tshirt-select-label">2nd Member Tshirt Size</InputLabel>
-                        <Select
-                            labelId="m2-tshirt-select-label"
-                            value={groupFormData.second_member.tshirt}
-                            label="2nd Member Tshirt Size"
-                            name="second_member-tshirt"
-                            onChange={handleGroupFormChange}
-                        >
-                            <MenuItem value="S">S</MenuItem>
-                            <MenuItem value="M">M</MenuItem>
-                            <MenuItem value="L">L</MenuItem>
-                            <MenuItem value="XL">XL</MenuItem>
-                            <MenuItem value="XXL">XXL</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField
-                        variant="outlined"
-                        label="2nd Member Phone"
-                        sx={{ mt: 2 }}
-                        name="second_member-phone"
-                        value={groupFormData.second_member.phone}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="2nd Member Email"
-                        sx={{ mt: 2, mb: 2 }}
-                        type="email"
-                        name="second_member-email"
-                        value={groupFormData.second_member.email}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                </Box>
-                <Box>
-                    <TextField
-                        variant="outlined"
-                        label="3rd Member Name"
-                        sx={{ mt: 2 }}
-                        name='third_member-name'
-                        value={groupFormData.third_member.name}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="3rd Member Instituition"
-                        sx={{ mt: 2 }}
-                        name="third_member-inst"
-                        value={groupFormData.third_member.inst}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="3rd Member Department"
-                        sx={{ mt: 2 }}
-                        name="third_member-dept"
-                        value={groupFormData.third_member.dept}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <FormControl fullWidth sx={{ mt: 2 }}>
-                        <InputLabel id="m3-tshirt-select-label">3rd Member Tshirt Size</InputLabel>
-                        <Select
-                            labelId="m3-tshirt-select-label"
-                            value={groupFormData.third_member.tshirt}
-                            label="3rd Member Tshirt Size"
-                            name="third_member-tshirt"
-                            onChange={handleGroupFormChange}
-                        >
-                            <MenuItem value="S">S</MenuItem>
-                            <MenuItem value="M">M</MenuItem>
-                            <MenuItem value="L">L</MenuItem>
-                            <MenuItem value="XL">XL</MenuItem>
-                            <MenuItem value="XXL">XXL</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField
-                        variant="outlined"
-                        label="3rd Member Phone"
-                        sx={{ mt: 2 }}
-                        name="third_member-phone"
-                        value={groupFormData.third_member.phone}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                    <TextField
-                        variant="outlined"
-                        label="3rd Member Email"
-                        sx={{ mt: 2, mb: 2 }}
-                        type="email"
-                        name="third_member-email"
-                        value={groupFormData.third_member.email}
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                    />
-                </Box>
-                <Box>
-                    <Typography variant='body'>Briefly state Additional Members' Name, Institute, T-shirt size in case of more than three members in a team.)</Typography>
-                    <TextField
-                        label="Additional Group Members Information"
-                        multiline
-                        rows={5} // Specify the number of rows to display
-                        value={groupFormData.others}
-                        name='others'
-                        onChange={handleGroupFormChange}
-                        fullWidth
-                        sx={{ mb: 4, mt: 2 }}
-                    />
-                </Box>
-            </Box>
-        )
-    }
 
     if (isSubmitted) {
         return (
@@ -375,7 +202,7 @@ const Register = () => {
                 <div className='formSumissionConfirm'>
                     <i class='bx bx-check-double'></i>
                     <Typography variant='body1' fontSize={{ xs: '1rem', md: '1.4rem' }} textAlign="justify">
-                        Congratulations, {groupFormData.team_leader.name}! Your registration has been successfully received.
+                        Congratulations, {groupFormData.group_member_1.name}! Your registration has been successfully received.
                         Our team is currently processing your registration details. Once your registration is verified, you will receive a confirmation email at the address provided during registration.
                         Thank you for your interest in participating. We look forward to your involvement in the event!
                     </Typography>
@@ -387,6 +214,16 @@ const Register = () => {
     }
     return (
         <Container className='reg-form' sx={{ marginBottom: 5 }}>
+            <Snackbar open={open} autoHideDuration={4000} onClose={handleSnackbarClose}>
+                <Alert
+                    onClose={handleSnackbarClose}
+                    severity="warning"
+                    variant='filled'
+                    sx={{ width: '100%' }}
+                >
+                    {notifMsg}
+                </Alert>
+            </Snackbar>
             <Grid container spacing={6} className="mt-sm">
                 <Grid item xs={12} md={7}>
                     <Typography variant="h4" gutterBottom>
@@ -433,73 +270,16 @@ const Register = () => {
                                         onChange={handleChange}
                                         fullWidth
                                         required
-                                    />
-                                    {memberFields()}
-                                </Box>
-                                :
-                                <Box>
-                                    <TextField
-                                        variant="outlined"
-                                        label="Contestant Name"
-                                        sx={{ mt: 2 }}
-                                        name="team_leader-name"
-                                        value={groupFormData.team_leader.name}
-                                        onChange={handleGroupFormChange}
-                                        fullWidth
-                                        required
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        label="Institution"
-                                        sx={{ mt: 2 }}
-                                        name="team_leader-inst"
-                                        value={groupFormData.team_leader.inst}
-                                        onChange={handleGroupFormChange}
-                                        fullWidth
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        label="Department"
-                                        sx={{ mt: 2 }}
-                                        name="team_leader-dept"
-                                        value={groupFormData.team_leader.dept}
-                                        onChange={handleGroupFormChange}
-                                        fullWidth
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        label="Registration Number"
-                                        sx={{ mt: 2 }}
-                                        name="team_leader-reg"
-                                        value={groupFormData.team_leader.reg}
-                                        onChange={handleGroupFormChange}
-                                        fullWidth
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        label="Email"
-                                        type="email"
-                                        name="team_leader-email"
-                                        sx={{ mt: 2 }}
-                                        value={groupFormData.team_leader.email}
-                                        onChange={handleGroupFormChange}
-                                        fullWidth
-                                        required
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        label="Phone Number"
-                                        type="tel"
-                                        name="team_leader-phone"
-                                        value={groupFormData.team_leader.phone}
-                                        onChange={handleGroupFormChange}
-                                        sx={{ mt: 2 }}
-                                        fullWidth
-                                        required
+                                        autoComplete='off'
                                     />
                                 </Box>
+                                : null
                         }
-
+                        <GroupmemberFields
+                            groupFormData={groupFormData}
+                            handleGroupFormChange={handleGroupFormChange}
+                            numMembers={formData.group_members_count}
+                        />
                         <FormControl fullWidth sx={{ mt: 2 }}>
                             <InputLabel id="demo-simple-select-label">Payment Gateway</InputLabel>
                             <Select
@@ -551,7 +331,7 @@ const Register = () => {
                             image="static/images/banner.jpg"
                         />
                         <CardContent>
-                        <Typography gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
+                            <Typography gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
                                 Payment Options
                             </Typography>
                             <Box className="account-info rocket">
@@ -575,7 +355,7 @@ const Register = () => {
                         </CardContent>
                     </Card>
                     <PaymentSummery
-                        contest={formData.contest} 
+                        contest={formData.contest}
                         members={formData.group_members_count}
                         gateway={formData.gateway}
                     />
