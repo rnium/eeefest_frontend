@@ -36,7 +36,7 @@ function getGroupmemberStateObject(num_members) {
             name: '',
             inst: '',
             dept: '',
-            reg: '',
+            reg_num: '',
             tshirt: '',
             phone: '',
             email: '',
@@ -47,7 +47,7 @@ function getGroupmemberStateObject(num_members) {
             name: '',
             inst: '',
             dept: '',
-            reg: '',
+            reg_num: '',
             tshirt: '',
             phone: '',
             email: '',
@@ -74,7 +74,7 @@ const Register = () => {
     const [isSubmitting, setSubmitting] = useState(false);
     const [open, setOpen] = useState(false);
     const [notifMsg, setNotifMsg] = useState("");
-    
+
     const showAlert = (message) => {
         setNotifMsg(message);
         setOpen(true);
@@ -125,16 +125,20 @@ const Register = () => {
                 return;
             }
             setGroupFormData(getGroupmemberStateObject(value));
-        } else if (name === 'contest' && (value === "poster" || value === 'lfr')) {
-            setFormData({
-                ...formData,
-                group_members_count: 3
-            })
-        } else {
-            setFormData({
-                ...formData,
-                group_members_count: 1
-            })
+        } else if (name === 'contest') {
+            if (value === "poster" || value === 'lfr') {
+                setFormData({
+                    ...formData,
+                    group_members_count: 3
+                })
+                setGroupFormData(getGroupmemberStateObject(3));
+            } else {
+                setFormData({
+                    ...formData,
+                    group_members_count: 1
+                })
+                setGroupFormData(getGroupmemberStateObject(1));
+            }
         }
         setFormData((prevData) => ({
             ...prevData,
@@ -181,7 +185,11 @@ const Register = () => {
             let data = { formData: formData, groupFormData: groupFormData }
             await axios.post(urls.registerUrl, data, config)
         } catch (error) {
-            alert(error);
+            let error_info = error?.response?.data?.info;
+            if (error_info === undefined) {
+                error_info = error.message;
+            }
+            showAlert(error_info);
             setSubmitting(false);
             return;
         }

@@ -39,8 +39,8 @@ const GroupmemberFields = ({ groupFormData, handleGroupFormChange, numMembers })
                     variant="outlined"
                     label="Registration Number"
                     sx={{ mt: 2 }}
-                    name="group_member_1-reg"
-                    value={groupFormData.group_member_1.reg}
+                    name="group_member_1-reg_num"
+                    value={groupFormData.group_member_1.reg_num}
                     onChange={handleGroupFormChange}
                     fullWidth
                 />
