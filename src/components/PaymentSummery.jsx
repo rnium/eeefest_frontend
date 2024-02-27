@@ -13,7 +13,7 @@ const contests = {
     'poster': {
         name: 'Poster Presentation',
         img_name: '002-poster.svg',
-        fee: 200
+        fee: 300
     },
     'integration': {
         name: 'Integration Bee',
