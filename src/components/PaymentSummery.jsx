@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Card, CardContent, Typography, Box,
+    Card, CardContent, Typography, Box, Alert
     // Alert
 } from '@mui/material';
 
@@ -111,9 +111,9 @@ const PaymentSummery = ({ contest, members, gateway }) => {
                         <div className="value">{total} Tk</div>
                     </div>
                 </Box>
-                {/* <Alert severity='info' sx={{ mt: 1 }} >
-                    Cash In/Send Money to any of the specified mobile banking account must include <b>1.8%</b> (Rocket) or <b>1.25%</b> (Nagad) Cash Out charge regarding your registration fee.
-                </Alert> */}
+                <Alert severity='info' sx={{ mt: 1 }} >
+                    <b>Cash In</b> or <b>Send Money</b> to any of the specified mobile banking account.
+                </Alert>
             </CardContent>
         </Card>
     )
