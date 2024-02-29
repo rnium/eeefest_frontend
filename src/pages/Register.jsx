@@ -87,6 +87,16 @@ const Register = () => {
         setOpen(false);
     };
     const handlePayNowChange = (e) => {
+        let the_gateway = null;
+        if (payNow===false) {
+            the_gateway = "bkash";
+        }
+        setFormData(formData => (
+            {
+                ...formData,
+                gateway: the_gateway
+            }
+        ))
         setPayNow(!payNow);
     }
     useEffect(() => {
@@ -172,10 +182,8 @@ const Register = () => {
         setSubmitting(true);
         e.preventDefault();
         if (!formData.contest) {
-            alert("Please Select a contest")
-            return;
-        } else if (!formData.gateway) {
-            alert("Please Select a gateway");
+            alert("Please Select a contest");
+            setSubmitting(false);
             return;
         }
         try {
