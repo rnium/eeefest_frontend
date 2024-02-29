@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
     TextField, Button, Typography, Container, FormControl,
-    Select, Grid, MenuItem, Card, CardMedia, CardContent,
-    Alert, Box, Snackbar
+    Select, Grid, MenuItem, Card, CardMedia, CardContent, Fade,
+    Alert, Box, Snackbar, FormControlLabel, Switch, FormGroup
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
@@ -10,7 +10,7 @@ import * as urls from '../backendUrls'
 import '../styles/register.css'
 import PaymentSummery from '../components/PaymentSummery';
 import GroupmemberFields from '../components/GroupmemberFields';
-// import { makeStyles } from '@mui/styles';
+import {payment_deadline} from '../data/main_data'
 
 
 function getCookie(name) {
@@ -61,7 +61,7 @@ const Register = () => {
         team_name: '',
         group_members_count: 1,
         contest: '',
-        gateway: 'rocket',
+        gateway: 'bkash',
         paying_number: '',
         transaction_id: ''
     });
@@ -74,6 +74,7 @@ const Register = () => {
     const [isSubmitting, setSubmitting] = useState(false);
     const [open, setOpen] = useState(false);
     const [notifMsg, setNotifMsg] = useState("");
+    const [payNow, setPayNow] = useState(true);
 
     const showAlert = (message) => {
         setNotifMsg(message);
@@ -85,7 +86,9 @@ const Register = () => {
         }
         setOpen(false);
     };
-
+    const handlePayNowChange = (e) => {
+        setPayNow(!payNow);
+    }
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         for (let [key, value] of urlParams.entries()) {
@@ -280,43 +283,73 @@ const Register = () => {
                             handleGroupFormChange={handleGroupFormChange}
                             numMembers={formData.group_members_count}
                         />
-                        <FormControl fullWidth sx={{ mt: 2 }}>
-                            <InputLabel id="demo-simple-select-label">Payment Gateway</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={formData.gateway}
-                                label="Payment Gateway"
-                                name="gateway"
-                                onChange={handleChange}
-                            >
-                                <MenuItem value="rocket">Rocket</MenuItem>
-                                <MenuItem value="nagad">Nagad</MenuItem>
-                            </Select>
-                        </FormControl>
-                        <TextField
-                            variant="outlined"
-                            label="Rocket/Nagad account number from which payment is done"
-                            name="paying_number"
-                            value={formData.paying_number}
-                            onChange={handleChange}
-                            sx={{ mt: 2 }}
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            variant="outlined"
-                            label="Transaction Number"
-                            name="transaction_id"
-                            value={formData.transaction_id}
-                            onChange={handleChange}
-                            sx={{ mt: 2 }}
-                            fullWidth
-                            required
-                        />
-                        <Alert severity='warning' sx={{ mt: 1 }}>
-                            Please ensure accurate entry of the transaction number, as it is required for verification.
-                        </Alert>
+                        {
+                            formData.contest === 'lfr' ?
+                                <FormControlLabel
+                                    control={<Switch defaultChecked={payNow} onClick={handlePayNowChange} />}
+                                    label={payNow ? "Pay Now" : "Pay Later"}
+                                    
+                                />
+                                : null
+                        }
+                        {
+                            formData.contest === 'lfr' && payNow === false ?
+                                <Fade in={true}>
+                                    <Box>
+                                        <Alert severity='success'>
+                                            you have the flexibility to complete payment at your convenience. Please remember to make the payment before the deadline expires to avoid any inconveniences. When making the payment later, kindly include your <b>team name as the reference</b> to ensure it's properly attributed to your registration.
+                                        </Alert>
+                                        <Alert severity='warning' sx={{mt:1}}>
+                                            Payment Deadline: <b>{payment_deadline}</b>
+                                        </Alert>
+                                    </Box>
+                                </Fade>
+                                :
+                                <Fade in={true}>
+                                    <FormGroup>
+                                        <FormControl fullWidth sx={{ mt: 2 }}>
+                                            <InputLabel id="demo-simple-select-label">Payment Gateway</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                value={formData.gateway}
+                                                label="Payment Gateway"
+                                                name="gateway"
+                                                onChange={handleChange}
+                                            >
+                                                <MenuItem value="bkash">bKash</MenuItem>
+                                                <MenuItem value="rocket">Rocket</MenuItem>
+                                                <MenuItem value="nagad">Nagad</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                        <TextField
+                                            variant="outlined"
+                                            label="Account number from which payment is done"
+                                            name="paying_number"
+                                            value={formData.paying_number}
+                                            onChange={handleChange}
+                                            sx={{ mt: 2 }}
+                                            fullWidth
+                                            required
+                                        />
+                                        <TextField
+                                            variant="outlined"
+                                            label="Transaction Number"
+                                            name="transaction_id"
+                                            value={formData.transaction_id}
+                                            onChange={handleChange}
+                                            sx={{ mt: 2 }}
+                                            fullWidth
+                                            required
+                                        />
+                                        <Alert severity='warning' sx={{ mt: 1 }}>
+                                            Please ensure accurate entry of the transaction number, as it is required for verification.
+                                        </Alert>
+                                    </FormGroup>
+                                </Fade>
+
+                        }
+
                         <Button sx={{ mt: 2 }} disabled={isSubmitting} variant="contained" color="primary" type="submit" fullWidth>
                             Register
                         </Button>
@@ -334,7 +367,16 @@ const Register = () => {
                             <Typography gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
                                 Payment Options
                             </Typography>
-                            <Box className="account-info rocket">
+                            <Box className="account-info bkash">
+                                <img src="static/images/bkash.png" width="100px" alt="logo" />
+                                <div className="info">
+                                    <div className="title">bKash</div>
+                                    <Typography variant='body2' fontSize={{ xs: '1.2rem', md: '1.8rem' }}>
+                                        01711960676
+                                    </Typography>
+                                </div>
+                            </Box>
+                            <Box className="account-info rocket" sx={{ mt: 1 }}>
                                 <img src="static/images/rocket.png" width="100px" alt="logo" />
                                 <div className="info">
                                     <div className="title">DBBL Rocket</div>

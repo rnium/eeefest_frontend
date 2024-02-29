@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 .account-info img {
-  box-shadow: 0 0 20px rgb(210, 210, 210);
+  box-shadow: 0 5px 10px rgba(129, 129, 129, 0.5);
   width: 90px;
   border-radius: 10px;
 }
@@ -23,6 +23,10 @@
 .account-info .info .title {
   font-weight: 500;
   font-size: 1rem;
+}
+
+.account-info.bkash .title {
+  color: #e1136e;
 }
 
 .account-info.rocket .title {
