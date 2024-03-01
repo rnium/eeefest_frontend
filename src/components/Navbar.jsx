@@ -96,7 +96,7 @@ const Navbar = () => {
           </Box>
           <Box sx={{ flexGrow: 1 }}>
             <Link to="/">
-              <img src='static/images/logo.png' alt="Logo" width="200px" />
+              <img src='/static/images/logo.png' alt="Logo" width="200px" />
             </Link>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

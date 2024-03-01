@@ -369,14 +369,14 @@ const Register = () => {
                             component="img"
                             alt="Banner"
                             height="240"
-                            image="static/images/banner.jpg"
+                            image="/static/images/banner.jpg"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" color="text.secondary" textAlign="center">
                                 Payment Options
                             </Typography>
                             <Box className="account-info bkash">
-                                <img src="static/images/bkash.png" width="100px" alt="logo" />
+                                <img src="/static/images/bkash.png" width="100px" alt="logo" />
                                 <div className="info">
                                     <div className="title">bKash</div>
                                     <Typography variant='body2' fontSize={{ xs: '1.2rem', md: '1.8rem' }}>
@@ -385,7 +385,7 @@ const Register = () => {
                                 </div>
                             </Box>
                             <Box className="account-info rocket" sx={{ mt: 1 }}>
-                                <img src="static/images/rocket.png" width="100px" alt="logo" />
+                                <img src="/static/images/rocket.png" width="100px" alt="logo" />
                                 <div className="info">
                                     <div className="title">DBBL Rocket</div>
                                     <Typography variant='body2' fontSize={{ xs: '1.2rem', md: '1.8rem' }}>
@@ -394,7 +394,7 @@ const Register = () => {
                                 </div>
                             </Box>
                             <Box className="account-info nagad" sx={{ mt: 1 }}>
-                                <img src="static/images/nagad.png" width="100px" alt="logo" />
+                                <img src="/static/images/nagad.png" width="100px" alt="logo" />
                                 <div className="info">
                                     <div className="title">Nagad</div>
                                     <Typography variant='body2' fontSize={{ xs: '1.2rem', md: '1.8rem' }}>

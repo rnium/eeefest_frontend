@@ -105,10 +105,10 @@ const Contestglimpse = () => {
             <Grid container>
                 <Grid item xs={12} md={5} order={{ xs: 1, md: (idx+1) % 2 ? 1 : 2 }} sx={{marginBottom: {xs: 4, md: 0}}}>
                     <Box className="graphic">
-                        <img src={"static/images/hero/" + c.hero_img} alt="hero" className='hero' />
+                        <img src={"/static/images/hero/" + c.hero_img} alt="hero" className='hero' />
                         <div className="logo-card-container">
                             <div className="logo-card"  >
-                                <img src={'static/images/' + c.logo_name} alt="" />
+                                <img src={'/static/images/' + c.logo_name} alt="" />
                             </div>
                         </div>
                     </Box>

@@ -14,7 +14,7 @@ const PosterPresentation = () => {
     <Fade in={true} timeout={300}>
       <div className='contest-page'>
         <div className='banner'>
-          <img src='static/images/Poster_Presentation.png' />
+          <img src='/static/images/Poster_Presentation.png' />
         </div>
         <Container sx={{ mb: 10 }}>
           <Typography sx={{ mt: 7 }} variant="h5" textAlign='justify' fontSize={{ md: '1.5rem', xs: '1.2rem' }}>Posters are often used to share information and are an important part of many conferences, seminars and exhibitions. They may be used to present quite complex material, and so it is important that the information on them is well laid out, legible and attractively presented.</Typography>

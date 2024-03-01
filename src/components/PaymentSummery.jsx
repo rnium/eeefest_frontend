@@ -77,7 +77,7 @@ const PaymentSummery = ({ contest, members, gateway }) => {
                     contest_data !== undefined ?
                         <Box className="selected-contest">
                             <div className="contest-logo">
-                                <img src={"static/images/" + contest_data.img_name} alt="" />
+                                <img src={"/static/images/" + contest_data.img_name} alt="" />
                             </div>
                             <div className="info">
                                 <div className="title">{contest_data.name}</div>

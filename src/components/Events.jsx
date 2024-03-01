@@ -19,7 +19,7 @@ const Events = () => {
       <Grid item xs={6} s={4} md={2} key={c.name} >
         <a href={c.url}>
           <Box display="flex" className="contestItem" flexDirection="column" justifyContent="center" alignItems="center">
-            <img alt={c.name} src={`static/images/${c.image}`} width="100px" />
+            <img alt={c.name} src={`/static/images/${c.image}`} width="100px" />
             <Typography sx={{ mt: 2 }} textAlign="center" variant='body1'>{c.name}</Typography>
           </Box>
         </a>

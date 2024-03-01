@@ -14,7 +14,7 @@ const CircuitSolving = () => {
     <Fade in={true} timeout={300}>
       <div className='contest-page'>
         <div className='banner'>
-          <img src='static/images/Circuit_master.png' />
+          <img src='/static/images/Circuit_master.png' />
         </div>
         <Container sx={{ mb: 10 }}>
           <Typography sx={{ mt: 5 }} variant="h5" textAlign='justify' fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
