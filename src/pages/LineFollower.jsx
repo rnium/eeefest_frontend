@@ -74,7 +74,10 @@ const LineFollower = () => {
                   <ContactSupportIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
                 </ListItemIcon>
                 <Typography variant='h6' fontSize={{ md: '1.3rem', xs: '1rem' }}>
-                  Call: <span className='text-bold'>+8801781-482257</span> or <span className='text-bold'>+8801829-263221</span>
+                  Call: <span className='text-bold'>+8801781-482257</span>, 
+                  <span className='text-bold'>&nbsp;+8801829-263221</span>,
+                  <span className='text-bold'>&nbsp;+8801625-758872</span>,
+                  <span className='text-bold'>&nbsp;+8801710-737663</span>
                 </Typography>
               </ListItem>
               <ListItem>
