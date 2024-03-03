@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
     TextField, Button, Typography, Container, FormControl,
     Select, Grid, MenuItem, Card, CardMedia, CardContent, Fade,
-    Alert, Box, Snackbar, FormControlLabel, Switch, FormGroup
+    Alert, Box, Snackbar, FormControlLabel, Switch, FormGroup,
+    FormLabel, RadioGroup, Radio
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
@@ -10,7 +11,7 @@ import * as urls from '../backendUrls'
 import '../styles/register.css'
 import PaymentSummery from '../components/PaymentSummery';
 import GroupmemberFields from '../components/GroupmemberFields';
-import {payment_deadline} from '../data/main_data'
+import { payment_deadline } from '../data/main_data'
 
 
 function getCookie(name) {
@@ -40,6 +41,7 @@ function getGroupmemberStateObject(num_members) {
             tshirt: '',
             phone: '',
             email: '',
+            game_controller: null
         }
     };
     for (let i = 1; i < num_members; i++) {
@@ -88,7 +90,7 @@ const Register = () => {
     };
     const handlePayNowChange = (e) => {
         let the_gateway = null;
-        if (payNow===false) {
+        if (payNow === false) {
             the_gateway = "bkash";
         }
         setFormData(formData => (
@@ -183,6 +185,10 @@ const Register = () => {
         e.preventDefault();
         if (!formData.contest) {
             alert("Please Select a contest");
+            setSubmitting(false);
+            return;
+        } else if (formData.contest === 'gaming-fifa' && groupFormData.group_member_1.game_controller === null) {
+            showAlert("Please select your game controller preference");
             setSubmitting(false);
             return;
         }
@@ -292,11 +298,28 @@ const Register = () => {
                             numMembers={formData.group_members_count}
                         />
                         {
+                            formData.contest === 'gaming-fifa' ?
+                                <FormControl sx={{mt: 2, flexDirection: {xs: 'column', md: 'row', width: '100%'}, alignItems: 'center'}}>
+                                    <FormLabel sx={{marginRight: 2}} id="demo-radio-buttons-group-label">Controller Preference</FormLabel>
+                                    <RadioGroup
+                                        row
+                                        defaultValue="keyb"
+                                        name="group_member_1-game_controller"
+                                        value={groupFormData.group_member_1.game_controller}
+                                        onChange={handleGroupFormChange}
+                                    >
+                                        <FormControlLabel value="keyb" control={<Radio />} label="Keyboard" />
+                                        <FormControlLabel value="joys" control={<Radio />} label="Joystick" />
+                                    </RadioGroup>
+                                </FormControl>
+                                : null
+                        }
+                        {
                             formData.contest === 'lfr' ?
                                 <FormControlLabel
                                     control={<Switch defaultChecked={payNow} onClick={handlePayNowChange} />}
                                     label={payNow ? "Pay Now" : "Pay Later"}
-                                    
+
                                 />
                                 : null
                         }
@@ -307,7 +330,7 @@ const Register = () => {
                                         <Alert severity='success'>
                                             you have the flexibility to complete payment at your convenience. Please remember to make the payment before the deadline expires to avoid any inconveniences. When making the payment later, kindly include your <b>team name as the reference</b> to ensure it's properly attributed to your registration.
                                         </Alert>
-                                        <Alert severity='warning' sx={{mt:1}}>
+                                        <Alert severity='warning' sx={{ mt: 1 }}>
                                             Payment Deadline: <b>{payment_deadline}</b>
                                         </Alert>
                                     </Box>
