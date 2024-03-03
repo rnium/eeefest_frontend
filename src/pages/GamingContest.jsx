@@ -11,7 +11,6 @@ import {
   AccordionDetails, Button, Alert, Paper, Fade
 } from '@mui/material';
 import {registration_deadline, schedules} from '../data/main_data';
-import dateFormat from 'dateformat';
 
 const GamingContest = () => {
   return (
@@ -46,7 +45,7 @@ const GamingContest = () => {
                     <Box sx={{mb: 2}}>
                       <div className="eventSchedule">
                         <i class='bx bx-time-five' ></i>
-                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {dateFormat(schedules.gamingFifa, "h:MM TT, d mmmm yyyy")}</Typography>
+                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {schedules.gamingFifa}</Typography>
                       </div>
                     </Box>
                     <Typography variant='h6' >
@@ -91,7 +90,7 @@ const GamingContest = () => {
                     <Box sx={{mb: 2}}>
                       <div className="eventSchedule">
                         <i class='bx bx-time-five' ></i>
-                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {dateFormat(schedules.gamingChess, "h:MM TT, d mmmm yyyy")}</Typography>
+                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {schedules.gamingChess}</Typography>
                       </div>
                     </Box>
                     <Typography variant='h6' sx={{ mt: 2 }} >

@@ -10,7 +10,6 @@ import {
   AccordionDetails, Button, Alert, Paper, Fade
 } from '@mui/material';
 import { registration_deadline, schedules } from '../data/main_data';
-import dateFormat from 'dateformat';
 
 const IntegrationBee = () => {
   return (
@@ -26,7 +25,7 @@ const IntegrationBee = () => {
           <Box sx={{ mt: 4 }}>
             <div className="eventSchedule">
               <i class='bx bx-time-five' ></i>
-              <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {dateFormat(schedules.integration, "h:MM TT, d mmmm yyyy")}</Typography>
+              <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {schedules.integration}</Typography>
             </div>
             <Alert severity="warning"  sx={{ mt: 3 }}>
               <Typography variant='body1' fontSize={{ xs: '0.8rem', md: '1rem' }} fontWeight="bold">Registration Deadline: {registration_deadline}</Typography>
