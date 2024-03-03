@@ -208,6 +208,19 @@
     }
 }
 
+.eventSchedule {
+    @include flexer(row);
+    i {
+        font-size: 2rem;
+        padding: 0.5rem;
+        color: white;
+        background-image: linear-gradient(to right, #0060ff, #0037b5);
+        border-radius: 10px;
+        position: relative;
+        box-shadow: 0 5px 10px rgba(0, 0, 255, 0.3);
+    }
+}
+
 .text-gradient {
     background-image: linear-gradient(to right, #0060ff, #0037b5);
     text-shadow: 0 0 10px rgba(72, 79, 179, 0.1);
@@ -357,6 +370,11 @@ a {
                 }
             }
         }        
+    }
+    .eventSchedule {
+        i {
+            font-size: 1.4rem;
+        }
     }
 }
 

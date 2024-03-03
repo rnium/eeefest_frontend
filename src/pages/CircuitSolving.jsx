@@ -7,7 +7,8 @@ import {
   Box, Container, Typography, List, ListItem, ListItemIcon, Accordion, AccordionSummary,
   AccordionDetails, Button, Alert, Paper, Fade
 } from '@mui/material';
-import {registration_deadline} from '../data/main_data';
+import { registration_deadline, schedules } from '../data/main_data';
+import dateFormat from 'dateformat';
 
 const CircuitSolving = () => {
   return (
@@ -21,7 +22,11 @@ const CircuitSolving = () => {
             In this contest, participants will be presented with a variety of electrical circuits. The challenge is to analyze these circuits and solve for unknowns such as voltages, currents, and power. This will test and enhance your understanding of circuit theory, network analysis, and electronics.
           </Typography>
           <Box sx={{ mt: 3 }}>
-            <Alert severity="warning" >
+            <div className="eventSchedule">
+              <i class='bx bx-time-five' ></i>
+              <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {dateFormat(schedules.circuit, "h:MM TT, d mmmm yyyy")}</Typography>
+            </div>
+            <Alert severity="warning"  sx={{ mt: 3 }}>
               <Typography variant='body1' fontSize={{ xs: '0.8rem', md: '1rem' }} fontWeight="bold">Registration Deadline: {registration_deadline}</Typography>
             </Alert>
           </Box>

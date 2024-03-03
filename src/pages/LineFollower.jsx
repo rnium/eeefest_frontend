@@ -8,7 +8,8 @@ import {
   Box, Container, Typography, List, ListItem, ListItemIcon, Accordion, AccordionSummary,
   AccordionDetails, Button, Alert, Paper, Fade
 } from '@mui/material';
-import {registration_deadline} from '../data/main_data';
+import {registration_deadline, schedules} from '../data/main_data';
+import dateFormat from 'dateformat';
 
 const LineFollower = () => {
   return (
@@ -21,8 +22,12 @@ const LineFollower = () => {
           <Typography sx={{ mt: 5 }} variant="h5" fontSize={{ md: '1.5rem', xs: '1.2rem' }} textAlign="justify">
             Line Follower Robot competition in Technoventure 3.0 the robot must be able to follow a black line on white surface or vice versa. It is an autonomous robot which is able to make decision for complete the track on a surface.
           </Typography>
-          <Box sx={{mt: 3}}>
-            <Alert severity="warning" >
+          <Box sx={{mt: 2}}>
+            <div className="eventSchedule">
+              <i class='bx bx-time-five' ></i>
+              <Typography fontSize={{ md: '1.3rem', xs: '1rem' }} color="textPrimary" sx={{marginLeft: 1}}>Schedule: {dateFormat(schedules.lfr, "h:MM TT, d mmmm yyyy")}</Typography>
+            </div>
+            <Alert severity="warning" sx={{mt: 3}} >
               <Typography variant='body1' fontSize={{xs: '0.8rem', md: '1rem'}} fontWeight="bold">Registration Deadline: {registration_deadline}</Typography>
             </Alert>
           </Box>
