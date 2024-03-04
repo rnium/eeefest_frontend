@@ -1,6 +1,6 @@
 import dateFormat from 'dateformat';
-const registration_deadline_date = new Date('4 March 2024');
-const payment_deadline_date = new Date('6 March 2024');
+const registration_deadline_date = new Date('7 March 2024');
+const payment_deadline_date = new Date('7 March 2024');
 export const schedules = {
     lfr: "9:00 AM, 10 March 2024",
     poster: "10:00 AM, 10 March 2024",

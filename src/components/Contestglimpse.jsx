@@ -43,7 +43,7 @@ const contests_overview_data = {
         url: '/circuit-master',
         orientation_type: 1,
         featured_info: [
-            "Intra Campus",
+            "Open For All",
             "Champion Prize Money: 1,500 Tk",
             "Registration Fee: 100 Tk",
         ]
@@ -56,7 +56,7 @@ const contests_overview_data = {
         url: '/integreation-bee',
         orientation_type: 2,
         featured_info: [
-            "Intra Campus",
+            "Open For All",
             "Champion Prize Money: 1,500 Tk",
             "Runner Up Prize Money: 1,000 Tk",
             "Registration Fee: 100 Tk",

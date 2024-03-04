@@ -52,7 +52,7 @@ const PosterPresentation = () => {
                   <ContactSupportIcon sx={{ fontSize: '2rem' }} />
                 </ListItemIcon>
                 <Typography variant='h6' fontSize={{ md: '1.3rem', xs: '1rem' }}>
-                  Call: <span className='text-bold'>01734-704526</span> or <span className='text-bold'>01625-045135</span>
+                  Call: <span className='text-bold'>01734-704526</span>, <span className='text-bold'>01784-500419</span> or <span className='text-bold'>01625-045135</span>
                 </Typography>
               </ListItem>
             </List>

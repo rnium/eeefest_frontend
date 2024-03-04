@@ -61,7 +61,7 @@ const CircuitSolving = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ol>
-                      <li>Only intra campus students are eligible to participate in this segment</li>
+                      <li>Anyone can participate in this segment.</li>
                       <li>Solutions will be judged by a panel of qualified judges.</li>
                       <li>Judges' decisions are final.</li>
                       <li>Any form of cheating or plagiarism will result in immediate disqualification.</li>

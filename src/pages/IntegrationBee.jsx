@@ -81,7 +81,7 @@ const IntegrationBee = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ol>
-                      <li>Only intra campus students are eligible to participate in this segment</li>
+                      <li>Anyone can participate in this segment.</li>
                       <li>The contest will consist of a set of integration problems of varying difficulty. The problems will be released at the start of the contest.</li>
                       <li>The contest will last for a specified duration. All solutions must be submitted within the time frame.</li>
                       <li>Solutions must be submitted in the form of clear handwritten scans. Each solution must include all working out, not just the final answer.</li>
