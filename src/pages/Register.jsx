@@ -11,7 +11,8 @@ import * as urls from '../backendUrls'
 import '../styles/register.css'
 import PaymentSummery from '../components/PaymentSummery';
 import GroupmemberFields from '../components/GroupmemberFields';
-import { payment_deadline } from '../data/main_data'
+import { payment_deadline } from '../data/main_data';
+import {registration_deadline, schedules} from '../data/main_data';
 
 
 function getCookie(name) {
@@ -246,6 +247,9 @@ const Register = () => {
                     <Typography variant="h4" gutterBottom>
                         Contest Registration
                     </Typography>
+                    <Alert severity='warning' sx={{ mt: 1 }}>
+                        Registration Deadline: {registration_deadline}
+                    </Alert>
                     <form onSubmit={handleSubmit}>
                         <FormControl fullWidth sx={{ mt: 2 }}>
                             <InputLabel id="demo-simple-select-label">Select Contest</InputLabel>

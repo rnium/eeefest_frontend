@@ -208,6 +208,50 @@
     }
 }
 
+.keynotespeaker {
+    margin-top: 12rem;
+    padding: 1rem;
+    border-radius: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 0 50px rgba(189, 195, 204, 0.582);
+    .info {
+        position: relative;
+        .top {
+            position: absolute;
+            top: -85%;
+            left: 1rem;
+            .title {
+                // font-family: "Cedarville Cursive", cursive;
+                font-style: italic;
+                padding: 0 5px
+            }
+            
+        }
+    }
+    .display {
+        position: relative;
+        .bg {
+            position: absolute;
+            bottom: -5rem;
+            width: 250px;
+            border-radius: 20px;
+            height: 300px;
+            background-color: #1b86ff;
+            
+            // &::after {
+            //     position: absolute;
+            //     top: -300px;
+            //     left: 50%;
+            //     transform: translateX(-50%);
+            //     content: "";
+            //     width: 230px;
+            //     height: 500px;
+            //     background-color: rgb(190, 183, 255);
+            // }
+        }
+    }
+}
+
 .eventSchedule {
     @include flexer(row);
     i {
