@@ -12,7 +12,7 @@ import '../styles/register.css'
 import PaymentSummery from '../components/PaymentSummery';
 import GroupmemberFields from '../components/GroupmemberFields';
 import { payment_deadline } from '../data/main_data';
-import {registration_deadline, schedules} from '../data/main_data';
+import {registration_deadline} from '../data/main_data';
 
 
 function getCookie(name) {

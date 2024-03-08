@@ -1,21 +1,25 @@
 import { React, useState, useEffect } from 'react'
 import {
     Box
-} from '@mui/material'
+} from '@mui/material';
+import Confetti from 'react-confetti';
 
 let targetDate = new Date('2024-03-09T00:00:00');
 
 const Countdown = () => {
     const [timeLeft, setTimeLeft] = useState({
-        days: '0',
-        hours: '0',
-        minutes: '0',
-        seconds: '0',
+        days: '00',
+        hours: '00',
+        minutes: '00',
+        seconds: '00',
     })
     function updateTimeleft() {
         let currentDate = new Date();
         let timeDifference = targetDate.getTime() - currentDate.getTime();
-
+        console.log("hi");
+        if (timeDifference < 0) {
+            return;
+        }
         let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
@@ -42,7 +46,16 @@ const Countdown = () => {
     });
     return (
         <div className='countdown-container flex-row' data-aos="fade-left" data-aos-delay={100} data-aos-once={true}>
-            <Box display={{xs: 'none', md: 'flex'}} className="countdown-desktop flex-row">
+
+            <Box className="countdown-desktop flex-row">
+                <div className="confetti-con">
+                    <Confetti
+                        width="1000px"
+                        height="150%"
+                        numberOfPieces={70}
+                        gravity={0.08}
+                    />
+                </div>
                 <div className="title-container flex-col">
                     <div className="top">Count the Day</div>
                     <div className="bottom">Until the Fest starts</div>
@@ -66,7 +79,7 @@ const Countdown = () => {
                     </div>
                 </div>
             </Box>
-            <Box display={{xs: 'flex', md: 'none'}} className="countdown-mobile flex-row">
+            {/* <Box display={{ xs: 'flex', md: 'none' }} className="countdown-mobile flex-row">
                 <div className="title-container flex-col">
                     <div className="top">Count the Day</div>
                     <div className="bottom">Until the Fest starts</div>
@@ -89,7 +102,7 @@ const Countdown = () => {
                         <div className="label">Seconds</div>
                     </div>
                 </div>
-            </Box>
+            </Box> */}
         </div>
     )
 }

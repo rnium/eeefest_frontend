@@ -60,6 +60,13 @@
 .countdown-container {
   position: relative;
 }
+.countdown-container .confetti-con {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  background-color: #0037b5;
+}
 .countdown-container .countdown-desktop {
   position: absolute;
   top: 50%;
@@ -71,6 +78,7 @@
   padding: 1.2rem 3rem 1.2rem 7rem;
   box-shadow: -2px -2px 25px rgba(182, 182, 182, 0.61);
   justify-content: left;
+  overflow: hidden;
 }
 .countdown-container .countdown-desktop .title-container {
   align-items: flex-start;
@@ -90,40 +98,6 @@
   font-size: 2.2rem;
   font-weight: bold;
   color: rgb(67, 205, 193);
-}
-.countdown-container .countdown-mobile {
-  width: 100%;
-  background-color: #1b86ff;
-  padding: 1.2rem 3rem;
-  flex-direction: column;
-}
-.countdown-container .countdown-mobile .title-container {
-  align-items: center;
-  margin-bottom: 10px;
-}
-.countdown-container .countdown-mobile .title-container .top {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffffff;
-}
-.countdown-container .countdown-mobile .title-container .bottom {
-  font-size: 1.2rem;
-  color: #ececec;
-}
-.countdown-container .countdown-mobile .times-con .time-unit {
-  margin-right: 2rem;
-}
-.countdown-container .countdown-mobile .times-con .time-unit .num {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: rgb(126, 255, 244);
-}
-.countdown-container .countdown-mobile .times-con .time-unit .label {
-  font-size: 0.9rem;
-  color: #ececec;
-}
-.countdown-container .countdown-mobile .times-con .time-unit:last-of-type {
-  margin-right: 0;
 }
 
 .contests .contestItem {
@@ -350,6 +324,38 @@ a {
   }
   .contest-glimpse .graphic .logo-card-container .logo-card img {
     width: 90px;
+  }
+  .countdown-container .countdown-desktop {
+    border-radius: 0;
+    width: 100%;
+    padding: 1.2rem 3rem;
+    position: static;
+    flex-direction: column;
+  }
+  .countdown-container .countdown-desktop .title-container {
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+  .countdown-container .countdown-desktop .title-container .top {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .countdown-container .countdown-desktop .title-container .bottom {
+    font-size: 1.2rem;
+  }
+  .countdown-container .countdown-desktop .times-con .time-unit {
+    margin-right: 2rem;
+  }
+  .countdown-container .countdown-desktop .times-con .time-unit .num {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .countdown-container .countdown-desktop .times-con .time-unit .label {
+    font-size: 0.9rem;
+  }
+  .countdown-container .countdown-desktop .times-con .time-unit:last-of-type {
+    margin-right: 0;
   }
   .eventSchedule i {
     font-size: 1.4rem;
