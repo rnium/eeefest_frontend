@@ -9,6 +9,7 @@ import CircuitSolving from './pages/CircuitSolving'
 import IntegrationBee from './pages/IntegrationBee'
 import GamingContest from './pages/GamingContest'
 import Footer from './components/Footer';
+import Entrypass from './pages/Entrypass'
 import NotFound from './pages/NotFound';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -28,6 +29,7 @@ const MainComponent = () => {
         <Route path="/circuit-master" element={<CircuitSolving />} />
         <Route path="/integreation-bee" element={<IntegrationBee />} />
         <Route path="/gaming" element={<GamingContest />} />
+        <Route path="/entrypass" element={<Entrypass />} />
         <Route path="*" element={<NotFound />} />
         {/* <Route path="/sponsors/apply" element={<Homepage />} /> */}
       </Routes>

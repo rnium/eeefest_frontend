@@ -10,7 +10,7 @@ import {
   Card, CardMedia, CardContent, Accordion, AccordionSummary,
   AccordionDetails, Button, Alert, Paper, Fade
 } from '@mui/material';
-import {registration_deadline, schedules} from '../data/main_data';
+import { registration_deadline, schedules } from '../data/main_data';
 
 const GamingContest = () => {
   return (
@@ -42,10 +42,10 @@ const GamingContest = () => {
                     <Typography textAlign="center" gutterBottom variant="h5" component="div">
                       FIFA
                     </Typography>
-                    <Box sx={{mb: 2}}>
+                    <Box sx={{ mb: 2 }}>
                       <div className="eventSchedule">
                         <i class='bx bx-time-five' ></i>
-                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {schedules.gamingFifa}</Typography>
+                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }} color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {schedules.gamingFifa}</Typography>
                       </div>
                     </Box>
                     <Typography variant='h6' >
@@ -87,10 +87,10 @@ const GamingContest = () => {
                     <Typography textAlign="center" gutterBottom variant="h5" component="div">
                       CHESS
                     </Typography>
-                    <Box sx={{mb: 2}}>
+                    <Box sx={{ mb: 2 }}>
                       <div className="eventSchedule">
                         <i class='bx bx-time-five' ></i>
-                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }}  color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {schedules.gamingChess}</Typography>
+                        <Typography fontSize={{ md: '1.3rem', xs: '1rem' }} color="textPrimary" sx={{ marginLeft: 1 }}>Schedule: {schedules.gamingChess}</Typography>
                       </div>
                     </Box>
                     <Typography variant='h6' sx={{ mt: 2 }} >
@@ -198,6 +198,12 @@ const GamingContest = () => {
                     </ol>
                   </AccordionDetails>
                 </Accordion>
+              </Paper>
+              <Paper sx={{ px: 2, pt: 2, pb: 4, mt: 4 }} style={{ backgroundColor: '#edede9' }} >
+                <Typography sx={{ mb: 1 }} variant='h5' color="text.secondary" textAlign="center">Chess</Typography>
+                <Box display="flex" justifyContent="center" sx={{ py: 4 }}>
+                  <Button variant='contained' target="_blank" href='/assets/Tournament_Format(Chess).pdf'>Download Rule Book</Button>
+                </Box>
               </Paper>
             </Box>
 

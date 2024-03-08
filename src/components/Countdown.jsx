@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import Confetti from 'react-confetti';
 
-let targetDate = new Date('2024-03-09T00:00:00');
+let targetDate = new Date('2024-03-09T09:30:00');
 
 const Countdown = () => {
     const [timeLeft, setTimeLeft] = useState({
@@ -16,7 +16,6 @@ const Countdown = () => {
     function updateTimeleft() {
         let currentDate = new Date();
         let timeDifference = targetDate.getTime() - currentDate.getTime();
-        console.log("hi");
         if (timeDifference < 0) {
             return;
         }
