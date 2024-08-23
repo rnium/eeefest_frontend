@@ -5,8 +5,8 @@ import { contest_rules } from "@/lib/data/contest_rules";
 const Page = () => {
   return (
     <ContestPage 
-        contestData={contests_data.poster}
-        contestRules={contest_rules.poster}
+        contestData={contests_data.circuit}
+        contestRules={contest_rules.circuit}
     />
   )
 }

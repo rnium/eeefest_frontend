@@ -14,6 +14,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 .navbar {
     a {
         button {
@@ -45,7 +46,9 @@
 
     .heroinfo {
         @include flexer(row);
-        i, .info {
+
+        i,
+        .info {
             color: #6a737d;
         }
 
@@ -233,12 +236,13 @@
 .eventSchedule {
     @include flexer(row);
 
-    i {
-        font-size: 2rem;
+    .icon {
+        width: 40px;
+        height: 40px;
         padding: 0.5rem;
         color: white;
         background-image: linear-gradient(to right, rgba(0, 98, 255, 0.7), rgba(0, 54, 181, 0.7));
-        border-radius: 15px;
+        border-radius: 20px;
         position: relative;
         box-shadow: 0 5px 10px rgba(0, 0, 255, 0.2);
     }
@@ -407,6 +411,7 @@ a {
                 align-items: center;
                 margin-bottom: 10px;
                 margin-right: 0;
+
                 .top {
                     font-size: 1.2rem;
                     font-weight: bold;
@@ -439,8 +444,9 @@ a {
     }
 
     .eventSchedule {
-        i {
-            font-size: 1.4rem;
+        .icon {
+            width: 30px;
+            height: 30px;
         }
     }
 }

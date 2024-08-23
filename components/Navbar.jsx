@@ -118,7 +118,7 @@ const Navbar = () => {
                         <Link href="/circuit-master">
                             <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Circuit Master</Button>
                         </Link>
-                        <Link href="/integreation-bee">
+                        <Link href="/integration-bee">
                             <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Integration BEE</Button>
                         </Link>
                         <Link href="/gaming">
