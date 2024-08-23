@@ -4,13 +4,12 @@ import {
     Button, Stack
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import Image from 'next/image';
-import { contests_overview_data } from '@/lib/data';
+import { contests_data } from '@/lib/data/contests';
 
 let contest_arr = [];
 
-for (let contest_name in contests_overview_data) {
-    contest_arr.push(contests_overview_data[contest_name]);
+for (let contest_name in contests_data) {
+    contest_arr.push(contests_data[contest_name]);
 }
 
 const Contestglimpse = () => {
@@ -22,7 +21,7 @@ const Contestglimpse = () => {
                         <img src={c.hero_img} alt="hero" className='hero' />
                         <div className="logo-card-container">
                             <div className="logo-card"  >
-                                <img src={'/static/images/' + c.logo_name} alt="" />
+                                <img src={'/static/images/' + c.logo_name} alt="contest logo" />
                             </div>
                         </div>
                     </Stack>
