@@ -1,0 +1,95 @@
+.account-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(192, 192, 192, 0.703);
+  overflow: hidden;
+}
+.account-info img {
+  box-shadow: 0 5px 10px rgba(129, 129, 129, 0.5);
+  width: 90px;
+  border-radius: 10px;
+}
+.account-info .info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.account-info .info .title {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.account-info.bkash .title {
+  color: #e1136e;
+}
+
+.account-info.rocket .title {
+  color: purple;
+}
+
+.account-info.nagad .title {
+  color: #ec1f26;
+}
+
+.pay-stats {
+  margin-top: 1rem;
+  padding-top: 10px;
+  border-top: 1px dashed rgb(125, 146, 157);
+}
+.pay-stats .item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.pay-stats .item .label, .pay-stats .item .value {
+  font-size: 1.2rem;
+}
+.pay-stats .item .label img.icon {
+  width: 40px;
+  border-radius: 5px;
+}
+.pay-stats .item .value {
+  font-weight: bold;
+}
+.pay-stats .item:last-of-type {
+  border-top: 2px dotted rgb(175, 175, 175);
+}
+.pay-stats .item.cashout .label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected-contest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 7px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, rgba(0, 140, 255, 0.3), rgba(0, 64, 255, 0.3));
+}
+.selected-contest .contest-logo {
+  margin-right: 1rem;
+}
+.selected-contest .contest-logo img {
+  width: 50px;
+}
+.selected-contest .info .title {
+  color: rgb(55, 67, 123);
+  font-weight: bold;
+}
+.selected-contest .info .sub-title {
+  font-family: "Montserrat", sans-serif;
+}/*# sourceMappingURL=register.css.map */

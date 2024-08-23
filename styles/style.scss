@@ -1,0 +1,460 @@
+@mixin flexer($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@import url('https://fonts.cdnfonts.com/css/doctor-glitch');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Roboto';
+    margin: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    a {
+        button {
+            color: #939393;
+        }
+    }
+
+    a.active {
+        button {
+            color: #1b86ff;
+        }
+    }
+}
+
+.hero-section {
+    overflow: hidden;
+
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.05;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .heroinfo {
+        @include flexer(row);
+        i, .info {
+            color: #6a737d;
+        }
+
+        i {
+            font-size: 1.5rem;
+            margin-right: 5px;
+        }
+
+        .info {
+            font-size: 1.2rem;
+            font-family: 'Roboto';
+        }
+    }
+}
+
+.description {
+    position: relative;
+    overflow: hidden;
+
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.9;
+        background-repeat: no-repeat;
+        backdrop-filter: blur(5px);
+        background-size: cover;
+    }
+}
+
+.countdown-container {
+    position: relative;
+
+    .confetti-con {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: auto;
+        background-color: #0037b5;
+    }
+
+    // height: 1rem;
+    .countdown-desktop {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 80%;
+        transform: translateY(-50%);
+        border-radius: 180px 0 0 180px;
+        background-color: white;
+        padding: 1.2rem 3rem 1.2rem 7rem;
+        box-shadow: -2px -2px 25px rgba(182, 182, 182, 0.61);
+        justify-content: left;
+        overflow: hidden;
+
+
+        .title-container {
+            align-items: flex-start;
+            margin-right: 4rem;
+
+            .top {
+                font-size: 1.7rem;
+                font-weight: bold;
+            }
+
+            .bottom {
+                font-size: 1.7rem;
+            }
+        }
+
+        .times-con {
+            .time-unit {
+                margin-right: 3rem;
+
+                .num {
+                    font-size: 2.2rem;
+                    font-weight: bold;
+                    color: rgb(67, 205, 193);
+                }
+            }
+        }
+    }
+}
+
+.contests {
+    .contestItem {
+        transition: all 0.3s ease;
+        padding: 2rem 0;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+            /* Scale up by 10% */
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+        }
+    }
+}
+
+.contest-glimpse {
+    .graphic {
+        .hero {
+            border-radius: 20px;
+        }
+
+        .logo-card-container {
+            height: 4.4rem;
+            position: relative;
+
+            .logo-card {
+                position: absolute;
+                bottom: 0;
+                right: 15%;
+                padding: 6rem 2rem;
+                background-color: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(5px);
+                box-shadow: 0 5px 10px rgba(172, 169, 169, 0.7);
+                border-radius: 20px;
+                transition: all 500ms;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.9);
+                }
+
+                img {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}
+
+.keynotespeaker {
+    margin-top: 12rem;
+    padding: 1rem;
+    border-radius: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 0 50px rgba(189, 195, 204, 0.582);
+
+    .info {
+        position: relative;
+
+        .top {
+            position: absolute;
+            top: -85%;
+            left: 1rem;
+
+            .title {
+                // font-family: "Cedarville Cursive", cursive;
+                font-style: italic;
+                padding: 0 5px
+            }
+
+        }
+    }
+
+    .display {
+        position: relative;
+
+        .bg {
+            position: absolute;
+            bottom: -5rem;
+            width: 250px;
+            border-radius: 20px;
+            height: 300px;
+            background-color: #1b86ff;
+
+            // &::after {
+            //     position: absolute;
+            //     top: -300px;
+            //     left: 50%;
+            //     transform: translateX(-50%);
+            //     content: "";
+            //     width: 230px;
+            //     height: 500px;
+            //     background-color: rgb(190, 183, 255);
+            // }
+        }
+    }
+}
+
+.eventSchedule {
+    @include flexer(row);
+
+    i {
+        font-size: 2rem;
+        padding: 0.5rem;
+        color: white;
+        background-image: linear-gradient(to right, rgba(0, 98, 255, 0.7), rgba(0, 54, 181, 0.7));
+        border-radius: 15px;
+        position: relative;
+        box-shadow: 0 5px 10px rgba(0, 0, 255, 0.2);
+    }
+}
+
+.text-gradient {
+    background-image: linear-gradient(to right, #0060ff, #0037b5);
+    text-shadow: 0 0 10px rgba(72, 79, 179, 0.1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.contest-page {
+    position: relative;
+
+    .banner {
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.footer {
+    background-color: rgb(231, 231, 231) !important;
+}
+
+.glitch-font {
+    font-family: 'Doctor Glitch', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.mt-sm {
+    margin-top: 1rem;
+}
+
+.me-sm {
+    margin-right: 1rem;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-muted {
+    color: gray;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.flex-col {
+    @include flexer(column);
+}
+
+.flex-row {
+    @include flexer(row);
+}
+
+.reg-form {
+    margin-top: 3rem;
+}
+
+.formSumissionConfirm {
+    @include flexer(column);
+    margin-top: 5rem;
+
+    i {
+        font-size: 5rem;
+        color: rgb(16, 211, 146);
+    }
+
+    .info {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .info.bottom {
+        color: rgb(78, 102, 102);
+        font-size: 1.2rem;
+    }
+}
+
+.floatingBtn {
+    position: sticky;
+    bottom: 2rem;
+    right: 0px;
+
+    .inner {
+        position: absolute;
+        right: 1.5rem;
+        bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .formSumissionConfirm {
+        .info {
+            font-size: 1rem;
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .hero-section {
+        .heroinfo {
+            margin: 0;
+            margin-top: 1rem;
+            flex-direction: column;
+
+            i {
+                font-size: 1.3rem;
+                margin-right: 0;
+            }
+
+            .info {
+                font-size: 1rem;
+                text-align: center
+            }
+        }
+    }
+
+    .contest-glimpse {
+        .graphic {
+            .logo-card-container {
+                height: 2rem;
+
+                .logo-card {
+                    right: 15%;
+                    padding: 3rem 1rem;
+                    box-shadow: 0 5px 10px rgba(138, 138, 138, 0.6);
+                    border-radius: 10px;
+
+                    img {
+                        width: 90px;
+                    }
+                }
+            }
+        }
+    }
+
+    .countdown-container {
+        .countdown-desktop {
+            border-radius: 0;
+            width: 100%;
+            padding: 1.2rem 3rem;
+            // box-shadow: inset -2px -2px 25px rgba(182, 182, 182, 0.61);
+            position: static;
+            flex-direction: column;
+
+            .title-container {
+                align-items: center;
+                margin-bottom: 10px;
+                margin-right: 0;
+                .top {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+
+                .bottom {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .times-con {
+                .time-unit {
+                    margin-right: 2rem;
+
+                    .num {
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                    }
+
+                    .label {
+                        font-size: 0.9rem;
+                    }
+
+                    &:last-of-type {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .eventSchedule {
+        i {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.events {
+    @include flexer(column);
+    background-color: rgb(216, 216, 255);
+    padding: 5rem 2rem;
+
+    i {
+        font-size: 3rem;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+}
