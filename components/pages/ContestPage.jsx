@@ -10,9 +10,11 @@ import {
 import { registration_deadline } from '@/lib/data/basic_info';
 import { prizemoney_titles } from '@/lib/data/contests';
 import Image from 'next/image';
+import RuleItem from '../micro/RuleItem';
+import { RiTrophyLine } from '@remixicon/react'
 
 
-const ContestPage = ({ contestData, dualContest = false }) => {
+const ContestPage = ({ contestData, contestRules }) => {
     return (
         <Fade in={true} timeout={300}>
             <div className='contest-page'>
@@ -51,9 +53,21 @@ const ContestPage = ({ contestData, dualContest = false }) => {
                                     <List component="ul" >
                                         {
                                             contestData.prize_money.map((amount, idx) => (
-                                                <ListItem>
-                                                    <ListItemIcon>
-                                                        <EmojiEventsIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
+                                                <ListItem >
+                                                    <ListItemIcon
+                                                        sx={{ display: { xs: 'none', md: 'block' } }}
+                                                        marginRight={0}
+                                                    >
+                                                        <RiTrophyLine
+                                                            size={30}
+                                                        />
+                                                    </ListItemIcon>
+                                                    <ListItemIcon
+                                                        sx={{ display: { xs: 'block', md: 'none' } }}
+                                                    >
+                                                        <RiTrophyLine
+                                                            size={20}
+                                                        />
                                                     </ListItemIcon>
                                                     <Typography variant='h6' color="textSecondary" fontSize={{ md: '1.3rem', xs: '1rem' }}>
                                                         {prizemoney_titles[idx]}: <span className='text-bold'>{amount.toLocaleString()} Tk</span>
@@ -67,9 +81,13 @@ const ContestPage = ({ contestData, dualContest = false }) => {
                         <Typography variant='h5' sx={{ mt: 5 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
                             Registration fee: <span className='text-bold'>{contestData.fee.toLocaleString()} Tk</span>
                         </Typography>
-                        <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
-                            Gift : {contestData.gift}
-                        </Typography>
+                        {
+                            contestData.gift && (
+                                <Typography variant='h5' sx={{ mt: 2 }} fontSize={{ md: '1.5rem', xs: '1.2rem' }}>
+                                    Gift : {contestData.gift}
+                                </Typography>
+                            )
+                        }
                         <Box display="flex" justifyContent="center" sx={{ py: 4 }}>
                             <Button variant='contained' target="_blank" href={contestData.rulebook_url}>Download Rule Book</Button>
                         </Box>
@@ -108,139 +126,66 @@ const ContestPage = ({ contestData, dualContest = false }) => {
                                     </ListItem> : null
                             }
                         </List>
-                        {/* <Box sx={{ mt: 7 }}>
+                        <Box sx={{ mt: 7 }}>
                             <Paper sx={{ px: 2, py: 5 }} style={{ backgroundColor: '#edede9' }} >
-                                <Accordion defaultExpanded>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel3-content"
-                                        id="panel3-header"
-                                    >
-                                        <Typography variant='h6'>Eligibility</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <ol>
-                                            <li>The competition is open to all the students of college and universities.</li>
-                                            <li>
-                                                Participants may participate individually or as a team. Please note the following requirements:
-                                                <ul>
-                                                    <li>Teams can be of 1 - 3 members. Additional members are allowed, but must pay an extra fee.</li>
-                                                </ul>
-                                            </li>
-                                            <li>The competition is open to all the students of college and universities.</li>
-                                            <li>Each participant, whether individual or a team, must give Team Name.</li>
-                                            <li>Team members can be from different institutions.</li>
-                                            <li>Participants must be enrolled as a current student of any university / college / school in Bangladesh.</li>
-                                        </ol>
-                                    </AccordionDetails>
-                                </Accordion>
-                                <Accordion defaultExpanded>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel3-content"
-                                        id="panel3-header"
-                                    >
-                                        <Typography variant='h6'>General Rules</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <ol>
-                                            <li>All the participating teams must submit their robot to the organizing committee, thirty minutes before the start of the competition and only one member from the team would be allowed to operate the robot on track.</li>
-                                            <li>Robots must have dedicated on-board power supply and no power supply would be provided from the organizing committee to operate the robot on track.</li>
-                                            <li>The robot must be autonomous and no remote control is allowed.	 	</li>
-                                            <li>Points will be awarded only if the robot travels through the whole path of the checkpoint and crosses the checkpoint skipping none. 	</li>
-                                            <li>Touching the bot during run-time will count as restart. Restart is a must in case of a line loss. 	</li>
-                                            <li>A maximum of 5 restarts will be allowed.</li>
-                                            <li>The tournament is comprised of two phases:
-                                                <ul>
-                                                    <li>a) Eliminator round</li>
-                                                    <li>b) Final round</li>
-                                                </ul>
-                                            </li>
-
-                                            <li>The winning team is declared based on point.</li>
-                                            <li>The organizers reserve the right to change the rules as they deem fit.</li>
-                                            <li>The judges can ask for an explanation of any mechanism on the robot and there would be an immediate disqualification of defaulters of any kind.</li>
-                                            <li>Judges decision will be final.</li>
-                                        </ol>
-                                    </AccordionDetails>
-                                </Accordion>
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel3-content"
-                                        id="panel3-header"
-                                    >
-                                        <Typography variant='h6'>An Overview of The Track</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <ol>
-                                            <li>The color of the line in the track of this tournament can be white in a black background or black in a white background. Line width will be 3 cm.</li>
-                                            <li>There can be discontinuity.</li>
-                                            <li>There can be loops in the track.</li>
-                                            <li>There can be a bridge in the track, whose upward and downward ramp would not be more than 25 degree.</li>
-                                            <li>There can be acute angles which can be 30-150 degree.</li>
-                                            <li>No wall or object will be present in the track.</li>
-                                        </ol>
-                                    </AccordionDetails>
-                                </Accordion>
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel3-content"
-                                        id="panel3-header"
-                                    >
-                                        <Typography variant='h6'>Game Play</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <ol>
-                                            <li>The robot will be placed at a pre-assigned starting point on each stage and may be started by hand when directed by the judge.</li>
-                                            <li>The bot has to start from the indicated starting point and reach the end point following line. End of task is indicated by reaching the end point.	 	</li>
-                                            <li>Robot must be able to operate under any lighting conditions. (Team should take necessary measures to isolate the sensors from external lighting like camera flash)</li>
-                                            <li>Any robot that loses the line must restart from the previous check point. In this case the timer will remain running during restart and a penalty will be pointed.	 	</li>
-                                            <li>After submitting the robot and during competition time any change of hardware and software is not allowed After qualifying round, only the qualified teams can perform in the final round.	</li>
-                                            <li>There is no option to skip any task.</li>
-                                            <li>Teams will be given maximum 5 minutes in the qualifying round and the Robot can take maximum 5 restarts in these 5 minutes. 	</li>
-                                            <li>Teams will be given maximum 8 minutes in the final round and the Robot can take maximum 5 restarts in these 8 minutes.</li>
-                                            <li>Timer will be running if a robot needs restart.</li>
-                                        </ol>
-                                    </AccordionDetails>
-                                </Accordion>
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel3-content"
-                                        id="panel3-header"
-                                    >
-                                        <Typography variant='h6'>Caution</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <ol>
-                                            <li>If team is found guilty by the following acts would lead to be disqualified :</li>
-                                            <ul>
-                                                <li>Showing disrespect to other teams and competitors.</li>
-                                                <li>Showing disrespect to security rules.</li>
-                                                <li>Showing disrespect to competition judges.</li>
-                                            </ul>
-                                            <li>The authority reserves the right to change the rules in that case will be pre-notified and will be applicable to all teams.</li>
-                                            <li>Authority won’t take responsibility for any accidents caused by the team 	members or their robots.</li>
-                                        </ol>
-                                    </AccordionDetails>
-                                </Accordion>
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel3-content"
-                                        id="panel3-header"
-                                    >
-                                        <Typography variant='h6'>Demo Track</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <img src='/static/images/lfr_track.png' width="100%" alt='LFR Track' />
-                                    </AccordionDetails>
-                                </Accordion>
+                                {
+                                    contestRules.map((ruleSection, idx) => (
+                                        <Accordion
+                                            key={idx}
+                                            defaultExpanded={idx < 2}
+                                        >
+                                            <AccordionSummary
+                                                expandIcon={<ExpandMoreIcon />}
+                                                aria-controls="panel3-content"
+                                                id="panel3-header"
+                                            >
+                                                <Typography variant='h6'>{ruleSection.title}</Typography>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                                {
+                                                    ruleSection?.image_type ?
+                                                        <img src='/static/images/lfr_track.png' width="100%" alt='LFR Track' /> :
+                                                        <ol>
+                                                            {
+                                                                ruleSection.rules.map((rule, idx) => (
+                                                                    <li
+                                                                        key={idx}
+                                                                    >
+                                                                        {
+                                                                            typeof (rule) === 'string' ?
+                                                                                <RuleItem
+                                                                                    rule={rule}
+                                                                                />
+                                                                                :
+                                                                                <>
+                                                                                    <RuleItem
+                                                                                        rule={rule.main}
+                                                                                    />
+                                                                                    <ul>
+                                                                                        {
+                                                                                            rule.sub.map((sub_rule, idx) => (
+                                                                                                <RuleItem
+                                                                                                    key={idx}
+                                                                                                    rule={sub_rule}
+                                                                                                    listItem
+                                                                                                />
+                                                                                            ))
+                                                                                        }
+                                                                                    </ul>
+                                                                                </>
+                                                                        }
+                                                                    </li>
+                                                                ))
+                                                            }
+                                                        </ol>
+                                                }
+                                            </AccordionDetails>
+                                        </Accordion>
+                                    ))
+                                }
 
                             </Paper>
-                        </Box> */}
+                        </Box>
                     </Box>
                 </Container>
 
