@@ -263,10 +263,6 @@ a {
   align-items: center;
 }
 
-.reg-form {
-  margin-top: 3rem;
-}
-
 .formSumissionConfirm {
   display: flex;
   flex-direction: column;

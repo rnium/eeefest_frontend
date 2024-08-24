@@ -310,10 +310,6 @@ a {
     @include flexer(row);
 }
 
-.reg-form {
-    margin-top: 3rem;
-}
-
 .formSumissionConfirm {
     @include flexer(column);
     margin-top: 5rem;

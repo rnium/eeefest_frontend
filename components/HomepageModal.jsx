@@ -5,6 +5,7 @@ import { Modal } from "antd";
 import EventIcon from '@mui/icons-material/Event';
 import Fab from '@mui/material/Fab';
 import Box from '@mui/material/Box';
+import { RiCalendarScheduleLine } from '@remixicon/react'
 
 const HomepageModal = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,10 @@ const HomepageModal = () => {
             </Modal>
             <Box className="floatingBtn" sx={{ '& > :not(style)': { m: 1 } }}>
                 <Fab className="inner" color='secondary' variant="extended" aria-label="like" onClick={() => setIsOpen(true)}>
-                    <EventIcon sx={{ marginRight: 1 }} />
+                    <RiCalendarScheduleLine
+                        size={25}
+                        style={{ marginRight: 10 }}
+                    />
                     Schedule
                 </Fab>
             </Box>
