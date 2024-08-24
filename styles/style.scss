@@ -16,16 +16,11 @@
 }
 
 .navbar {
-    a {
-        button {
-            color: #939393;
-        }
+    .navbtn {
+        color: #939393;
     }
-
-    a.active {
-        button {
-            color: #1b86ff;
-        }
+    .navbtn.active {
+        color: #1b86ff;
     }
 }
 

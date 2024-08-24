@@ -11,13 +11,21 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { contestPages } from '@/lib/data/contests';
 
 import logo from '@/public/static/images/logo.png';
 
-const pageList = Object.keys(contestPages).map(key => (contestPages[key]));
+const pageList = [
+    {
+        title: 'Home',
+        url: '/'
+    },
+    ...Object.keys(contestPages).map(key => (contestPages[key]))
+]
 
 const Navbar = () => {
+    const pathname = usePathname();
     const [anchorElNav, setAnchorElNav] = useState(null);
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -108,16 +116,13 @@ const Navbar = () => {
                         </Link>
                     </Box>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-
-                        <Link href="/">
-                            <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Home</Button>
-                        </Link>
                         {
                             pageList.map((page, idx) => (
                                 <Link href={page.url} key={idx}>
                                     <Button
                                         size='small'
                                         sx={{ marginRight: 2 }}
+                                        className={pathname === page.url ? 'navbtn active' : 'navbtn'}
                                     >
                                         {page.title}
                                     </Button>
