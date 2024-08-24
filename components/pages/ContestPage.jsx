@@ -17,10 +17,9 @@ const ContestPage = ({ contestData, contestRules }) => {
         <div className='contest-page'>
             <div style={{ width: '100%' }}>
                 <Image
+                    placeholder='blur'
                     src={contestData.banner}
                     layout='responsive'
-                    placeholder='blur'
-                    priority
                 />
             </div>
             <Container sx={{ mb: 10 }}>
@@ -33,7 +32,7 @@ const ContestPage = ({ contestData, contestRules }) => {
                 {
                     contestData?.groupType ?
                         <Box
-                            sx={{mt: 5}}
+                            sx={{ mt: 5 }}
                         >
                             <Grid container spacing={5}>
                                 {
