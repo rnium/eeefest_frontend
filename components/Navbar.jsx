@@ -11,8 +11,11 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import Image from 'next/image';
+import { contestPages } from '@/lib/data/contests';
 
-import logo from '@/public/static/images/logo.png'
+import logo from '@/public/static/images/logo.png';
+
+const pageList = Object.keys(contestPages).map(key => (contestPages[key]));
 
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -109,21 +112,18 @@ const Navbar = () => {
                         <Link href="/">
                             <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Home</Button>
                         </Link>
-                        <Link href="/line-follower">
-                            <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Line Follower Robot</Button>
-                        </Link>
-                        <Link href="/poster-presentation">
-                            <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Poster Presentation</Button>
-                        </Link>
-                        <Link href="/circuit-master">
-                            <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Circuit Master</Button>
-                        </Link>
-                        <Link href="/integration-bee">
-                            <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Integration BEE</Button>
-                        </Link>
-                        <Link href="/gaming">
-                            <Button size='small' className='menubtn' sx={{ marginRight: 2 }}>Gaming</Button>
-                        </Link>
+                        {
+                            pageList.map((page, idx) => (
+                                <Link href={page.url} key={idx}>
+                                    <Button
+                                        size='small'
+                                        sx={{ marginRight: 2 }}
+                                    >
+                                        {page.title}
+                                    </Button>
+                                </Link>
+                            ))
+                        }
                     </Box>
                 </Toolbar>
             </AppBar>

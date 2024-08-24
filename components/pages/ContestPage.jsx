@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { registration_deadline } from '@/lib/data/basic_info';
 import Image from 'next/image';
-import ContestRuleAccordions from '../molecules/ContestRuleAccordions';
+import MultiContestAccordions from '../molecules/MultiContestAccordions';
 import ContestCard from '../molecules/ContestCard';
 import ContestDetail from '../molecules/ContestDetail';
 
@@ -55,7 +55,7 @@ const ContestPage = ({ contestData, contestRules }) => {
                         :
                         <ContestDetail contestData={contestData} />
                 }
-                <ContestRuleAccordions contestRules={contestRules} sx={{ mt: 7 }} />
+                <MultiContestAccordions contestRules={contestRules} sx={{ mt: 7 }} />
             </Container>
 
             <Box className="floatingBtn" >

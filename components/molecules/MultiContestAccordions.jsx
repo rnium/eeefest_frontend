@@ -5,7 +5,7 @@ import {
 import ContestAccordions from './ContestAccordions';
 
 
-const ContestRuleAccordions = ({ contestRules, sx }) => {
+const MultiContestAccordions = ({ contestRules, sx }) => {
     return (
         <Stack
             sx={{ ...sx }}
@@ -29,4 +29,4 @@ const ContestRuleAccordions = ({ contestRules, sx }) => {
     )
 }
 
-export default ContestRuleAccordions
+export default MultiContestAccordions;
