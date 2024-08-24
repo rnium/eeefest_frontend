@@ -36,7 +36,7 @@ const Navbar = () => {
     return (
         <Box sx={{ flexGrow: 1 }} className="navbar">
             <AppBar position="static" color='transparent'>
-                <Toolbar sx={{ py: 2 }}>
+                <Toolbar sx={{ py: 3 }}>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
