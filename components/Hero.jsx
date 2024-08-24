@@ -17,13 +17,13 @@ const Hero = () => {
                         <Typography className='text-gradient' fontFamily="Doctor Glitch" variant='h1' fontSize={{ xs: '3rem', md: '6rem' }} textAlign="center" container="div">3.0</Typography>
                     </Box>
                     <Stack
-                        direction='row'
+                        direction={{xs: 'column', md: 'row'}}
                         spacing={3}
                         justifyContent='center'
-                        sx={{mt: 2}}
+                        sx={{mt: {xs: 4, md: 3}}}
                     >
                         <Stack
-                            direction='row'
+                            direction={{xs: 'column', md: 'row'}}
                             spacing={1}
                             alignItems='center'
                         >
@@ -33,12 +33,13 @@ const Hero = () => {
                             <Typography
                                 color='text.secondary'
                                 variant='h6'
+                                fontSize={{xs: '0.9rem', md: '1.2rem'}}
                             >
                                 9<sup>th</sup> & 10<sup>th</sup> March 2024
                             </Typography>
                         </Stack>
                         <Stack
-                            direction='row'
+                            direction={{xs: 'column', md: 'row'}}
                             spacing={1}
                             alignItems='center'
                         >
@@ -48,6 +49,7 @@ const Hero = () => {
                             <Typography
                                 color='text.secondary'
                                 variant='h6'
+                                fontSize={{xs: '0.9rem', md: '1.2rem'}}
                             >
                                 Dept. of EEE, Sylhet Engineering College
                             </Typography>

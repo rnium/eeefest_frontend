@@ -1,5 +1,11 @@
 import Register from "@/components/pages/Register"
 
+
+export const metadata = {
+    title: `Contest Registration | TechnoVenture 3.0`,
+}
+
+
 const Page = ({ searchParams }) => {
     console.log(searchParams);
     return (

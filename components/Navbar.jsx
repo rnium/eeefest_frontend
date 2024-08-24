@@ -66,48 +66,15 @@ const Navbar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            <Link href="/">
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    Home
-                                </MenuItem>
-                            </Link>
-
-                            <Link href="/register">
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    Register
-                                </MenuItem>
-                            </Link>
-
-                            <Link href="/line-follower">
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    Line Follower ROBOT
-                                </MenuItem>
-                            </Link>
-
-                            <Link href="/poster-presentation">
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    Poster Presentation
-                                </MenuItem>
-                            </Link>
-
-                            <Link href="/circuit-master">
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    Circuit Master
-                                </MenuItem>
-                            </Link>
-
-                            <Link href="/integreation-bee">
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    Integration Bee
-                                </MenuItem>
-                            </Link>
-
-                            <Link href="/gaming">
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    Gaming
-                                </MenuItem>
-                            </Link>
-
+                            {
+                                pageList.map((page, idx) => (
+                                    <Link href={page.url}>
+                                        <MenuItem onClick={handleCloseNavMenu}>
+                                            {page.title}
+                                        </MenuItem>
+                                    </Link>
+                                ))
+                            }
                         </Menu>
                     </Box>
                     <Box sx={{ flexGrow: 1 }}>

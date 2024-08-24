@@ -1,9 +1,7 @@
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fab from '@mui/material/Fab';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
 import {
-    Box, Container, Typography, Grid, List, ListItem, ListItemIcon, Button, Alert
+    Box, Container, Typography, Grid, Alert
 } from '@mui/material';
 import { registration_deadline } from '@/lib/data/basic_info';
 import Image from 'next/image';
@@ -12,7 +10,7 @@ import ContestCard from '../molecules/ContestCard';
 import ContestDetail from '../molecules/ContestDetail';
 
 
-const ContestPage = ({ contestData, contestRules }) => {
+const ContestPage = ({ contestData, contestRules, slug }) => {
     return (
         <div className='contest-page'>
             <div style={{ width: '100%' }}>
@@ -58,7 +56,7 @@ const ContestPage = ({ contestData, contestRules }) => {
             </Container>
 
             <Box className="floatingBtn" >
-                <a href="/register?contest=lfr">
+                <a href={slug ? `/register?contest=${slug}` : `/register`}>
                     <Fab color='primary' className='inner' variant="extended" aria-label="like">
                         <TouchAppIcon sx={{ marginRight: 1 }} />
                         Register Now

@@ -4,6 +4,7 @@ import {
     Button, Stack
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Image from 'next/image';
 import { contests_data } from '@/lib/data/contests';
 
 let contest_arr = [];
@@ -18,10 +19,15 @@ const Contestglimpse = () => {
             <Grid container>
                 <Grid item xs={12} md={5} order={{ xs: 1, md: (idx + 1) % 2 ? 1 : 2 }} sx={{ marginBottom: { xs: 4, md: 0 } }}>
                     <Stack className="graphic" >
-                        <img src={c.hero_img} alt="hero" className='hero' />
+                        <Image 
+                            placeholder='blur'
+                            src={c.hero_img}
+                            layout='responsive'
+                            style={{borderRadius: '20px'}}
+                        />
                         <div className="logo-card-container">
                             <div className="logo-card"  >
-                                <img src={'/static/images/' + c.logo_name} alt="contest logo" />
+                                <img src={`/static/images/${c.logo_name}`} alt={c.name} />
                             </div>
                         </div>
                     </Stack>
