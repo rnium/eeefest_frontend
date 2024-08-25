@@ -314,9 +314,10 @@ a {
     @include flexer(column);
     margin-top: 5rem;
 
-    i {
+    .icon {
         font-size: 5rem;
-        color: rgb(16, 211, 146);
+        color: #10d392;
+        margin-bottom: 2rem;
     }
 
     .info {

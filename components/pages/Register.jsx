@@ -20,6 +20,7 @@ import {
     payment_deadline
 } from '@/lib/data/basic_info';
 import { contests_data } from '@/lib/data/contests';
+import { RiCheckDoubleLine } from '@remixicon/react'
 import banner_img from '@/public/static/images/banner.jpg'
 
 
@@ -50,7 +51,7 @@ function getGroupmemberStateObject(num_members) {
     return members;
 }
 
-const Register = ({contest}) => {
+const Register = ({ contest }) => {
     const [formData, setFormData] = useState({
         team_name: '',
         group_members_count: 1,
@@ -205,7 +206,10 @@ const Register = ({contest}) => {
         return (
             <Container sx={{ mb: 10 }}>
                 <div className='formSumissionConfirm'>
-                    <i class='bx bx-check-double'></i>
+                    <RiCheckDoubleLine 
+                        size={70}
+                        className="icon"
+                    />
                     <Typography variant='body1' fontSize={{ xs: '1rem', md: '1.4rem' }} textAlign="justify">
                         Congratulations, {groupFormData.group_member_1.name}! Your registration has been successfully received.
                         Our team is currently processing your registration details. Once your registration is verified, you will receive a confirmation email at the address provided during registration.

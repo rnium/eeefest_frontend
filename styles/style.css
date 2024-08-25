@@ -270,9 +270,10 @@ a {
   align-items: center;
   margin-top: 5rem;
 }
-.formSumissionConfirm i {
+.formSumissionConfirm .icon {
   font-size: 5rem;
-  color: rgb(16, 211, 146);
+  color: #10d392;
+  margin-bottom: 2rem;
 }
 .formSumissionConfirm .info {
   font-size: 1.5rem;
