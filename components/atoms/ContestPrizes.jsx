@@ -27,7 +27,7 @@ const ContestPrizes = ({ contestData, sx }) => {
                         <List component="ul" >
                             {
                                 contestData.prize_money.map((amount, idx) => (
-                                    <ListItem >
+                                    <ListItem key={idx}>
                                         <ListItemIcon
                                             sx={{ display: { xs: 'none', md: 'block' } }}
                                             marginRight={0}

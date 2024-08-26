@@ -328,7 +328,7 @@ const Register = ({ contest }) => {
                                 <Fade in={true}>
                                     <Box>
                                         <Alert severity='success'>
-                                            you have the flexibility to complete payment at your convenience. Please remember to make the payment before the deadline expires to avoid any inconveniences. When making the payment later, kindly include your <b>team name as the reference</b> to ensure it's properly attributed to your registration.
+                                            you have the flexibility to complete payment at your convenience. Please remember to make the payment before the deadline expires to avoid any inconveniences. When making the payment later, kindly include your <b>team name as the reference</b> to ensure it&apos;s properly attributed to your registration.
                                         </Alert>
                                         <Alert severity='warning' sx={{ mt: 1 }}>
                                             Payment Deadline: <b>{payment_deadline}</b>

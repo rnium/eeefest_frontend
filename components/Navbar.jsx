@@ -68,7 +68,7 @@ const Navbar = () => {
                         >
                             {
                                 pageList.map((page, idx) => (
-                                    <Link href={page.url}>
+                                    <Link href={page.url} key={idx}>
                                         <MenuItem onClick={handleCloseNavMenu}>
                                             {page.title}
                                         </MenuItem>

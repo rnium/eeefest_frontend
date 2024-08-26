@@ -7,10 +7,9 @@ export const metadata = {
 
 
 const Page = ({ searchParams }) => {
-    console.log(searchParams);
     return (
         <Register contest={searchParams?.contest} />
     )
 }
 
-export default Page
+export default Page;

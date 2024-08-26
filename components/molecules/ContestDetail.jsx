@@ -53,8 +53,8 @@ const ContestDetail = ({ contestData }) => {
                                 Call:
                                 {
                                     contestData?.helpline.phone.map((num, idx) => (
-                                        <span className='text-bold'>
-                                            &nbsp;+8801710-737663
+                                        <span className='text-bold' key={idx}>
+                                            &nbsp;{num}
                                             {idx < contestData.helpline.phone.length - 1 ? ',' : null}
                                         </span>
                                     ))
