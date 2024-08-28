@@ -2,11 +2,12 @@ import React from 'react';
 import {
     Box, TextField, Button, Typography
 } from '@mui/material';
-import axios from 'axios';
-import * as urls from '../data/backendUrls';
+import { useLogin } from '@/hooks/useAuth';
 
 
 const Loginpage = ({}) => {
+  const {success, loading, error, login} = useLogin();
+
   const [loginForm, setLoginForm] = React.useState({
     username: "",
     password: ""
@@ -20,12 +21,8 @@ const Loginpage = ({}) => {
     })
   }
 
-  const handleSubmit = async () => {
-    try {
-      const res = await axios.post(urls.loginUrl, loginForm);
-    } catch (error) {
-      alert(error.message);
-    }
+  const handleSubmit = () => {
+    login(loginForm);
   }
 
   return (

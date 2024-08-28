@@ -1,10 +1,10 @@
 import { usePost } from "./useApi";
 import { useEffect } from "react";
-import { api_endpoints } from "../data";
+import { admin_endpoints } from "@/lib/data/api_urls";
 
 
 export const useLogin = () => {
-    const {data, loading, success, error, perform_post} = usePost(api_endpoints.login, false);
+    const {data, loading, success, error, perform_post} = usePost(admin_endpoints.login, false);
     useEffect(() => {
         if (data?.access_token) {
             localStorage.setItem("admin_t", data.access_token);
