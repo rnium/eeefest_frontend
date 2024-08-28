@@ -1,3 +1,5 @@
+'use client'
+
 import { configureStore } from "@reduxjs/toolkit";
 import accountReducer from "./accountReducer";
 import { Provider } from "react-redux";

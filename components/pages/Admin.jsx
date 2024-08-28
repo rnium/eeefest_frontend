@@ -1,27 +1,23 @@
 'use client'
-import { useState, useEffect } from "react"
-import { useGet } from "@/hooks/useApi";
-import { admin_urls } from "@/lib/data/api_urls";
+
+import { useEffect } from "react";
+import { useUser } from "@/hooks/useUser";
+import { Stack, CircularProgress } from "@mui/material";
+import AdminLogin from "./AdminLogin";
+import Loader from "../atoms/Loader";
+
 
 const Admin = () => {
-    const {
-        data: userinfo, 
-        success, 
-        error,
-        loaded,
-        loading,
-        perform_get
-    } = useGet(admin_urls.userinfo, true)
+    const { userInfo, userIsLoaded, userIsAuthenticated } = useUser();
 
-    useEffect(() => {
-        if (!loaded) {
-            perform_get();
-        }
-    }, [loaded])
+    if (!userIsLoaded) {
+        return <Loader />
+    } else if (!userIsAuthenticated) {
+        return <AdminLogin />
+    } else {
+        return <div>Logged In</div>
+    }
 
-    return (
-        <div>Admin</div>
-    )
 }
 
 export default Admin

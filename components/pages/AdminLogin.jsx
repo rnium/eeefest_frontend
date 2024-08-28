@@ -5,7 +5,7 @@ import {
 import { useLogin } from '@/hooks/useAuth';
 
 
-const Loginpage = ({}) => {
+const AdminLogin = ({}) => {
   const {success, loading, error, login} = useLogin();
 
   const [loginForm, setLoginForm] = React.useState({
@@ -38,4 +38,4 @@ const Loginpage = ({}) => {
   )
 }
 
-export default Loginpage
+export default AdminLogin
