@@ -1,23 +1,25 @@
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
 import { message } from 'antd';
 import {
-    Box, Button, Chip, Alert, TextField, Paper, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText
+    Box, Button, Alert, TextField, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText
 } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
-import dateFormat from 'dateformat';
-import axios from 'axios';
-import { baseUrl, deleteRegUrl } from '../data/backendUrls';
-import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
-import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
-import DeleteIcon from '@mui/icons-material/Delete';
 
-
-
+import { admin_endpoints } from '@/lib/data/api_urls';
+import { usePost } from '@/hooks/useApi';
+import RegItem from '../atoms/RegItem';
 
 const RegTable = (props) => {
     const [dialogOpen, setDialogOpen] = useState(false);
     const [deletableId, setDeletableId] = useState(null);
-    
+
+    const {
+        perform_post: delete_registration,
+        loading,
+        success,
+        error,
+        reset
+    } = usePost(admin_endpoints.deleteReg);
+
     const closeDialog = () => {
         setDialogOpen(false);
         setDeletableId(null)
@@ -26,100 +28,19 @@ const RegTable = (props) => {
         setDialogOpen(true);
         setDeletableId(reg_id);
     }
-    const approve_reg = async (url) => {
-        try {
-            await axios.get(url);
-        } catch (error) {
-            let info = error?.response?.data?.detail;
-            if (info === undefined) {
-                info = error.message;
-            }
-            message.error(info);
-            return;
+    
+    useEffect(() => {
+        if (success) {
+            message.info("Registration Deleted");
+            reset();
+            props.loadRegistrations();
         }
-        props.loadRegistrations();
-    }
-    const delete_registration = async (payload) => {
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken
-                },
-            };
-            await axios.post(deleteRegUrl, payload, config)
-        } catch (error) {
-            let info = error?.response?.data?.detail;
-            if (info === undefined) {
-                info = error.message;
-            }
-            message.error(info);
-            return;
+        if (error) {
+            message.error("Cannot Delete");
+            reset()
         }
-        message.success("Registration Deleted");
-        props.loadRegistrations();
-    }
-    const reg_items = props.registrations.map((reg, idx) => {
-        return (
-            <Paper className="reg-comp" key={reg.id}>
-                <div className={reg.is_approved ? "reg-inner flex-row align-items-center approved" : "reg-inner flex-row align-items-center"}>
-                    <div className="sl-num">{idx + 1}</div>
-                    <div className="reg-info flex-col">
-                        <div className="reg-id">Registration Id: {reg.id}</div>
-                        <div className="applied-at">{dateFormat(reg.added_at, "h:MM:ss TT, d m yyyy")}</div>
-                        <div className="ip-addr">IP: {reg.ip_address}</div>
-                    </div>
-                    <div className="trx-id me-2 flex-col align-items-center">
-                        <span className="label">{reg.gateway}-{reg.paying_number}</span>
-                        <span className="value">{reg.transaction_id}</span>
-                    </div>
-                    <div className="contest-type me-2">
-                        <Chip label={reg.contest} variant='' color='secondary' />
-                    </div>
-                    <div className="team-info me-2">
-                        <div className="leader_name"><span className='label me-1'>{reg.group_members_count > 1 ? "Team Leader" : "Contestant"}:</span> {reg.team_leader.name}</div>
-                        <div className="Inst"><span className='label me-1'>Instituition:</span>{reg.team_leader.inst}</div>
-                    </div>
-                </div>
-                <Box className="bottom" display="flex" flexDirection="row" justifyContent={{ xs: 'center', md: 'left' }} >
-                    {
-                        reg.is_approved ?
-                            <Box display="flex" flexDirection="row">
-                                <Chip icon={<CheckIcon />} label={reg.approved_by} />
-                                {
-                                    reg.is_email_sent ?
-                                        <Chip sx={{ px: 2, marginLeft: { xs: 1, md: 2 } }} icon={<MarkEmailReadIcon />} variant="outlined" label="Mail Sent" color='info' />
-                                        : <Chip sx={{ px: 2, marginLeft: { xs: 1, md: 2 } }} onClick={() => { console.log("Hi") }} icon={<ForwardToInboxIcon />} variant="contained" label="Send Mail" color='info' />
-                                }
-                            </Box>
-                            : <Box>
-                                <Chip
-                                    label="Approve"
-                                    sx={{ px: 1, marginLeft: { xs: 1, md: 2 } }}
-                                    color='primary'
-                                    icon={<CheckIcon />}
-                                    onClick={() => approve_reg(baseUrl + reg.approval_link)}
-                                    variant='contained'
-                                >
-                                    Approve
-                                </Chip>
-                                <Chip
-                                    label="Delete"
-                                    sx={{ px: 1, marginLeft: { xs: 1, md: 2 } }}
-                                    color='error'
-                                    icon={<DeleteIcon />}
-                                    onClick={() => openDialog(reg.id)}
-                                    variant='outlined'
-                                >
-                                    Approve
-                                </Chip>
-                            </Box>
-                    }
+    }, [success, error])
 
-                </Box>
-            </Paper>
-        )
-    })
     if (props.registrations.length === 0) {
         return (
             <Box>
@@ -127,9 +48,20 @@ const RegTable = (props) => {
             </Box>
         )
     }
+
     return (
         <Box className="reg-table" sx={{ mb: 5 }}>
-            {reg_items}
+            {
+                props.registrations.map((reg, idx) => (
+                    <RegItem
+                        key={idx}
+                        idx={idx}
+                        reg={reg}
+                        openDialog={openDialog}
+                        loadRegistrations={props.loadRegistrations}
+                    />
+                ))
+            }
             <Dialog
                 open={dialogOpen}
                 onClose={closeDialog}
@@ -147,8 +79,8 @@ const RegTable = (props) => {
                 <DialogTitle>Delete Registration</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                    Before you proceed with deleting this registration, provide a reason for the action. 
-                    The contestant will receive an email notification regarding this decision
+                        Before you proceed with deleting this registration, provide a reason for the action.
+                        The contestant will receive an email notification regarding this decision
                     </DialogContentText>
                     <TextField
                         autoFocus
@@ -169,12 +101,10 @@ const RegTable = (props) => {
                         >
                         </TextField>
                     </Box>
-
-                    
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={closeDialog}>Cancel</Button>
-                    <Button type="submit">Delete</Button>
+                    <Button disabled={loading} type="submit">Delete</Button>
                 </DialogActions>
             </Dialog>
         </Box>

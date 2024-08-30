@@ -8,20 +8,20 @@ import {
     FormLabel, RadioGroup, Radio
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
-import axios from 'axios';
-import * as urls from '@/lib/data/api_urls'
+import { registerUrl } from '@/lib/data/api_urls'
 import '@/styles/register.css'
 import PaymentSummery from '@/components/PaymentSummery';
 import GroupmemberFields from '@/components/GroupmemberFields';
 import Image from 'next/image';
-
 import {
     registration_deadline,
     payment_deadline
 } from '@/lib/data/basic_info';
 import { contests_data } from '@/lib/data/contests';
-import { RiCheckDoubleLine } from '@remixicon/react'
+import { RiCheckDoubleLine } from '@remixicon/react';
+import { usePost } from '@/hooks/useApi';
 import banner_img from '@/public/static/images/banner.jpg'
+import { message } from 'antd';
 
 
 function getGroupmemberStateObject(num_members) {
@@ -52,6 +52,7 @@ function getGroupmemberStateObject(num_members) {
 }
 
 const Register = ({ contest }) => {
+    const { perform_post: register, loading, success, error, reset } = usePost(registerUrl, false);
     const [formData, setFormData] = useState({
         team_name: '',
         group_members_count: 1,
@@ -65,8 +66,6 @@ const Register = ({ contest }) => {
         getGroupmemberStateObject(1)
     );
 
-    const [isSubmitted, setSubmitted] = useState(false);
-    const [isSubmitting, setSubmitting] = useState(false);
     const [open, setOpen] = useState(false);
     const [notifMsg, setNotifMsg] = useState("");
     const [payNow, setPayNow] = useState(true);
@@ -98,19 +97,14 @@ const Register = ({ contest }) => {
     }
 
     useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        for (let [key, value] of urlParams.entries()) {
-            if (key === 'contest') {
-                if (value === 'lfr' || value === 'poster') {
-                    setFormData(formData => (
-                        {
-                            ...formData,
-                            group_members_count: 3
-                        }
-                    ))
-                    setGroupFormData(getGroupmemberStateObject(3));
+        if (contest === 'lfr' || contest === 'poster') {
+            setFormData(formData => (
+                {
+                    ...formData,
+                    group_members_count: 3
                 }
-            }
+            ))
+            setGroupFormData(getGroupmemberStateObject(3));
         }
     }, [])
 
@@ -170,43 +164,29 @@ const Register = ({ contest }) => {
         }));
     }
 
-    const handleSubmit = async (e) => {
-        setSubmitting(true);
-        e.preventDefault();
+    const handleSubmit = () => {
         if (!formData.contest) {
-            alert("Please Select a contest");
-            setSubmitting(false);
+            showAlert("Please Select a contest");
             return;
         } else if (formData.contest === 'gaming-fifa' && groupFormData.group_member_1.game_controller === null) {
             showAlert("Please select your game controller preference");
-            setSubmitting(false);
             return;
         }
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            };
-            let data = { formData: formData, groupFormData: groupFormData }
-            await axios.post(urls.registerUrl, data, config)
-        } catch (error) {
-            let error_info = error?.response?.data?.info;
-            if (error_info === undefined) {
-                error_info = error.message;
-            }
-            showAlert(error_info);
-            setSubmitting(false);
-            return;
-        }
-        setSubmitted(true);
+        let data = { formData: formData, groupFormData: groupFormData }
+        register(data);
     };
 
-    if (isSubmitted) {
+    useEffect(() => {
+        if (error) {
+            showAlert(error?.info || "Error submitting the form, please contact support");
+        }
+    }, [error, reset])
+
+    if (success) {
         return (
             <Container sx={{ mb: 10 }}>
                 <div className='formSumissionConfirm'>
-                    <RiCheckDoubleLine 
+                    <RiCheckDoubleLine
                         size={70}
                         className="icon"
                     />
@@ -242,149 +222,153 @@ const Register = ({ contest }) => {
                     <Alert severity='warning' sx={{ mt: 1 }}>
                         Registration Deadline: {registration_deadline}
                     </Alert>
-                    <form onSubmit={handleSubmit}>
-                        <FormControl fullWidth sx={{ mt: 2 }}>
-                            <InputLabel id="demo-simple-select-label">Select Contest</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={formData.contest}
-                                label="Select Contest"
-                                name="contest"
-                                onChange={handleChange}
-                            >
-                                {
-                                    Object.keys(contests_data).map((contest_slug, idx) => (
-                                        <MenuItem
-                                            value={contest_slug}
-                                            key={idx}
-                                        >
-                                            {contests_data[contest_slug].name}
-                                        </MenuItem>
-                                    ))
-                                }
-                            </Select>
-                        </FormControl>
-                        {
-                            formData.contest === 'lfr' || formData.contest === 'poster' ?
-                                <Box>
-                                    <TextField
-                                        variant="outlined"
-                                        label="Team Name"
-                                        sx={{ mt: 2 }}
-                                        name="team_name"
-                                        value={formData.team_name}
-                                        onChange={handleChange}
-                                        fullWidth
-                                        required
-                                    />
-                                    <TextField
-                                        variant="outlined"
-                                        label="Number of Group Members"
-                                        sx={{ mt: 2 }}
-                                        name="group_members_count"
-                                        value={formData.group_members_count}
-                                        onChange={handleChange}
-                                        fullWidth
-                                        required
-                                        autoComplete='off'
-                                    />
-                                </Box>
-                                : null
-                        }
-                        <GroupmemberFields
-                            groupFormData={groupFormData}
-                            handleGroupFormChange={handleGroupFormChange}
-                            numMembers={formData.group_members_count}
-                        />
-                        {
-                            formData.contest === 'gaming-fifa' ?
-                                <FormControl sx={{ mt: 2, flexDirection: { xs: 'column', md: 'row', width: '100%' }, alignItems: 'center' }}>
-                                    <FormLabel sx={{ marginRight: 2 }} id="demo-radio-buttons-group-label">Controller Preference</FormLabel>
-                                    <RadioGroup
-                                        row
-                                        defaultValue="keyb"
-                                        name="group_member_1-game_controller"
-                                        value={groupFormData.group_member_1.game_controller}
-                                        onChange={handleGroupFormChange}
+                    <FormControl fullWidth sx={{ mt: 2 }}>
+                        <InputLabel id="demo-simple-select-label">Select Contest</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={formData.contest}
+                            label="Select Contest"
+                            name="contest"
+                            onChange={handleChange}
+                        >
+                            {
+                                Object.keys(contests_data).map((contest_slug, idx) => (
+                                    <MenuItem
+                                        value={contest_slug}
+                                        key={idx}
                                     >
-                                        <FormControlLabel value="keyb" control={<Radio />} label="Keyboard" />
-                                        <FormControlLabel value="joys" control={<Radio />} label="Joystick" />
-                                    </RadioGroup>
-                                </FormControl>
-                                : null
-                        }
-                        {
-                            formData.contest === 'lfr' ?
-                                <FormControlLabel
-                                    control={<Switch defaultChecked={payNow} onClick={handlePayNowChange} />}
-                                    label={payNow ? "Pay Now" : "Pay Later"}
-
+                                        {contests_data[contest_slug].name}
+                                    </MenuItem>
+                                ))
+                            }
+                        </Select>
+                    </FormControl>
+                    {
+                        formData.contest === 'lfr' || formData.contest === 'poster' ?
+                            <Box>
+                                <TextField
+                                    variant="outlined"
+                                    label="Team Name"
+                                    sx={{ mt: 2 }}
+                                    name="team_name"
+                                    value={formData.team_name}
+                                    onChange={handleChange}
+                                    fullWidth
+                                    required
                                 />
-                                : null
-                        }
-                        {
-                            formData.contest === 'lfr' && payNow === false ?
-                                <Fade in={true}>
-                                    <Box>
-                                        <Alert severity='success'>
-                                            you have the flexibility to complete payment at your convenience. Please remember to make the payment before the deadline expires to avoid any inconveniences. When making the payment later, kindly include your <b>team name as the reference</b> to ensure it&apos;s properly attributed to your registration.
-                                        </Alert>
-                                        <Alert severity='warning' sx={{ mt: 1 }}>
-                                            Payment Deadline: <b>{payment_deadline}</b>
-                                        </Alert>
-                                    </Box>
-                                </Fade>
-                                :
-                                <Fade in={true}>
-                                    <FormGroup>
-                                        <FormControl fullWidth sx={{ mt: 2 }}>
-                                            <InputLabel id="demo-simple-select-label">Payment Gateway</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                value={formData.gateway}
-                                                label="Payment Gateway"
-                                                name="gateway"
-                                                onChange={handleChange}
-                                            >
-                                                <MenuItem value="bkash">bKash</MenuItem>
-                                                <MenuItem value="rocket">Rocket</MenuItem>
-                                                <MenuItem value="nagad">Nagad</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                        <TextField
-                                            variant="outlined"
-                                            label="Account number from which payment is done"
-                                            name="paying_number"
-                                            value={formData.paying_number}
-                                            onChange={handleChange}
-                                            sx={{ mt: 2 }}
-                                            fullWidth
-                                            required
-                                        />
-                                        <TextField
-                                            variant="outlined"
-                                            label="Transaction Number"
-                                            name="transaction_id"
-                                            value={formData.transaction_id}
-                                            onChange={handleChange}
-                                            sx={{ mt: 2 }}
-                                            fullWidth
-                                            required
-                                        />
-                                        <Alert severity='warning' sx={{ mt: 1 }}>
-                                            Please ensure accurate entry of the transaction number, as it is required for verification.
-                                        </Alert>
-                                    </FormGroup>
-                                </Fade>
+                                <TextField
+                                    variant="outlined"
+                                    label="Number of Group Members"
+                                    sx={{ mt: 2 }}
+                                    name="group_members_count"
+                                    value={formData.group_members_count}
+                                    onChange={handleChange}
+                                    fullWidth
+                                    required
+                                    autoComplete='off'
+                                />
+                            </Box>
+                            : null
+                    }
+                    <GroupmemberFields
+                        groupFormData={groupFormData}
+                        handleGroupFormChange={handleGroupFormChange}
+                        numMembers={formData.group_members_count}
+                    />
+                    {
+                        formData.contest === 'gaming-fifa' ?
+                            <FormControl sx={{ mt: 2, flexDirection: { xs: 'column', md: 'row', width: '100%' }, alignItems: 'center' }}>
+                                <FormLabel sx={{ marginRight: 2 }} id="demo-radio-buttons-group-label">Controller Preference</FormLabel>
+                                <RadioGroup
+                                    row
+                                    defaultValue="keyb"
+                                    name="group_member_1-game_controller"
+                                    value={groupFormData.group_member_1.game_controller}
+                                    onChange={handleGroupFormChange}
+                                >
+                                    <FormControlLabel value="keyb" control={<Radio />} label="Keyboard" />
+                                    <FormControlLabel value="joys" control={<Radio />} label="Joystick" />
+                                </RadioGroup>
+                            </FormControl>
+                            : null
+                    }
+                    {
+                        formData.contest === 'lfr' ?
+                            <FormControlLabel
+                                control={<Switch defaultChecked={payNow} onClick={handlePayNowChange} />}
+                                label={payNow ? "Pay Now" : "Pay Later"}
 
-                        }
+                            />
+                            : null
+                    }
+                    {
+                        formData.contest === 'lfr' && payNow === false ?
+                            <Fade in={true}>
+                                <Box>
+                                    <Alert severity='success'>
+                                        you have the flexibility to complete payment at your convenience. Please remember to make the payment before the deadline expires to avoid any inconveniences. When making the payment later, kindly include your <b>team name as the reference</b> to ensure it&apos;s properly attributed to your registration.
+                                    </Alert>
+                                    <Alert severity='warning' sx={{ mt: 1 }}>
+                                        Payment Deadline: <b>{payment_deadline}</b>
+                                    </Alert>
+                                </Box>
+                            </Fade>
+                            :
+                            <Fade in={true}>
+                                <FormGroup>
+                                    <FormControl fullWidth sx={{ mt: 2 }}>
+                                        <InputLabel id="demo-simple-select-label">Payment Gateway</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={formData.gateway}
+                                            label="Payment Gateway"
+                                            name="gateway"
+                                            onChange={handleChange}
+                                        >
+                                            <MenuItem value="bkash">bKash</MenuItem>
+                                            <MenuItem value="rocket">Rocket</MenuItem>
+                                            <MenuItem value="nagad">Nagad</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                    <TextField
+                                        variant="outlined"
+                                        label="Account number from which payment is done"
+                                        name="paying_number"
+                                        value={formData.paying_number}
+                                        onChange={handleChange}
+                                        sx={{ mt: 2 }}
+                                        fullWidth
+                                        required
+                                    />
+                                    <TextField
+                                        variant="outlined"
+                                        label="Transaction Number"
+                                        name="transaction_id"
+                                        value={formData.transaction_id}
+                                        onChange={handleChange}
+                                        sx={{ mt: 2 }}
+                                        fullWidth
+                                        required
+                                    />
+                                    <Alert severity='warning' sx={{ mt: 1 }}>
+                                        Please ensure accurate entry of the transaction number, as it is required for verification.
+                                    </Alert>
+                                </FormGroup>
+                            </Fade>
 
-                        <Button sx={{ mt: 2 }} disabled={isSubmitting} variant="contained" color="primary" type="submit" fullWidth>
-                            Register
-                        </Button>
-                    </form>
+                    }
+
+                    <Button
+                        sx={{ mt: 2 }}
+                        disabled={loading}
+                        variant="contained"
+                        color="primary"
+                        onClick={handleSubmit}
+                    >
+                        Register
+                    </Button>
                 </Grid>
                 <Grid item xs={12} md={5}>
                     <Card elevation={1}>

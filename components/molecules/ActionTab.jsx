@@ -3,9 +3,36 @@ import {
     Box, FormControl, InputLabel, Select, MenuItem, Container, IconButton, Button
 } from '@mui/material';
 import SyncIcon from '@mui/icons-material/Sync';
-import { contest_names } from '../data/contests';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import {responseExcelUrl} from '../data/backendUrls'
+import { admin_endpoints } from '@/lib/data/api_urls';
+import { API_HOST } from '@/lib/data/api_urls';
+
+export const contest_names = [
+    {
+        code: 'lfr',
+        fullname: 'Line Follower Robot'
+    },
+    {
+        code: 'poster',
+        fullname: 'Poster Presentation'
+    },
+    {
+        code: 'circuit-solve',
+        fullname: 'Circuit Solve'
+    },
+    {
+        code: 'integration',
+        fullname: 'Integration'
+    },
+    {
+        code: 'gaming-fifa',
+        fullname: 'Gaming [FIFA]'
+    },
+    {
+        code: 'gaming-chess',
+        fullname: 'Gaming [Chess]'
+    }
+];
 
 const ActionTab = ({ contest, approved, setAction, loadRegistrations }) => {
     const selections = contest_names.map(c => {
@@ -14,7 +41,7 @@ const ActionTab = ({ contest, approved, setAction, loadRegistrations }) => {
         )
     })
     const downloadExcel = () => {
-        const url = responseExcelUrl + `?contest=${contest}&approval=${approved}`;
+        const url = `${API_HOST}/${admin_endpoints.responseExcel}?contest=${contest}&approval=${approved}`;
         window.open(url, '_blank');
     }
     return (

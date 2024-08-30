@@ -1,4 +1,4 @@
-import { Component, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
     Box, Container
 } from '@mui/material';
@@ -16,20 +16,30 @@ const AdminDashboard = () => {
         contest: 'all',
         approved: 'all'
     });
+    const [reloadRequired, setReloadRequired] = useState(true);
     
     const {
         data: registrations,
-        success, 
-        error, 
-        perform_get, 
-        loaded, 
-        loading, 
-        reset
+        perform_get,
+        loaded,
     } = useGet(admin_endpoints.registrationlist, true, []);
 
+    const reloadNow = () => {
+        setReloadRequired(true);
+    }
+
     useEffect(() => {
-        perform_get(selection);
-    }, [selection, loaded, perform_get])
+        if (reloadRequired) {
+            perform_get(selection);
+            setReloadRequired(false);
+        }
+    }, [selection, reloadRequired, setReloadRequired, perform_get])
+
+    // useEffect(() => {
+    //     if (!reloadRequired) {
+    //         setReloadRequired(true);
+    //     }
+    // }, [selection, reloadRequired, setReloadRequired])
 
 
     const handleChange = (event) => {
@@ -50,15 +60,15 @@ const AdminDashboard = () => {
                 contest={selection.contest}
                 approved={selection.approved}
                 setAction={handleChange}
-                loadRegistrations={reset}
+                loadRegistrations={reloadNow}
             />
             <Container sx={{ mt: 3 }}>
                 {
-                    !loaded || loading ?
+                    !loaded ?
                         <Loader />
                         :
                         <RegTable
-                            loadRegistrations={reset}
+                            loadRegistrations={reloadNow}
                             registrations={registrations}
                         />
                 }

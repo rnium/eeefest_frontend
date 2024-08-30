@@ -2,19 +2,21 @@
 
 import { useUser } from "@/hooks/useUser";
 import AdminLogin from "./AdminLogin";
+import AdminDashboard from "./AdminDashboard";
 import Loader from "../atoms/Loader";
+import '@/styles/admin.css';
 
 
 const Admin = () => {
-    const { userInfo, userIsLoaded, userIsAuthenticated } = useUser();
+    const { userIsLoaded, userIsAuthenticated } = useUser();
     if (!userIsLoaded) {
         return <Loader />
     } else if (!userIsAuthenticated) {
         return <AdminLogin />
     } else {
-        return <div>Logged In</div>
+        return <AdminDashboard />
     }
 
 }
 
-export default Admin
+export default Admin;
