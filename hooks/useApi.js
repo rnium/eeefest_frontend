@@ -90,6 +90,50 @@ export const useGet = (url, auth_required = true, initalState = null) => {
     return { data, loaded, setLoaded, loading, success, error, perform_get, reset };
 }
 
+export const useFileDownload = (url, filename = 'downloaded_file', authRequired = true) => {
+    const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const downloadFile = useCallback(async (params = {}) => {
+        setLoading(true);
+        setError(null);
+
+        let headers = {};
+        if (authRequired) {
+            headers.Authorization = `Token ${localStorage.getItem('admin_t')}`;
+        }
+
+        try {
+            const response = await axiosInstance.get(url, {
+                params,
+                headers,
+                responseType: 'blob',
+            });
+
+            const fileURL = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = fileURL;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+            setSuccess(true);
+        } catch (error) {
+            setError(error?.response?.data || 'Error Occurred');
+        } finally {
+            setLoading(false);
+        }
+    }, [url]);
+
+    const reset = useCallback(() => {
+        setLoading(false);
+        setSuccess(false);
+        setError(null);
+    }, [])
+
+    return { downloadFile, loading, success, error, reset };
+};
 
 export const useDelete = (initialUrl, config=deleteDefaultConfig, auth_required = true) => {
     const [url, setUrl] = useState(initialUrl);

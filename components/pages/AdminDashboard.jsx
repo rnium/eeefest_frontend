@@ -30,16 +30,17 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         if (reloadRequired) {
-            perform_get(selection);
+            perform_get({
+                contest: selection.contest,
+                approval: selection.approved
+            });
             setReloadRequired(false);
         }
     }, [selection, reloadRequired, setReloadRequired, perform_get])
 
-    // useEffect(() => {
-    //     if (!reloadRequired) {
-    //         setReloadRequired(true);
-    //     }
-    // }, [selection, reloadRequired, setReloadRequired])
+    useEffect(() => {
+        setReloadRequired(true);
+    }, [selection, setReloadRequired])
 
 
     const handleChange = (event) => {

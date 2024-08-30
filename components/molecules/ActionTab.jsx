@@ -1,11 +1,12 @@
-import React from 'react';
+import { useEffect } from 'react';
 import {
     Box, FormControl, InputLabel, Select, MenuItem, Container, IconButton, Button
 } from '@mui/material';
 import SyncIcon from '@mui/icons-material/Sync';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { admin_endpoints } from '@/lib/data/api_urls';
-import { API_HOST } from '@/lib/data/api_urls';
+import { useFileDownload } from '@/hooks/useApi';
+import { message } from 'antd';
 
 export const contest_names = [
     {
@@ -40,10 +41,19 @@ const ActionTab = ({ contest, approved, setAction, loadRegistrations }) => {
             <MenuItem key={c.code} value={c.code}>{c.fullname}</MenuItem>
         )
     })
+    const { downloadFile, loading: downloading, error, reset } = useFileDownload(admin_endpoints.responseExcel, 'Response.xlsx');
     const downloadExcel = () => {
-        const url = `${API_HOST}/${admin_endpoints.responseExcel}?contest=${contest}&approval=${approved}`;
-        window.open(url, '_blank');
+        downloadFile({
+            contest,
+            approval: approved
+        })
     }
+    useEffect(() => {
+        if (error) {
+            message.error("Cannot Download File");
+            reset();
+        }
+    }, [error, reset]);
     return (
         <Container sx={{ mt: 7 }}>
             <Box display="flex" flexDirection="row" alignItems="center" justifyContent="space-between">
@@ -82,7 +92,15 @@ const ActionTab = ({ contest, approved, setAction, loadRegistrations }) => {
                     <IconButton color='primary' onClick={() => loadRegistrations()}>
                         <SyncIcon />
                     </IconButton>
-                    <Button onClick={downloadExcel} sx={{marginLeft: '1rem'}} variant='contained' startIcon={<ArrowDownwardIcon />}>Excel</Button>
+                    <Button
+                        onClick={downloadExcel}
+                        sx={{ marginLeft: '1rem' }}
+                        variant='contained'
+                        startIcon={<ArrowDownwardIcon />}
+                        disabled={downloading}
+                    >
+                        Excel
+                    </Button>
                 </Box>
             </Box>
         </Container>
