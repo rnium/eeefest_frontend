@@ -106,7 +106,7 @@ const Register = ({ contest }) => {
             ))
             setGroupFormData(getGroupmemberStateObject(3));
         }
-    }, [])
+    }, [contest])
 
     const handleChange = (e) => {
         let { name, value } = e.target;
