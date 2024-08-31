@@ -10,9 +10,11 @@ import {
     Avatar
 } from '@mui/material';
 import { useUser } from '@/hooks/useUser';
+import { useLogout } from '@/hooks/useAuth';
 
 export default function AdminNavbar() {
     const { userInfo } = useUser();
+    const { logout } = useLogout();
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -36,7 +38,13 @@ export default function AdminNavbar() {
                         <Avatar sx={{ marginRight: 1 }} />
                         <Typography variant='body1'>{userInfo.username}</Typography>
                     </Box>
-                    <Button color="inherit" variant='outlined'>Logout</Button>
+                    <Button
+                        color="inherit"
+                        variant='outlined'
+                        onClick={() => logout()}
+                    >
+                        Logout
+                    </Button>
                 </Toolbar>
             </AppBar>
         </Box>
