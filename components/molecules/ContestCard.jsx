@@ -3,7 +3,7 @@ import {
     Box, Typography, List, ListItem, ListItemIcon,
     Card, CardMedia, CardContent
 } from '@mui/material';
-import ContestPrizes from '../atoms/contestPrizes';
+import ContestPrizes from '../atoms/ContestPrizes';
 import Image from 'next/image';
 
 const ContestCard = ({ contestData }) => {

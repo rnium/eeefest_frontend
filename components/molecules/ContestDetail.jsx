@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import { RiTrophyLine, RiCalendarScheduleLine } from '@remixicon/react';
 import { prizemoney_titles } from '@/lib/data/contests';
-import ContestPrizes from '../atoms/contestPrizes';
+import ContestPrizes from '../atoms/ContestPrizes';
 
 const ContestDetail = ({ contestData }) => {
     return (
